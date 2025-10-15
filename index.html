@@ -6,19 +6,19 @@
     <!-- Chargement de Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Définition des couleurs personnalisées (Sobres et fonctionnelles) */
+        /* Définition des couleurs et des styles pour un look professionnel et minimaliste */
         :root {
-            --color-dark-deep: #121212; /* Noir Profond */
-            --color-light-cream: #F7F7F0; /* Blanc Cassé/Crème (Fond Principal) */
-            --color-accent-blue: #0077B6; /* Bleu Confiance (Inspiré d'Amazon pour les CTA) */
-            --color-text-dark: #333333; /* Gris Anthracite pour le texte */
-            --color-shadow: rgba(0, 0, 0, 0.08);
+            --color-dark-deep: #1A1A1A; /* Noir Anthracite pour la typographie et le footer */
+            --color-light-cream: #FDFDFD; /* Blanc presque pur pour les fonds */
+            --color-accent-blue: #FF9900; /* Jaune/Orange fonctionnel (inspiré d'Amazon pour l'action) */
+            --color-text-dark: #1A1A1A; 
+            --color-shadow: rgba(0, 0, 0, 0.1);
         }
         body {
             background-color: var(--color-light-cream);
             color: var(--color-text-dark);
             font-family: 'Inter', sans-serif;
-            min-width: 320px; /* Assurer le support mobile */
+            min-width: 320px;
         }
 
         /* Conteneur pour remplacer les images avec "PIC HERE" */
@@ -30,72 +30,87 @@
             color: #AAAAAA;
             font-weight: bold;
             text-transform: uppercase;
-            border: 1px solid #DDDDDD;
+            /* Suppression des bordures pour un look plus "Amazon" */
+            border: none;
             height: 100%;
             min-height: 150px;
             text-align: center;
             line-height: 1.2;
+            padding: 20px;
         }
 
-        /* Styles de boutons axés sur la fonction (Bleu Confiance) */
+        /* Styles de boutons d'action (Orange/Jaune pour l'achat immédiat) */
         .btn-cta {
             background-color: var(--color-accent-blue) !important;
-            color: var(--color-light-cream) !important;
+            color: var(--color-dark-deep) !important;
             transition: background-color 0.3s;
-            border-radius: 4px;
+            border-radius: 9999px; /* Forme de pilule pour le CTA principal */
+            font-weight: 700; /* Bold */
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+            text-shadow: 0 1px 1px rgba(255, 255, 255, 0.5); /* Texte en relief subtil */
         }
         .btn-cta:hover {
-            background-color: #005A8D !important;
+            background-color: #FFBB58 !important; /* Jaune plus clair au survol */
+        }
+        
+        /* Bouton d'ajout au panier spécifique aux cartes (style neutre) */
+        .btn-add-to-cart {
+            background-color: #F0F0F0 !important; /* Gris neutre */
+            color: var(--color-dark-deep) !important;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+        .btn-add-to-cart:hover {
+            background-color: #E0E0E0 !important;
         }
 
-        /* Styles de navigation minimalistes */
+        /* Styles de navigation minimalistes et plats */
         .sw-topbar-nav-ctr, .sw-home-page-top-bar {
             background-color: var(--color-light-cream) !important;
-            border-bottom: 1px solid rgba(51, 51, 51, 0.1);
+            border-bottom: 1px solid #DDDDDD;
         }
 
-        /* Styles des cartes produits (Amazon-like: fond blanc, ombre légère) */
+        /* Styles des cartes produits (Fond blanc, ombres très subtiles, lignes épurées) */
         .product-card {
             background-color: white;
-            box-shadow: 0 1px 3px var(--color-shadow);
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); /* Ombre plus légère */
             border-radius: 4px;
             overflow: hidden;
             transition: box-shadow 0.2s;
-            border: 1px solid #EEEEEE; /* Bordure subtile */
+            border: 1px solid #F0F0F0; /* Bordure très pâle */
         }
         .product-card:hover {
-            box-shadow: 0 4px 10px var(--color-shadow);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
         .bg-dark-deep {
             background-color: var(--color-dark-deep) !important;
         }
     </style>
-    <title>SQUATWOLF - Design E-commerce Moderne</title>
+    <title>SQUATWOLF - Design E-commerce Moderne V2</title>
 </head>
 <body class="bg-light-cream">
     <div class="sw-topbar-nav-ctr sticky top-0 z-50">
         <!-- TOP BAR (Minimaliste) -->
         <div class="md:flex-between lg:gap-8 md:px-6 lg:px-12 2xl:px-16 sw-home-page-top-bar">
             <div class="small-regular flex-center gap-2 py-[5px] max-md:px-4 text-dark-text w-full justify-center">
-                <div class="small-regular announcement-text uppercase">LIVRAISON GRATUITE DÈS 100€</div>
+                <div class="small-regular announcement-text uppercase text-sm">LIVRAISON GRATUITE DÈS 100€</div>
             </div>
-            <!-- Boutons de langue/devise simplifiés pour l'exemple -->
             <div class="dropdown-bar hidden md:flex-center gap-4 py-[5px] max-md:px-6">
-                 <span class="small-regular uppercase">English | USD</span>
+                 <span class="small-regular uppercase text-xs">English | USD</span>
             </div>
         </div>
-        <!-- NAVIGATION BAR (Recherche centrée style Amazon) -->
+        <!-- NAVIGATION BAR (Recherche professionnelle centrée) -->
         <nav class="relative z-40 flex items-center justify-between px-4 md:px-6 lg:px-12 2xl:px-16 py-3">
             <div class="flex items-center space-x-4 w-full">
                 <!-- Logo -->
-                <a class="flex items-center flex-shrink-0" href="#">
-                    <svg class="h-6 w-10 text-dark-deep" width="32" height="20" viewBox="0 0 32 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_8559_16446)"><path d="M32 -0.00108198C31.5583 0.0939389 31.3769 0.120545 31.2034 0.171856C27.4945 1.2988 23.7974 2.46376 20.0707 3.5318C19.1164 3.80546 18.8305 4.23305 18.7674 5.16426C18.5249 8.79025 18.1719 12.4086 17.8722 16.0289C17.7638 17.325 17.6869 18.623 17.5962 19.921C17.7066 19.9457 17.817 19.9723 17.9294 19.997C18.0773 19.653 18.2626 19.3205 18.3652 18.9651C19.5088 15.054 20.678 11.1506 21.7468 7.22051C22.0011 6.2836 22.4428 6.01564 23.3676 6.11256C24.312 6.21329 25.2703 6.2855 26.2148 6.23609C26.6801 6.21139 27.2736 6.00044 27.5615 5.66977C28.9516 4.07151 30.2589 2.40865 31.5879 0.760986C31.7161 0.601351 31.7871 0.398006 32.002 -0.00488281L32 -0.00108198ZM13.9346 19.9913C14.0785 19.9742 14.2224 19.9571 14.3684 19.94C14.3329 19.3699 14.3092 18.7998 14.2599 18.2315C13.8754 13.6667 13.4732 9.10572 13.1123 4.53902C13.0729 4.03541 12.8659 3.83206 12.4104 3.69523C8.54175 2.53218 4.681 1.35392 0.814345 0.187059C0.601393 0.122445 0.368723 0.118644 0 0.0673331C0.124222 0.354296 0.147883 0.479724 0.220839 0.569044C1.61686 2.28512 2.98922 4.0183 4.44439 5.68687C4.72833 6.01374 5.33169 6.23039 5.79309 6.23799C7.13193 6.2608 8.47076 6.15057 9.85101 6.08976C11.2273 10.7743 12.5819 15.3828 13.9365 19.9913H13.9346Z" fill="currentColor"></path></g><defs><clipPath id="clip0_8559_16446"><rect width="32" height="20" fill="white"></rect></clipPath></defs></svg>
+                <a class="flex items-center flex-shrink-0 mr-4 lg:mr-8" href="#">
+                    <svg class="h-8 w-12 text-dark-deep" viewBox="0 0 32 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_8559_16446)"><path d="M32 -0.00108198C31.5583 0.0939389 31.3769 0.120545 31.2034 0.171856C27.4945 1.2988 23.7974 2.46376 20.0707 3.5318C19.1164 3.80546 18.8305 4.23305 18.7674 5.16426C18.5249 8.79025 18.1719 12.4086 17.8722 16.0289C17.7638 17.325 17.6869 18.623 17.5962 19.921C17.7066 19.9457 17.817 19.9723 17.9294 19.997C18.0773 19.653 18.2626 19.3205 18.3652 18.9651C19.5088 15.054 20.678 11.1506 21.7468 7.22051C22.0011 6.2836 22.4428 6.01564 23.3676 6.11256C24.312 6.21329 25.2703 6.2855 26.2148 6.23609C26.6801 6.21139 27.2736 6.00044 27.5615 5.66977C28.9516 4.07151 30.2589 2.40865 31.5879 0.760986C31.7161 0.601351 31.7871 0.398006 32.002 -0.00488281L32 -0.00108198ZM13.9346 19.9913C14.0785 19.9742 14.2224 19.9571 14.3684 19.94C14.3329 19.3699 14.3092 18.7998 14.2599 18.2315C13.8754 13.6667 13.4732 9.10572 13.1123 4.53902C13.0729 4.03541 12.8659 3.83206 12.4104 3.69523C8.54175 2.53218 4.681 1.35392 0.814345 0.187059C0.601393 0.122445 0.368723 0.118644 0 0.0673331C0.124222 0.354296 0.147883 0.479724 0.220839 0.569044C1.61686 2.28512 2.98922 4.0183 4.44439 5.68687C4.72833 6.01374 5.33169 6.23039 5.79309 6.23799C7.13193 6.2608 8.47076 6.15057 9.85101 6.08976C11.2273 10.7743 12.5819 15.3828 13.9365 19.9913H13.9346Z" fill="currentColor"></path></g><defs><clipPath id="clip0_8559_16446"><rect width="32" height="20" fill="white"></rect></clipPath></defs></svg>
                 </a>
                 
-                <!-- Search Bar (Plein largeur sur mobile, centré sur desktop) -->
-                <div class="flex-1 max-w-xl max-md:hidden">
+                <!-- Search Bar (Large et prominent) -->
+                <div class="flex-1 max-w-2xl max-md:hidden">
                     <div class="relative">
-                        <input type="text" placeholder="Rechercher des produits, collections..." class="w-full px-4 py-2 text-sm border border-gray-300 rounded-lg focus:border-dark-deep focus:ring-dark-deep pr-10">
+                        <input type="text" placeholder="Rechercher des produits de sport, collections..." class="w-full px-4 py-2 text-sm border-2 border-dark-deep/10 rounded-md bg-white focus:border-dark-deep focus:ring-1 focus:ring-dark-deep pr-10">
                         <button class="absolute right-0 top-0 h-full px-3 text-gray-500 hover:text-dark-deep">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                         </button>
@@ -103,16 +118,13 @@
                 </div>
 
                 <!-- Icons de droite -->
-                <div class="flex items-center space-x-4 flex-shrink-0">
-                    <a class="body-regular uppercase text-dark-deep hidden lg:inline-block hover:text-gray-600" href="#">LOG IN / SIGN UP</a>
+                <div class="flex items-center space-x-4 flex-shrink-0 ml-auto">
+                    <a class="body-regular uppercase text-dark-deep hidden lg:inline-block text-sm hover:text-gray-600" href="#">Compte</a>
                     <a class="text-dark-deep hover:text-gray-600 hidden md:block" href="#">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="1.5" fill="none" class="w-6 h-6"><path d="M12 21s-6.5-4.3-10-9c-2.5-3.2-1.8-7.9 1.5-10.1 3.3-2.2 7.5-.7 8.5 2.6 1-3.3 5.2-4.8 8.5-2.6 3.3 2.2 4 6.9 1.5 10.1-3.5 4.7-10 9-10 9z"></path></svg>
                     </a>
                     <button class="text-dark-deep hover:text-gray-600">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L6 5M16 16a1 1 0 100 2 1 1 0 000-2zm-6 0a1 1 0 100 2 1 1 0 000-2z"></path></svg>
-                    </button>
-                    <button class="text-dark-deep md:hidden">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
                     </button>
                 </div>
             </div>
@@ -120,7 +132,7 @@
          <!-- Search Bar mobile (visible only on small screens) -->
         <div class="md:hidden px-4 pb-3">
              <div class="relative">
-                <input type="text" placeholder="Rechercher des produits..." class="w-full px-4 py-2 text-sm border border-gray-300 rounded-lg focus:border-dark-deep focus:ring-dark-deep pr-10">
+                <input type="text" placeholder="Rechercher des produits..." class="w-full px-4 py-2 text-sm border-2 border-dark-deep/10 rounded-md bg-white focus:border-dark-deep focus:ring-1 focus:ring-dark-deep pr-10">
                 <button class="absolute right-0 top-0 h-full px-3 text-gray-500 hover:text-dark-deep">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                 </button>
@@ -131,216 +143,280 @@
     <main>
         <div class="container mx-auto px-4 md:px-6 lg:px-12 2xl:px-16 pt-8 pb-16">
 
-            <!-- HERO SECTION (Une seule zone d'image large) -->
+            <!-- HERO SECTION (Bannière large et simple) -->
             <section class="mb-12">
-                <div class="relative aspect-[16/6] w-full bg-gray-900 rounded-lg overflow-hidden">
-                    <div class="img-placeholder text-light-cream text-3xl h-full" style="background-color: var(--color-dark-deep);">
-                        PIC HERE - BANNER VIDÉO
+                <div class="relative w-full rounded-lg overflow-hidden border border-gray-200">
+                    <div class="aspect-[16/6] lg:aspect-[16/5] w-full bg-gray-900 rounded-lg overflow-hidden">
+                        <div class="img-placeholder text-light-cream text-3xl h-full" style="background-color: var(--color-dark-deep);">
+                            PIC HERE - BANNER PRINCIPALE
+                        </div>
                     </div>
-                    <div class="absolute bottom-6 left-6 z-10 uppercase text-light-cream">
-                        <p class="text-sm font-semibold mb-2">NOUVELLE TECHNOLOGIE</p>
-                        <h2 class="text-4xl font-bold mb-4">ACTDRY® COLLECTION</h2>
-                        <a href="#" class="inline-flex items-center justify-center btn-cta px-6 py-3 font-semibold hover:bg-blue-600 transition">
-                            <span class="btn-txt uppercase">Acheter maintenant</span>
+                    <div class="absolute bottom-6 left-6 z-10 uppercase text-light-cream p-4 bg-dark-deep/50 rounded-lg md:bottom-10 md:left-10">
+                        <p class="text-sm font-semibold mb-2">NOUVELLE TECHNOLOGIE PERFORMANCE</p>
+                        <h2 class="text-2xl md:text-4xl font-bold mb-4">DÉCOUVREZ ACTDRY®</h2>
+                        <a href="#" class="inline-flex items-center justify-center btn-cta px-6 py-2 font-semibold transition text-sm">
+                            <span class="btn-txt uppercase">Acheter la collection</span>
                             <svg class="h-4 w-4 ml-2" width="40" height="40" viewBox="0 0 40 40" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M31.56 20L17.96 37L13 37L13 33L16.04 33L26.44 20L16.04 7L13 7L13 3L17.96 3L31.56 20Z" fill="currentColor"></path></svg>
                         </a>
                     </div>
                 </div>
             </section>
 
-            <!-- POPULAR CATEGORIES (Passage à une grille 2x2 ou 4x1 responsive) -->
+            <!-- NAVIGATION SECONDAIRE PAR CATÉGORIES (Grille 4x1 simple) -->
             <section class="mb-16">
-                <h2 class="text-2xl font-bold uppercase mb-6">CATÉGORIES POPULAIRES</h2>
+                <h2 class="text-2xl font-bold uppercase mb-6">PARCOURIR PAR CATÉGORIE</h2>
                 
-                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-                    <!-- Utilisation d'une boucle pour les catégories - seulement une image d'exemple -->
-                    <div class="product-card hover:shadow-lg">
+                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6">
+                    <!-- Catégorie Card 1 -->
+                    <div class="product-card hover:shadow-xl p-0.5">
                         <a class="block" href="#">
-                            <div class="aspect-[2/3] w-full img-placeholder">PIC HERE</div>
-                            <h3 class="text-sm font-medium text-center uppercase py-3">T-SHIRTS HOMME</h3>
+                            <div class="aspect-[1/1] w-full img-placeholder rounded-t-sm">PIC HERE</div>
+                            <h3 class="text-xs font-medium text-center uppercase py-2">T-SHIRTS HOMME</h3>
                         </a>
                     </div>
-                    <div class="product-card hover:shadow-lg">
+                    <!-- Catégorie Card 2 -->
+                    <div class="product-card hover:shadow-xl p-0.5">
                         <a class="block" href="#">
-                            <div class="aspect-[2/3] w-full img-placeholder">PIC HERE</div>
-                            <h3 class="text-sm font-medium text-center uppercase py-3">LEGGINGS FEMME</h3>
+                            <div class="aspect-[1/1] w-full img-placeholder rounded-t-sm">PIC HERE</div>
+                            <h3 class="text-xs font-medium text-center uppercase py-2">LEGGINGS FEMME</h3>
                         </a>
                     </div>
-                     <div class="product-card hover:shadow-lg">
+                    <!-- Catégorie Card 3 -->
+                     <div class="product-card hover:shadow-xl p-0.5">
                         <a class="block" href="#">
-                            <div class="aspect-[2/3] w-full img-placeholder">PIC HERE</div>
-                            <h3 class="text-sm font-medium text-center uppercase py-3">SHORTS HOMME</h3>
+                            <div class="aspect-[1/1] w-full img-placeholder rounded-t-sm">PIC HERE</div>
+                            <h3 class="text-xs font-medium text-center uppercase py-2">SHORTS HOMME</h3>
                         </a>
                     </div>
-                    <div class="product-card hover:shadow-lg">
+                    <!-- Catégorie Card 4 -->
+                    <div class="product-card hover:shadow-xl p-0.5">
                         <a class="block" href="#">
-                            <div class="aspect-[2/3] w-full img-placeholder">PIC HERE</h3>
-                            <h3 class="text-sm font-medium text-center uppercase py-3">BRASSIÈRES SPORT</h3>
+                            <div class="aspect-[1/1] w-full img-placeholder rounded-t-sm">PIC HERE</h3>
+                            <h3 class="text-xs font-medium text-center uppercase py-2">BRASSIÈRES SPORT</h3>
                         </a>
                     </div>
-                    <div class="product-card hover:shadow-lg hidden lg:block">
+                    <!-- Catégorie Card 5 -->
+                    <div class="product-card hover:shadow-xl p-0.5 max-lg:hidden">
                         <a class="block" href="#">
-                            <div class="aspect-[2/3] w-full img-placeholder">PIC HERE</div>
-                            <h3 class="text-sm font-medium text-center uppercase py-3">NOUVEAUTÉS HOMME</h3>
+                            <div class="aspect-[1/1] w-full img-placeholder rounded-t-sm">PIC HERE</div>
+                            <h3 class="text-xs font-medium text-center uppercase py-2">NOUVEAUTÉS</h3>
                         </a>
                     </div>
-                    <div class="product-card hover:shadow-lg hidden lg:block">
+                    <!-- Catégorie Card 6 -->
+                    <div class="product-card hover:shadow-xl p-0.5 max-lg:hidden">
                         <a class="block" href="#">
-                            <div class="aspect-[2/3] w-full img-placeholder">PIC HERE</div>
-                            <h3 class="text-sm font-medium text-center uppercase py-3">HOODIES</h3>
+                            <div class="aspect-[1/1] w-full img-placeholder rounded-t-sm">PIC HERE</div>
+                            <h3 class="text-xs font-medium text-center uppercase py-2">ACCESSOIRES</h3>
                         </a>
                     </div>
-                    <!-- Cacher les deux dernières sur les écrans plus petits pour maintenir l'esthétique -->
                 </div>
             </section>
             
-            <!-- SECTION PRODUITS EN VEDETTE (Style carrousel simple horizontal) -->
+            <!-- SECTION PRODUITS (Grille standard E-commerce) -->
             <section class="mb-16">
-                <h2 class="text-2xl font-bold uppercase mb-6">NOS MEILLEURES VENTES</h2>
+                <h2 class="text-2xl font-bold uppercase mb-6">LES MEILLEURES VENTES</h2>
                 
-                 <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6 overflow-x-auto pb-4">
-                    <!-- Remplacement de la structure de slider complexe par une grille simple défilable -->
+                 <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-6">
                     
                     <!-- Carte Produit 1 -->
-                    <div class="product-card w-full flex-shrink-0" style="min-width: 150px;">
+                    <div class="product-card">
                         <a class="block" href="#">
-                            <div class="aspect-[2/3] w-full img-placeholder">PIC HERE</div>
-                            <div class="p-2">
+                            <div class="aspect-[3/4] w-full img-placeholder">PIC HERE</div>
+                            <div class="p-3">
                                 <p class="text-xs text-gray-500 uppercase mb-1">ACTDRY®</p>
-                                <h4 class="text-sm font-medium mb-1 truncate">Hybrid Jacket - Stormy Weather</h4>
-                                <p class="font-bold text-base">$168.00</p>
+                                <h4 class="text-sm font-medium mb-1 truncate hover:text-gray-700">Hybrid Jacket - Stormy Weather</h4>
+                                <p class="font-bold text-lg text-dark-deep">$168.00</p>
                             </div>
                         </a>
-                        <button class="w-full btn-cta py-2 text-xs font-semibold uppercase">Ajouter au panier</button>
+                        <!-- Bouton d'ajout au panier neutre -->
+                        <button class="w-full btn-add-to-cart py-2 text-xs font-semibold uppercase hover:bg-gray-200 transition">Ajouter au panier</button>
                     </div>
                     
                     <!-- Carte Produit 2 -->
-                     <div class="product-card w-full flex-shrink-0" style="min-width: 150px;">
+                     <div class="product-card">
                         <a class="block" href="#">
-                            <div class="aspect-[2/3] w-full img-placeholder">PIC HERE</div>
-                            <div class="p-2">
+                            <div class="aspect-[3/4] w-full img-placeholder">PIC HERE</div>
+                            <div class="p-3">
                                 <p class="text-xs text-gray-500 uppercase mb-1">ACTDRY®</p>
-                                <h4 class="text-sm font-medium mb-1 truncate">Pro 2-In-1 7" Shorts - Black</h4>
-                                <p class="font-bold text-base">$100.00</p>
+                                <h4 class="text-sm font-medium mb-1 truncate hover:text-gray-700">Pro 2-In-1 7" Shorts - Black</h4>
+                                <p class="font-bold text-lg text-dark-deep">$100.00</p>
                             </div>
                         </a>
-                        <button class="w-full btn-cta py-2 text-xs font-semibold uppercase">Ajouter au panier</button>
+                        <button class="w-full btn-add-to-cart py-2 text-xs font-semibold uppercase hover:bg-gray-200 transition">Ajouter au panier</button>
                     </div>
                     
                     <!-- Carte Produit 3 -->
-                     <div class="product-card w-full flex-shrink-0" style="min-width: 150px;">
+                     <div class="product-card">
                         <a class="block" href="#">
-                            <div class="aspect-[2/3] w-full img-placeholder">PIC HERE</div>
-                            <div class="p-2">
-                                <p class="text-xs text-gray-500 uppercase mb-1">ACTDRY®</p>
-                                <h4 class="text-sm font-medium mb-1 truncate">Quarter Zip Top - Pearl White</h4>
-                                <p class="font-bold text-base">$100.00</p>
+                            <div class="aspect-[3/4] w-full img-placeholder">PIC HERE</div>
+                            <div class="p-3">
+                                <p class="text-xs text-gray-500 uppercase mb-1">CORE</p>
+                                <h4 class="text-sm font-medium mb-1 truncate hover:text-gray-700">Leggings - Black</h4>
+                                <p class="font-bold text-lg text-dark-deep">$90.00</p>
                             </div>
                         </a>
-                        <button class="w-full btn-cta py-2 text-xs font-semibold uppercase">Ajouter au panier</button>
+                        <button class="w-full btn-add-to-cart py-2 text-xs font-semibold uppercase hover:bg-gray-200 transition">Ajouter au panier</button>
                     </div>
                     
                     <!-- Carte Produit 4 -->
-                    <div class="product-card w-full flex-shrink-0" style="min-width: 150px;">
+                    <div class="product-card">
                         <a class="block" href="#">
-                            <div class="aspect-[2/3] w-full img-placeholder">PIC HERE</div>
-                            <div class="p-2">
-                                <p class="text-xs text-gray-500 uppercase mb-1">ACTDRY®</p>
-                                <h4 class="text-sm font-medium mb-1 truncate">Pro Tee - SW Coral</h4>
-                                <p class="font-bold text-base">$72.00</p>
+                            <div class="aspect-[3/4] w-full img-placeholder">PIC HERE</div>
+                            <div class="p-3">
+                                <p class="text-xs text-gray-500 uppercase mb-1">NEOTECH</p>
+                                <h4 class="text-sm font-medium mb-1 truncate hover:text-gray-700">Pro Tee - SW Coral</h4>
+                                <p class="font-bold text-lg text-dark-deep">$72.00</p>
                             </div>
                         </a>
-                        <button class="w-full btn-cta py-2 text-xs font-semibold uppercase">Ajouter au panier</button>
+                        <button class="w-full btn-add-to-cart py-2 text-xs font-semibold uppercase hover:bg-gray-200 transition">Ajouter au panier</button>
                     </div>
 
-                    <!-- Carte Produit 5 -->
-                    <div class="product-card w-full flex-shrink-0 max-md:hidden" style="min-width: 150px;">
+                    <!-- Carte Produit 5 (Visible uniquement sur les grands écrans) -->
+                    <div class="product-card max-lg:hidden xl:block">
                         <a class="block" href="#">
-                            <div class="aspect-[2/3] w-full img-placeholder">PIC HERE</div>
-                            <div class="p-2">
+                            <div class="aspect-[3/4] w-full img-placeholder">PIC HERE</div>
+                            <div class="p-3">
                                 <p class="text-xs text-gray-500 uppercase mb-1">ESSENTIAL</p>
-                                <h4 class="text-sm font-medium mb-1 truncate">Joggers - Charcoal</h4>
-                                <p class="font-bold text-base">$112.00</p>
+                                <h4 class="text-sm font-medium mb-1 truncate hover:text-gray-700">Joggers - Charcoal</h4>
+                                <p class="font-bold text-lg text-dark-deep">$112.00</p>
                             </div>
                         </a>
-                        <button class="w-full btn-cta py-2 text-xs font-semibold uppercase">Ajouter au panier</button>
+                        <button class="w-full btn-add-to-cart py-2 text-xs font-semibold uppercase hover:bg-gray-200 transition">Ajouter au panier</button>
+                    </div>
+                    
+                    <!-- Carte Produit 6 -->
+                    <div class="product-card max-md:hidden">
+                        <a class="block" href="#">
+                            <div class="aspect-[3/4] w-full img-placeholder">PIC HERE</div>
+                            <div class="p-3">
+                                <p class="text-xs text-gray-500 uppercase mb-1">ACTDRY®</p>
+                                <h4 class="text-sm font-medium mb-1 truncate hover:text-gray-700">Quarter Zip Top - Black</h4>
+                                <p class="font-bold text-lg text-dark-deep">$100.00</p>
+                            </div>
+                        </a>
+                        <button class="w-full btn-add-to-cart py-2 text-xs font-semibold uppercase hover:bg-gray-200 transition">Ajouter au panier</button>
+                    </div>
+                    
+                    <!-- Carte Produit 7 -->
+                    <div class="product-card max-md:hidden">
+                        <a class="block" href="#">
+                            <div class="aspect-[3/4] w-full img-placeholder">PIC HERE</div>
+                            <div class="p-3">
+                                <p class="text-xs text-gray-500 uppercase mb-1">CORE</p>
+                                <h4 class="text-sm font-medium mb-1 truncate hover:text-gray-700">Sports Bra - White</h4>
+                                <p class="font-bold text-lg text-dark-deep">$55.00</p>
+                            </div>
+                        </a>
+                        <button class="w-full btn-add-to-cart py-2 text-xs font-semibold uppercase hover:bg-gray-200 transition">Ajouter au panier</button>
+                    </div>
+
+                     <!-- Carte Produit 8 -->
+                    <div class="product-card max-md:hidden">
+                        <a class="block" href="#">
+                            <div class="aspect-[3/4] w-full img-placeholder">PIC HERE</div>
+                            <div class="p-3">
+                                <p class="text-xs text-gray-500 uppercase mb-1">LAB360°</p>
+                                <h4 class="text-sm font-medium mb-1 truncate hover:text-gray-700">Tee Oversize - Grey</h4>
+                                <p class="font-bold text-lg text-dark-deep">$65.00</p>
+                            </div>
+                        </a>
+                        <button class="w-full btn-add-to-cart py-2 text-xs font-semibold uppercase hover:bg-gray-200 transition">Ajouter au panier</button>
+                    </div>
+                    
+                    <!-- Carte Produit 9 -->
+                    <div class="product-card max-md:hidden max-lg:hidden xl:block">
+                        <a class="block" href="#">
+                            <div class="aspect-[3/4] w-full img-placeholder">PIC HERE</div>
+                            <div class="p-3">
+                                <p class="text-xs text-gray-500 uppercase mb-1">ESSENTIAL</p>
+                                <h4 class="text-sm font-medium mb-1 truncate hover:text-gray-700">Shorts - Beige</h4>
+                                <p class="font-bold text-lg text-dark-deep">$58.00</p>
+                            </div>
+                        </a>
+                        <button class="w-full btn-add-to-cart py-2 text-xs font-semibold uppercase hover:bg-gray-200 transition">Ajouter au panier</button>
                     </div>
                     
                 </div>
             </section>
             
-            <!-- PROMOTION IMAGE / LIEN VERS L'HISTOIRE (Large bande) -->
+            <!-- PROMOTION LARGE BANNER (Style Publicité Efficace) -->
             <section class="mb-16">
-                <div class="relative aspect-[16/4] w-full bg-gray-900 rounded-lg overflow-hidden">
-                    <div class="img-placeholder text-light-cream text-3xl h-full" style="background-color: var(--color-dark-deep);">
-                        PIC HERE - NOTRE HISTOIRE
+                <div class="relative w-full rounded-lg overflow-hidden border border-gray-200">
+                     <div class="aspect-[16/4] w-full bg-gray-900 rounded-lg overflow-hidden">
+                        <div class="img-placeholder text-light-cream text-3xl h-full" style="background-color: var(--color-dark-deep);">
+                            PIC HERE - BANNER PROMOTION
+                        </div>
                     </div>
                     <div class="absolute inset-0 bg-black/40 flex flex-col justify-center items-center p-6 rounded-lg">
-                        <h2 class="text-3xl md:text-5xl font-bold uppercase text-light-cream mb-4 text-center">FROM DUBAI TO THE WORLD</h2>
-                        <a href="https://squatwolf.com/pages/our-story" class="btn-cta px-8 py-3 text-sm font-semibold uppercase">
-                            Découvrir l'histoire
+                        <h2 class="text-xl md:text-3xl font-bold uppercase text-light-cream mb-2 text-center">NOTRE NOUVELLE COLLECTION EST ARRIVÉE</h2>
+                        <p class="text-light-cream/80 mb-4 text-center text-sm md:text-base">Découvrez les tissus techniques pour améliorer votre performance.</p>
+                        <a href="#" class="btn-cta px-8 py-2 text-sm font-semibold uppercase">
+                            Voir la collection
                         </a>
                     </div>
                 </div>
             </section>
-
 
         </div>
     </main>
 
-    <!-- FOOTER (Simplifié et révisé pour la clarté) -->
+    <!-- FOOTER (Simplifié pour la clarté et le minimalisme) -->
     <footer class="bg-dark-deep text-light-cream">
         <div class="container mx-auto px-4 md:px-6 lg:px-12 2xl:px-16 py-8 md:py-12">
             
-            <!-- NEWSLETTER SECTION (Simplifiée) -->
+            <!-- NEWSLETTER SECTION (Centrée et compacte) -->
             <div class="border-b border-light-cream/30 pb-6 mb-6">
-                 <h3 class="text-2xl font-bold uppercase mb-4">REJOIGNEZ LE PACK</h3>
-                 <div class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4">
-                     <input type="email" placeholder="Votre adresse e-mail" class="flex-1 px-4 py-3 rounded-md text-dark-deep focus:outline-none" style="background-color: white;">
-                     <button class="btn-cta px-6 py-3 font-semibold uppercase whitespace-nowrap">
+                 <h3 class="text-lg font-bold uppercase mb-4 text-center">REJOIGNEZ LE PACK ET RECEVEZ 10% DE RABAIS</h3>
+                 <div class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 max-w-lg mx-auto">
+                     <input type="email" placeholder="Votre adresse e-mail" class="flex-1 px-4 py-2 rounded-md text-dark-deep focus:outline-none text-sm" style="background-color: white;">
+                     <button class="btn-cta px-4 py-2 font-semibold uppercase whitespace-nowrap text-sm">
                          S'inscrire
                      </button>
                  </div>
             </div>
 
-            <!-- LIENS ET PAIEMENT -->
-            <div class="grid grid-cols-2 md:grid-cols-5 gap-6 mb-8">
+            <!-- LIENS (Disposition en grille simplifiée) -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8 text-center md:text-left">
                 <div>
                     <h4 class="text-sm font-bold uppercase mb-3">BOUTIQUE</h4>
                     <ul class="text-xs space-y-2 text-light-cream/80">
-                        <li><a href="#">Hommes</a></li>
-                        <li><a href="#">Femmes</a></li>
-                        <li><a href="#">Accessoires</a></li>
-                        <li><a href="#">Nouveautés</a></li>
+                        <li><a href="#" class="hover:text-light-cream">Hommes</a></li>
+                        <li><a href="#" class="hover:text-light-cream">Femmes</a></li>
+                        <li><a href="#" class="hover:text-light-cream">Accessoires</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="text-sm font-bold uppercase mb-3">AIDE & SUPPORT</h4>
+                    <h4 class="text-sm font-bold uppercase mb-3">SERVICE CLIENT</h4>
                     <ul class="text-xs space-y-2 text-light-cream/80">
-                        <li><a href="#">Centre d'aide</a></li>
-                        <li><a href="#">Suivi de commande</a></li>
-                        <li><a href="#">Retours & Échanges</a></li>
-                        <li><a href="#">Contactez-nous</a></li>
+                        <li><a href="#" class="hover:text-light-cream">Aide & FAQ</a></li>
+                        <li><a href="#" class="hover:text-light-cream">Retours</a></li>
+                        <li><a href="#" class="hover:text-light-cream">Contact</a></li>
                     </ul>
                 </div>
-                <!-- Icons de paiement (sans logo complexe) -->
+                <div>
+                    <h4 class="text-sm font-bold uppercase mb-3">SQUATWOLF</h4>
+                    <ul class="text-xs space-y-2 text-light-cream/80">
+                        <li><a href="#" class="hover:text-light-cream">Notre Histoire</a></li>
+                        <li><a href="#" class="hover:text-light-cream">PackVIP</a></li>
+                        <li><a href="#" class="hover:text-light-cream">Magasins</a></li>
+                    </ul>
+                </div>
                 <div class="col-span-2 md:col-span-1">
-                    <h4 class="text-sm font-bold uppercase mb-3">PAIEMENT SÉCURISÉ</h4>
-                    <div class="flex flex-wrap gap-2 text-light-cream">
-                        <svg class="h-6 w-8 fill-current" viewBox="0 0 24 24"><path d="M21 4H3C1.89 4 1 4.89 1 6v12c0 1.11.89 2 2 2h18c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H3V8h18v10zm-11-2H6v-2h4v2zm7 0h-5v-2h5v2z"/></svg>
-                        <svg class="h-6 w-8 fill-current" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-                        <svg class="h-6 w-8 fill-current" viewBox="0 0 24 24"><path d="M20 4H4C2.89 4 2 4.89 2 6v12c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4V8h16v10zM12 9c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0 8c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3z"/></svg>
+                    <h4 class="text-sm font-bold uppercase mb-3">RÉSEAUX SOCIAUX</h4>
+                    <div class="flex space-x-4 justify-center md:justify-start">
+                        <!-- Icônes simples pour les réseaux sociaux -->
+                        <a href="#" class="text-light-cream/80 hover:text-light-cream"><svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M7 10v4h2v-4H7zm4 0v4h2v-4h-2zm4 0v4h2v-4h-2zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg></a>
+                        <a href="#" class="text-light-cream/80 hover:text-light-cream"><svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm3.43 5.5l-1.07 4.14-1.92 1.92 2.76 1.76-6.17 1.07 1.07-4.14 1.92-1.92-2.76-1.76 6.17-1.07z"/></svg></a>
+                        <a href="#" class="text-light-cream/80 hover:text-light-cream"><svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.2 10.59c-.4.4-1.02.4-1.41 0L12 11.41l-2.79 2.79c-.4.4-1.02.4-1.41 0s-.4-1.02 0-1.41L10.59 10l-2.79-2.79c-.4-.4-.4-1.02 0-1.41s1.02-.4 1.41 0L12 8.59l2.79-2.79c.4-.4 1.02-.4 1.41 0s.4 1.02 0 1.41L13.41 10l2.79 2.79c.4.4.4 1.02 0 1.41z"/></svg></a>
                     </div>
                 </div>
             </div>
 
-            <!-- MENTIONS LÉGALES ET COPYRIGHT -->
-            <div class="text-center pt-8 border-t border-light-cream/30">
-                <p class="text-xs uppercase text-light-cream/80 mb-2">© 2025 SQUATWOLF. | Conditions Générales | Politique de Confidentialité</p>
-                <div class="flex justify-center space-x-4 mt-2">
-                    <a href="#" class="text-light-cream/80 hover:text-light-cream">Instagram</a>
-                    <a href="#" class="text-light-cream/80 hover:text-light-cream">TikTok</a>
-                    <a href="#" class="text-light-cream/80 hover:text-light-cream">YouTube</a>
+            <!-- INFOS LÉGALES ET PAIEMENT -->
+            <div class="border-t border-light-cream/30 pt-4 mt-4 flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+                <p class="text-xs uppercase text-light-cream/80 order-2 md:order-1 mt-4 md:mt-0">© 2025 SQUATWOLF. Tous droits réservés.</p>
+                <div class="flex justify-center flex-wrap gap-2 text-light-cream order-1 md:order-2">
+                    <span class="text-xs uppercase text-light-cream/80">Visa | Mastercard | Amex | PayPal</span>
                 </div>
             </div>
         </div>
