@@ -10,7 +10,7 @@
         :root {
             --color-dark-deep: #1A1A1A; /* Noir Anthracite pour la typographie et le footer */
             --color-light-cream: #FDFDFD; /* Blanc presque pur pour les fonds */
-            --color-accent-blue: #FF9900; /* Jaune/Orange fonctionnel (inspiré d'Amazon pour l'action) */
+            --color-accent-action: #FF9900; /* Jaune/Orange fonctionnel (inspiré d'Amazon pour l'action) */
             --color-text-dark: #1A1A1A; 
             --color-shadow: rgba(0, 0, 0, 0.1);
         }
@@ -19,6 +19,15 @@
             color: var(--color-text-dark);
             font-family: 'Inter', sans-serif;
             min-width: 320px;
+        }
+
+        /* Animation subtile pour le logo */
+        @keyframes spin-subtle {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(3deg); }
+        }
+        .logo-spin:hover {
+            animation: spin-subtle 0.5s ease-in-out infinite alternate;
         }
 
         /* Conteneur pour remplacer les images avec "PIC HERE" */
@@ -30,7 +39,6 @@
             color: #AAAAAA;
             font-weight: bold;
             text-transform: uppercase;
-            /* Suppression des bordures pour un look plus "Amazon" */
             border: none;
             height: 100%;
             min-height: 150px;
@@ -41,27 +49,29 @@
 
         /* Styles de boutons d'action (Orange/Jaune pour l'achat immédiat) */
         .btn-cta {
-            background-color: var(--color-accent-blue) !important;
+            background-color: var(--color-accent-action) !important;
             color: var(--color-dark-deep) !important;
-            transition: background-color 0.3s;
-            border-radius: 9999px; /* Forme de pilule pour le CTA principal */
-            font-weight: 700; /* Bold */
+            transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+            border-radius: 9999px;
+            font-weight: 700;
             box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-            text-shadow: 0 1px 1px rgba(255, 255, 255, 0.5); /* Texte en relief subtil */
         }
         .btn-cta:hover {
-            background-color: #FFBB58 !important; /* Jaune plus clair au survol */
+            background-color: #FFBB58 !important; 
+            transform: scale(1.05); /* Effet "qui bouge" au survol */
         }
         
         /* Bouton d'ajout au panier spécifique aux cartes (style neutre) */
         .btn-add-to-cart {
-            background-color: #F0F0F0 !important; /* Gris neutre */
+            background-color: #F0F0F0 !important; 
             color: var(--color-dark-deep) !important;
             border-radius: 4px;
             font-weight: 600;
+            transition: background-color 0.3s, transform 0.2s;
         }
         .btn-add-to-cart:hover {
             background-color: #E0E0E0 !important;
+            transform: scale(1.02); /* Effet "qui bouge" au survol */
         }
 
         /* Styles de navigation minimalistes et plats */
@@ -70,20 +80,40 @@
             border-bottom: 1px solid #DDDDDD;
         }
 
-        /* Styles des cartes produits (Fond blanc, ombres très subtiles, lignes épurées) */
+        /* Styles des cartes produits */
         .product-card {
             background-color: white;
-            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); /* Ombre plus légère */
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); 
             border-radius: 4px;
             overflow: hidden;
             transition: box-shadow 0.2s;
-            border: 1px solid #F0F0F0; /* Bordure très pâle */
+            border: 1px solid #F0F0F0; 
         }
         .product-card:hover {
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
         .bg-dark-deep {
             background-color: var(--color-dark-deep) !important;
+        }
+
+        /* Footer styles spécifiques pour la réintégration du contenu riche */
+        .footer-list-title {
+            color: #FFFFFF; /* Blanc pour les titres de section */
+            font-weight: 700;
+            margin-bottom: 0.75rem; /* mb-3 */
+        }
+        .footer-link {
+            color: rgba(255, 255, 255, 0.8); /* Blanc/80% pour les liens */
+            transition: color 0.2s;
+        }
+        .footer-link:hover {
+            color: #FFFFFF;
+        }
+
+        /* Section des 3 services (étoiles, livraison, retour) */
+        .service-bar {
+             border-top: 1px solid rgba(255, 255, 255, 0.1);
+             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
     </style>
     <title>SQUATWOLF - Design E-commerce Moderne V2</title>
@@ -93,7 +123,7 @@
         <!-- TOP BAR (Minimaliste) -->
         <div class="md:flex-between lg:gap-8 md:px-6 lg:px-12 2xl:px-16 sw-home-page-top-bar">
             <div class="small-regular flex-center gap-2 py-[5px] max-md:px-4 text-dark-text w-full justify-center">
-                <div class="small-regular announcement-text uppercase text-sm">LIVRAISON GRATUITE DÈS 100€</div>
+                <div class="small-regular announcement-text uppercase text-sm">10% OFF YOUR FIRST ORDER</div>
             </div>
             <div class="dropdown-bar hidden md:flex-center gap-4 py-[5px] max-md:px-6">
                  <span class="small-regular uppercase text-xs">English | USD</span>
@@ -102,8 +132,8 @@
         <!-- NAVIGATION BAR (Recherche professionnelle centrée) -->
         <nav class="relative z-40 flex items-center justify-between px-4 md:px-6 lg:px-12 2xl:px-16 py-3">
             <div class="flex items-center space-x-4 w-full">
-                <!-- Logo -->
-                <a class="flex items-center flex-shrink-0 mr-4 lg:mr-8" href="#">
+                <!-- Logo avec animation -->
+                <a class="flex items-center flex-shrink-0 mr-4 lg:mr-8 logo-spin" href="#">
                     <svg class="h-8 w-12 text-dark-deep" viewBox="0 0 32 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_8559_16446)"><path d="M32 -0.00108198C31.5583 0.0939389 31.3769 0.120545 31.2034 0.171856C27.4945 1.2988 23.7974 2.46376 20.0707 3.5318C19.1164 3.80546 18.8305 4.23305 18.7674 5.16426C18.5249 8.79025 18.1719 12.4086 17.8722 16.0289C17.7638 17.325 17.6869 18.623 17.5962 19.921C17.7066 19.9457 17.817 19.9723 17.9294 19.997C18.0773 19.653 18.2626 19.3205 18.3652 18.9651C19.5088 15.054 20.678 11.1506 21.7468 7.22051C22.0011 6.2836 22.4428 6.01564 23.3676 6.11256C24.312 6.21329 25.2703 6.2855 26.2148 6.23609C26.6801 6.21139 27.2736 6.00044 27.5615 5.66977C28.9516 4.07151 30.2589 2.40865 31.5879 0.760986C31.7161 0.601351 31.7871 0.398006 32.002 -0.00488281L32 -0.00108198ZM13.9346 19.9913C14.0785 19.9742 14.2224 19.9571 14.3684 19.94C14.3329 19.3699 14.3092 18.7998 14.2599 18.2315C13.8754 13.6667 13.4732 9.10572 13.1123 4.53902C13.0729 4.03541 12.8659 3.83206 12.4104 3.69523C8.54175 2.53218 4.681 1.35392 0.814345 0.187059C0.601393 0.122445 0.368723 0.118644 0 0.0673331C0.124222 0.354296 0.147883 0.479724 0.220839 0.569044C1.61686 2.28512 2.98922 4.0183 4.44439 5.68687C4.72833 6.01374 5.33169 6.23039 5.79309 6.23799C7.13193 6.2608 8.47076 6.15057 9.85101 6.08976C11.2273 10.7743 12.5819 15.3828 13.9365 19.9913H13.9346Z" fill="currentColor"></path></g><defs><clipPath id="clip0_8559_16446"><rect width="32" height="20" fill="white"></rect></clipPath></defs></svg>
                 </a>
                 
@@ -167,46 +197,46 @@
                 <h2 class="text-2xl font-bold uppercase mb-6">PARCOURIR PAR CATÉGORIE</h2>
                 
                 <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6">
-                    <!-- Catégorie Card 1 -->
+                    <!-- Catégorie Card 1: T-SHIRTS -->
                     <div class="product-card hover:shadow-xl p-0.5">
-                        <a class="block" href="#">
+                        <a class="block" href="https://squatwolf.com/collections/gym-tshirts-men">
                             <div class="aspect-[1/1] w-full img-placeholder rounded-t-sm">PIC HERE</div>
-                            <h3 class="text-xs font-medium text-center uppercase py-2">T-SHIRTS HOMME</h3>
+                            <h3 class="text-xs font-medium text-center uppercase py-2">T-SHIRTS</h3>
                         </a>
                     </div>
-                    <!-- Catégorie Card 2 -->
+                    <!-- Catégorie Card 2: SHORTS -->
                     <div class="product-card hover:shadow-xl p-0.5">
-                        <a class="block" href="#">
+                        <a class="block" href="https://squatwolf.com/collections/gym-shorts-men">
                             <div class="aspect-[1/1] w-full img-placeholder rounded-t-sm">PIC HERE</div>
-                            <h3 class="text-xs font-medium text-center uppercase py-2">LEGGINGS FEMME</h3>
+                            <h3 class="text-xs font-medium text-center uppercase py-2">SHORTS</h3>
                         </a>
                     </div>
-                    <!-- Catégorie Card 3 -->
+                    <!-- Catégorie Card 3: JOGGERS & PANTS -->
                      <div class="product-card hover:shadow-xl p-0.5">
-                        <a class="block" href="#">
+                        <a class="block" href="https://squatwolf.com/collections/gym-pants-men">
                             <div class="aspect-[1/1] w-full img-placeholder rounded-t-sm">PIC HERE</div>
-                            <h3 class="text-xs font-medium text-center uppercase py-2">SHORTS HOMME</h3>
+                            <h3 class="text-xs font-medium text-center uppercase py-2">JOGGERS & PANTS</h3>
                         </a>
                     </div>
-                    <!-- Catégorie Card 4 -->
+                    <!-- Catégorie Card 4: HOODIES & JACKETS -->
                     <div class="product-card hover:shadow-xl p-0.5">
-                        <a class="block" href="#">
+                        <a class="block" href="https://squatwolf.com/collections/gym-hoodies-men">
                             <div class="aspect-[1/1] w-full img-placeholder rounded-t-sm">PIC HERE</h3>
-                            <h3 class="text-xs font-medium text-center uppercase py-2">BRASSIÈRES SPORT</h3>
+                            <h3 class="text-xs font-medium text-center uppercase py-2">HOODIES & JACKETS</h3>
                         </a>
                     </div>
-                    <!-- Catégorie Card 5 -->
+                    <!-- Catégorie Card 5: LEGGINGS -->
                     <div class="product-card hover:shadow-xl p-0.5 max-lg:hidden">
-                        <a class="block" href="#">
+                        <a class="block" href="https://squatwolf.com/collections/workout-leggings-women">
                             <div class="aspect-[1/1] w-full img-placeholder rounded-t-sm">PIC HERE</div>
-                            <h3 class="text-xs font-medium text-center uppercase py-2">NOUVEAUTÉS</h3>
+                            <h3 class="text-xs font-medium text-center uppercase py-2">LEGGINGS</h3>
                         </a>
                     </div>
-                    <!-- Catégorie Card 6 -->
+                    <!-- Catégorie Card 6: SPORTS BRAS -->
                     <div class="product-card hover:shadow-xl p-0.5 max-lg:hidden">
-                        <a class="block" href="#">
+                        <a class="block" href="https://squatwolf.com/collections/sports-bra-women">
                             <div class="aspect-[1/1] w-full img-placeholder rounded-t-sm">PIC HERE</div>
-                            <h3 class="text-xs font-medium text-center uppercase py-2">ACCESSOIRES</h3>
+                            <h3 class="text-xs font-medium text-center uppercase py-2">SPORTS BRAS</h3>
                         </a>
                     </div>
                 </div>
@@ -218,9 +248,9 @@
                 
                  <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-6">
                     
-                    <!-- Carte Produit 1 -->
+                    <!-- Carte Produit 1: ACTDRY® Hybrid Jacket - Stormy Weather -->
                     <div class="product-card">
-                        <a class="block" href="#">
+                        <a class="block" href="https://squatwolf.com/products/actdry-hybrid-jacket-stormy-weather">
                             <div class="aspect-[3/4] w-full img-placeholder">PIC HERE</div>
                             <div class="p-3">
                                 <p class="text-xs text-gray-500 uppercase mb-1">ACTDRY®</p>
@@ -228,13 +258,12 @@
                                 <p class="font-bold text-lg text-dark-deep">$168.00</p>
                             </div>
                         </a>
-                        <!-- Bouton d'ajout au panier neutre -->
                         <button class="w-full btn-add-to-cart py-2 text-xs font-semibold uppercase hover:bg-gray-200 transition">Ajouter au panier</button>
                     </div>
                     
-                    <!-- Carte Produit 2 -->
+                    <!-- Carte Produit 2: ACTDRY® Pro 2-In-1 7" Shorts - Black -->
                      <div class="product-card">
-                        <a class="block" href="#">
+                        <a class="block" href="https://squatwolf.com/products/actdry-pro-2-in1-7-shorts-black">
                             <div class="aspect-[3/4] w-full img-placeholder">PIC HERE</div>
                             <div class="p-3">
                                 <p class="text-xs text-gray-500 uppercase mb-1">ACTDRY®</p>
@@ -245,7 +274,7 @@
                         <button class="w-full btn-add-to-cart py-2 text-xs font-semibold uppercase hover:bg-gray-200 transition">Ajouter au panier</button>
                     </div>
                     
-                    <!-- Carte Produit 3 -->
+                    <!-- Carte Produit 3: CORE Leggings - Black (simulée) -->
                      <div class="product-card">
                         <a class="block" href="#">
                             <div class="aspect-[3/4] w-full img-placeholder">PIC HERE</div>
@@ -258,7 +287,7 @@
                         <button class="w-full btn-add-to-cart py-2 text-xs font-semibold uppercase hover:bg-gray-200 transition">Ajouter au panier</button>
                     </div>
                     
-                    <!-- Carte Produit 4 -->
+                    <!-- Carte Produit 4: NEOTECH Pro Tee - SW Coral (simulée) -->
                     <div class="product-card">
                         <a class="block" href="#">
                             <div class="aspect-[3/4] w-full img-placeholder">PIC HERE</div>
@@ -271,7 +300,7 @@
                         <button class="w-full btn-add-to-cart py-2 text-xs font-semibold uppercase hover:bg-gray-200 transition">Ajouter au panier</button>
                     </div>
 
-                    <!-- Carte Produit 5 (Visible uniquement sur les grands écrans) -->
+                    <!-- Carte Produit 5: ESSENTIAL Joggers - Charcoal (simulée, Visible uniquement sur les grands écrans) -->
                     <div class="product-card max-lg:hidden xl:block">
                         <a class="block" href="#">
                             <div class="aspect-[3/4] w-full img-placeholder">PIC HERE</div>
@@ -284,9 +313,9 @@
                         <button class="w-full btn-add-to-cart py-2 text-xs font-semibold uppercase hover:bg-gray-200 transition">Ajouter au panier</button>
                     </div>
                     
-                    <!-- Carte Produit 6 -->
+                    <!-- Carte Produit 6: ACTDRY® Quarter Zip Top - Black -->
                     <div class="product-card max-md:hidden">
-                        <a class="block" href="#">
+                        <a class="block" href="https://squatwolf.com/products/actdry-quarter-zip-long-sleeves-top-pearl-white">
                             <div class="aspect-[3/4] w-full img-placeholder">PIC HERE</div>
                             <div class="p-3">
                                 <p class="text-xs text-gray-500 uppercase mb-1">ACTDRY®</p>
@@ -297,7 +326,7 @@
                         <button class="w-full btn-add-to-cart py-2 text-xs font-semibold uppercase hover:bg-gray-200 transition">Ajouter au panier</button>
                     </div>
                     
-                    <!-- Carte Produit 7 -->
+                    <!-- Carte Produit 7: CORE Sports Bra - White (simulée) -->
                     <div class="product-card max-md:hidden">
                         <a class="block" href="#">
                             <div class="aspect-[3/4] w-full img-placeholder">PIC HERE</div>
@@ -310,7 +339,7 @@
                         <button class="w-full btn-add-to-cart py-2 text-xs font-semibold uppercase hover:bg-gray-200 transition">Ajouter au panier</button>
                     </div>
 
-                     <!-- Carte Produit 8 -->
+                     <!-- Carte Produit 8: LAB360° Tee Oversize - Grey (simulée) -->
                     <div class="product-card max-md:hidden">
                         <a class="block" href="#">
                             <div class="aspect-[3/4] w-full img-placeholder">PIC HERE</div>
@@ -323,7 +352,7 @@
                         <button class="w-full btn-add-to-cart py-2 text-xs font-semibold uppercase hover:bg-gray-200 transition">Ajouter au panier</button>
                     </div>
                     
-                    <!-- Carte Produit 9 -->
+                    <!-- Carte Produit 9: ESSENTIAL Shorts - Beige (simulée, Visible uniquement sur les grands écrans) -->
                     <div class="product-card max-md:hidden max-lg:hidden xl:block">
                         <a class="block" href="#">
                             <div class="aspect-[3/4] w-full img-placeholder">PIC HERE</div>
@@ -348,76 +377,119 @@
                         </div>
                     </div>
                     <div class="absolute inset-0 bg-black/40 flex flex-col justify-center items-center p-6 rounded-lg">
-                        <h2 class="text-xl md:text-3xl font-bold uppercase text-light-cream mb-2 text-center">NOTRE NOUVELLE COLLECTION EST ARRIVÉE</h2>
-                        <p class="text-light-cream/80 mb-4 text-center text-sm md:text-base">Découvrez les tissus techniques pour améliorer votre performance.</p>
-                        <a href="#" class="btn-cta px-8 py-2 text-sm font-semibold uppercase">
-                            Voir la collection
+                        <h2 class="text-xl md:text-3xl font-bold uppercase text-light-cream mb-2 text-center">FROM DUBAI TO THE WORLD</h2>
+                        <p class="text-light-cream/80 mb-4 text-center text-sm md:text-base">From a small apartment in Dubai to a global stage. Just belief, grit, and an obsession with building something that truly mattered.</p>
+                        <a href="https://squatwolf.com/pages/our-story" class="btn-cta px-8 py-2 text-sm font-semibold uppercase">
+                            UNCOVER THE STORY
                         </a>
                     </div>
                 </div>
             </section>
 
+
+            <!-- SERVICES BAR (Renvoyé du fichier original pour le détail) -->
+            <section class="py-3 md:py-6 service-bar mb-16 border-t border-b border-gray-300">
+                <div class="flex justify-around flex-wrap gap-4 text-dark-deep">
+                    <div class="flex items-center space-x-2">
+                        <svg class="h-6 w-6 fill-current text-dark-deep" viewBox="0 0 40 40"><path d="M10.5888 36.9888L9.21943 36.044L9.42484 35.2342L12.5174 25.4717L11.73 23.0648L3 16.564L3.53635 15.0344L4.36942 14.9894H14.2064L16.329 13.4486L19.6384 3H21.3159L21.6241 3.7873L24.6938 13.4486L26.8164 14.9894H37.4636L38 16.519L37.3495 17.0589L29.2814 23.0648L28.494 25.4717L31.8376 36.0215L30.4682 36.9663L29.7607 36.5051L21.8295 30.6004H19.1591L10.566 37L10.5888 36.9888ZM18.4173 28.351H22.6169L28.3913 32.6474L26.1089 25.4717L27.33 21.7152L33.3212 17.2501H26.0518L22.731 14.8432L20.5057 7.82501L18.2804 14.8432L14.9596 17.2501H7.69025L13.6814 21.7152L14.9025 25.4717L12.6201 32.6474L18.3945 28.351H18.4173Z" fill="currentColor"></path></svg>
+                        <span class="small-regular uppercase text-sm">5 star service</span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <svg class="h-6 w-6 fill-current text-dark-deep" viewBox="0 0 40 40"><path d="M25.29 5H4V35.93H36V5H25.29ZM23.29 7V17.86H16.72V7H23.29ZM34 33.92H6V7H14.71V19.86H25.28V7H33.99V33.93L34 33.92Z" fill="currentColor"></path></svg>
+                        <span class="small-regular uppercase text-sm">fast delivery</span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <svg class="h-6 w-6 fill-current text-dark-deep" viewBox="0 0 40 40"><path d="M9 6.46V3L2 7.67L9 12.34V8.46H33V34.46H7V16.46H5V36.46H35V6.46H9Z" fill="currentColor"></path></svg>
+                        <span class="small-regular uppercase text-sm">effortless returns</span>
+                    </div>
+                </div>
+            </section>
         </div>
     </main>
 
-    <!-- FOOTER (Simplifié pour la clarté et le minimalisme) -->
+    <!-- FOOTER CLASSIQUE RICHE EN LIENS -->
     <footer class="bg-dark-deep text-light-cream">
         <div class="container mx-auto px-4 md:px-6 lg:px-12 2xl:px-16 py-8 md:py-12">
             
-            <!-- NEWSLETTER SECTION (Centrée et compacte) -->
-            <div class="border-b border-light-cream/30 pb-6 mb-6">
-                 <h3 class="text-lg font-bold uppercase mb-4 text-center">REJOIGNEZ LE PACK ET RECEVEZ 10% DE RABAIS</h3>
-                 <div class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 max-w-lg mx-auto">
-                     <input type="email" placeholder="Votre adresse e-mail" class="flex-1 px-4 py-2 rounded-md text-dark-deep focus:outline-none text-sm" style="background-color: white;">
-                     <button class="btn-cta px-4 py-2 font-semibold uppercase whitespace-nowrap text-sm">
-                         S'inscrire
-                     </button>
+            <!-- TITRE ET NEWSLETTER -->
+            <div class="border-b border-light-cream/30 pb-6 mb-8 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+                 <h1 class="text-3xl md:text-4xl font-bold text-center md:text-left">BECOME A PART OF THE PACK</h1>
+                 <div class="flex space-x-4">
+                     <a href="https://squatwolf.com/pages/packvip" class="btn-cta px-6 py-2 text-sm font-semibold uppercase">JOIN PACKVIP</a>
+                     <button class="btn-cta px-6 py-2 text-sm font-semibold uppercase">JOIN OUR NEWSLETTER</button>
                  </div>
             </div>
 
-            <!-- LIENS (Disposition en grille simplifiée) -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8 text-center md:text-left">
-                <div>
-                    <h4 class="text-sm font-bold uppercase mb-3">BOUTIQUE</h4>
-                    <ul class="text-xs space-y-2 text-light-cream/80">
-                        <li><a href="#" class="hover:text-light-cream">Hommes</a></li>
-                        <li><a href="#" class="hover:text-light-cream">Femmes</a></li>
-                        <li><a href="#" class="hover:text-light-cream">Accessoires</a></li>
+            <!-- LIENS DÉTAILLÉS (Rétabli du style original) -->
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-y-8 md:gap-x-12 mb-10">
+                <div class="col-span-1">
+                    <h4 class="footer-list-title text-sm uppercase">SHOP NOW</h4>
+                    <ul class="text-xs space-y-2">
+                        <li><a href="https://squatwolf.com/collections/gym-wear-men" class="footer-link">Men</a></li>
+                        <li><a href="https://squatwolf.com/collections/workout-clothes-women" class="footer-link">Women</a></li>
+                        <li><a href="https://squatwolf.com/collections/accessories" class="footer-link">Accessories</a></li>
+                        <li><a href="https://squatwolf.com/collections/gym-tshirts-men" class="footer-link">T-shirts Men</a></li>
+                        <li><a href="https://squatwolf.com/collections/gym-shorts-men" class="footer-link">Gym Shorts Men</a></li>
+                        <li><a href="https://squatwolf.com/collections/sports-bra-women" class="footer-link">Sports Bras</a></li>
+                        <li><a href="https://squatwolf.com/collections/workout-leggings-women" class="footer-link">Leggings</a></li>
+                        <li><a href="https://squatwolf.com/collections/modest-workout-clothes" class="footer-link">Modest Workout Clothes</a></li>
                     </ul>
                 </div>
-                <div>
-                    <h4 class="text-sm font-bold uppercase mb-3">SERVICE CLIENT</h4>
-                    <ul class="text-xs space-y-2 text-light-cream/80">
-                        <li><a href="#" class="hover:text-light-cream">Aide & FAQ</a></li>
-                        <li><a href="#" class="hover:text-light-cream">Retours</a></li>
-                        <li><a href="#" class="hover:text-light-cream">Contact</a></li>
+                <div class="col-span-1">
+                    <h4 class="footer-list-title text-sm uppercase">SUPPORT</h4>
+                    <ul class="text-xs space-y-2">
+                        <li><a href="https://squatwolf.com/pages/overview" class="footer-link">Help Centre</a></li>
+                        <li><a href="https://squatwolf.aftership.com/" target="_blank" class="footer-link">Track My order</a></li>
+                        <li><a href="https://squatwolf.com/pages/shipping-and-delivery" class="footer-link">Shipping & Delivery</a></li>
+                        <li><a href="https://squatwolf.com/pages/returns-exchanges" class="footer-link">Returns & Exchanges</a></li>
+                        <li><a href="https://squatwolf.com/pages/frequently-asked-questions" class="footer-link">FAQs</a></li>
+                        <li><a href="https://squatwolf.com/pages/contact-us" class="footer-link">Contact Us</a></li>
+                        <li><a href="https://squatwolf.com/pages/retail-store" class="footer-link">Store Locator</a></li>
                     </ul>
                 </div>
-                <div>
-                    <h4 class="text-sm font-bold uppercase mb-3">SQUATWOLF</h4>
-                    <ul class="text-xs space-y-2 text-light-cream/80">
-                        <li><a href="#" class="hover:text-light-cream">Notre Histoire</a></li>
-                        <li><a href="#" class="hover:text-light-cream">PackVIP</a></li>
-                        <li><a href="#" class="hover:text-light-cream">Magasins</a></li>
+                <div class="col-span-1">
+                    <h4 class="footer-list-title text-sm uppercase">RESOURCES</h4>
+                    <ul class="text-xs space-y-2">
+                        <li><a href="https://squatwolf.com/pages/our-story" class="footer-link">Our Story</a></li>
+                        <li><a href="https://squatwolf.com/pages/be-our-influencer" class="footer-link">Be Our Influencer</a></li>
+                        <li><a href="https://squatwolf.com/pages/packvip" class="footer-link">PackVIP - Loyalty Program</a></li>
+                        <li><a href="https://squatwolf.com/pages/blogs" class="footer-link">Our Blog</a></li>
+                        <li><a href="https://squatwolf.com/pages/brand-partnerships" class="footer-link">Brand Partnerships</a></li>
+                        <li><a href="https://squatwolf.com/pages/resellers" class="footer-link">Wholesale</a></li>
+                        <li><a href="https://squatwolf.com/pages/uniforms" class="footer-link">Uniforms</a></li>
                     </ul>
                 </div>
                 <div class="col-span-2 md:col-span-1">
-                    <h4 class="text-sm font-bold uppercase mb-3">RÉSEAUX SOCIAUX</h4>
-                    <div class="flex space-x-4 justify-center md:justify-start">
-                        <!-- Icônes simples pour les réseaux sociaux -->
-                        <a href="#" class="text-light-cream/80 hover:text-light-cream"><svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M7 10v4h2v-4H7zm4 0v4h2v-4h-2zm4 0v4h2v-4h-2zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg></a>
-                        <a href="#" class="text-light-cream/80 hover:text-light-cream"><svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm3.43 5.5l-1.07 4.14-1.92 1.92 2.76 1.76-6.17 1.07 1.07-4.14 1.92-1.92-2.76-1.76 6.17-1.07z"/></svg></a>
-                        <a href="#" class="text-light-cream/80 hover:text-light-cream"><svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.2 10.59c-.4.4-1.02.4-1.41 0L12 11.41l-2.79 2.79c-.4.4-1.02.4-1.41 0s-.4-1.02 0-1.41L10.59 10l-2.79-2.79c-.4-.4-.4-1.02 0-1.41s1.02-.4 1.41 0L12 8.59l2.79-2.79c.4-.4 1.02-.4 1.41 0s.4 1.02 0 1.41L13.41 10l2.79 2.79c.4.4.4 1.02 0 1.41z"/></svg></a>
-                    </div>
+                    <h4 class="footer-list-title text-sm uppercase">SOCIAL</h4>
+                    <ul class="text-xs space-y-2">
+                        <li><a href="https://www.instagram.com/squatwolf" target="_blank" class="footer-link">Instagram</a></li>
+                        <li><a href="https://www.tiktok.com/@squatwolf" target="_blank" class="footer-link">TikTok</a></li>
+                        <li><a href="https://www.youtube.com/squatwolf" target="_blank" class="footer-link">YouTube</a></li>
+                        <li><a href="https://www.linkedin.com/company/squat-wolf/" target="_blank" class="footer-link">LinkedIn</a></li>
+                    </ul>
+                    
+                    <h4 class="footer-list-title text-sm uppercase mt-6">Download Our App</h4>
+                    <!-- Espace pour l'image du QR code / icônes de store (PIC HERE) -->
+                    <div class="aspect-[1/1] w-24 bg-gray-700 img-placeholder text-xs">PIC HERE (QR Code)</div>
                 </div>
             </div>
 
-            <!-- INFOS LÉGALES ET PAIEMENT -->
+            <!-- INFOS LÉGALES ET PAIEMENT (Bas de page) -->
             <div class="border-t border-light-cream/30 pt-4 mt-4 flex flex-col md:flex-row justify-between items-center text-center md:text-left">
-                <p class="text-xs uppercase text-light-cream/80 order-2 md:order-1 mt-4 md:mt-0">© 2025 SQUATWOLF. Tous droits réservés.</p>
-                <div class="flex justify-center flex-wrap gap-2 text-light-cream order-1 md:order-2">
-                    <span class="text-xs uppercase text-light-cream/80">Visa | Mastercard | Amex | PayPal</span>
+                <!-- Liens légaux -->
+                <div class="order-2 md:order-1 flex flex-wrap justify-center md:justify-start space-x-4 mt-4 md:mt-0 text-xs uppercase">
+                    <a href="https://squatwolf.com/pages/terms" class="footer-link">Terms & Conditions</a>
+                    <a href="https://squatwolf.com/pages/privacy-policy" class="footer-link">Privacy Policy</a>
+                    <a href="https://squatwolf.com/pages/cookie-policy" class="footer-link">Cookies Policy</a>
                 </div>
+
+                <div class="flex justify-center flex-wrap gap-2 text-light-cream order-1 md:order-2">
+                    <span class="text-xs uppercase text-light-cream/80">© 2025 SQUATWOLF.</span>
+                </div>
+            </div>
+            <!-- Paiement -->
+            <div class="mt-4 text-center md:text-left">
+                 <span class="text-xs uppercase text-light-cream/80">Visa | Mastercard | Amex | PayPal</span>
             </div>
         </div>
     </footer>
