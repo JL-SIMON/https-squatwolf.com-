@@ -1,1119 +1,349 @@
 <!DOCTYPE html>
-<html lang="en" class="__variable_0fda23 __variable_39fcbc __variable_593563 __variable_56ba0c __variable_35a0a8 __variable_4be135" dir="ltr">
+<html lang="en" dir="ltr">
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <!-- Chargement de Tailwind CSS pour un style moderne et responsive -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Chargement de Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Définition des couleurs personnalisées et de la typographie pour un look premium */
+        /* Définition des couleurs personnalisées (Sobres et fonctionnelles) */
         :root {
-            --color-dark-deep: #121212; /* Noir profond */
-            --color-light-cream: #F7F7F0; /* Blanc cassé / Crème */
-            --color-accent-red: #D93845; /* Rouge Énergétique (pour les CTA) */
+            --color-dark-deep: #121212; /* Noir Profond */
+            --color-light-cream: #F7F7F0; /* Blanc Cassé/Crème (Fond Principal) */
+            --color-accent-blue: #0077B6; /* Bleu Confiance (Inspiré d'Amazon pour les CTA) */
             --color-text-dark: #333333; /* Gris Anthracite pour le texte */
+            --color-shadow: rgba(0, 0, 0, 0.08);
         }
         body {
             background-color: var(--color-light-cream);
             color: var(--color-text-dark);
             font-family: 'Inter', sans-serif;
+            min-width: 320px; /* Assurer le support mobile */
         }
 
-        /* Styles de boutons améliorés pour un look moderne (avec ombres et transition) */
-        .btn-modern-cta {
-            background-color: var(--color-accent-red) !important;
+        /* Conteneur pour remplacer les images avec "PIC HERE" */
+        .img-placeholder {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #EFEFEF;
+            color: #AAAAAA;
+            font-weight: bold;
+            text-transform: uppercase;
+            border: 1px solid #DDDDDD;
+            height: 100%;
+            min-height: 150px;
+            text-align: center;
+            line-height: 1.2;
+        }
+
+        /* Styles de boutons axés sur la fonction (Bleu Confiance) */
+        .btn-cta {
+            background-color: var(--color-accent-blue) !important;
             color: var(--color-light-cream) !important;
-            transition: background-color 0.3s, transform 0.1s;
-            border-radius: 8px; /* Coins arrondis pour la modernité */
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s;
+            border-radius: 4px;
         }
-        .btn-modern-cta:hover {
-            background-color: #B02A38 !important; /* Rouge légèrement plus foncé au survol */
-            transform: translateY(-1px);
-            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+        .btn-cta:hover {
+            background-color: #005A8D !important;
         }
 
-        /* Amélioration des cartes produit (bordures plus subtiles et look épuré) */
-        .sw-plp-img {
-            border-radius: 8px;
-            overflow: hidden;
-            outline-color: rgba(51, 51, 51, 0.1) !important; /* Bordure très subtile */
-        }
-
-        /* Barre d'annonce supérieure - Style minimaliste */
-        .sw-home-page-top-bar {
+        /* Styles de navigation minimalistes */
+        .sw-topbar-nav-ctr, .sw-home-page-top-bar {
             background-color: var(--color-light-cream) !important;
             border-bottom: 1px solid rgba(51, 51, 51, 0.1);
         }
-        .announcement-bar .small-regular, .dropdown-bar .small-regular {
-            color: var(--color-text-dark) !important;
-        }
 
-        /* Navigation - Look plus net et ancré */
-        .sw-topbar-nav-ctr {
-            background-color: var(--color-light-cream) !important;
-            border-bottom: none;
+        /* Styles des cartes produits (Amazon-like: fond blanc, ombre légère) */
+        .product-card {
+            background-color: white;
+            box-shadow: 0 1px 3px var(--color-shadow);
+            border-radius: 4px;
+            overflow: hidden;
+            transition: box-shadow 0.2s;
+            border: 1px solid #EEEEEE; /* Bordure subtile */
         }
-
-        /* Remplacement des couleurs d'accent d'origine par notre accent rouge moderne */
-        .bg-secondary {
-            background-color: var(--color-accent-red) !important;
-            color: var(--color-light-cream) !important;
+        .product-card:hover {
+            box-shadow: 0 4px 10px var(--color-shadow);
         }
-        
-        /* Styles pour la section "Men's Picks" - Assurer la visibilité du fond vidéo sombre */
-        .bg-dark-ll {
-             /* Nouvelle couleur de fond pour la section principale pour le contraste */
-             background-color: var(--color-dark-deep); 
-        }
-
-        /* Styles pour les sections de footer pour s'assurer qu'elles restent lisibles sur fond sombre */
-        .bg-dark-100 {
+        .bg-dark-deep {
             background-color: var(--color-dark-deep) !important;
         }
-        .text-light-100 {
-            color: var(--color-light-cream) !important;
-        }
-        .text-light-200 {
-            color: rgba(247, 247, 240, 0.8) !important;
-        }
-
     </style>
-    <title>SQUATWOLF - Premium Gym Wear &amp; Workout Clothes</title>
+    <title>SQUATWOLF - Design E-commerce Moderne</title>
 </head>
-<body ge-active="true" class="bg-light-cream">
-    <div class="sw-topbar-nav-ctr sw-topbar-nav-sticky">
-        <!-- TOP BAR: Remplacement du fond light-200 par blanc cassé -->
-        <div class="md:flex-between relative z-30 bg-light-cream lg:gap-8 md:px-12 2xl:px-16 sw-home-page-top-bar">
-            <!-- ANNOUNCEMENT BAR -->
-            <div class="small-regular announcement-bar flex-between md:flex-center gap-2 py-[5px] font-azaretmono max-md:px-4 md:gap-[30px] rtl:font-notokufiarabic text-dark-text">
-                <div class="small-regular announcement-text overflow-hidden whitespace-nowrap font-azaretmono max-md:flex-[0_0_calc(65%-4px)] rtl:font-notokufiarabic">10% OFF YOUR FIRST ORDER</div>
-                <div class="announcement-count max-md:flex-end max-md:flex-[0_0_calc(35%-4px)]">
-                    <button class="btn-transi flex flex-1 items-center justify-end gap-2 lg:hidden">
-                        <div class="small-regular font-azaretmono uppercase rtl:font-notokufiarabic">‎USE CODE WELCOME10</div>
-                        <svg class="h-[10px] w-[10px] rtl:scale-[-1]" width="40" height="40" viewBox="0 0 40 40" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M31.56 20L17.96 37L13 37L13 33L16.04 33L26.44 20L16.04 7L13 7L13 3L17.96 3L31.56 20Z" fill="currentColor"></path></svg>
-                    </button>
-                </div>
-                <div class="max-md:hidden">
-                    <button class="btn-transi flex flex-1 items-center justify-between gap-2">
-                        <div class="small-regular font-azaretmono uppercase rtl:font-notokufiarabic">‎USE CODE WELCOME10</div>
-                        <svg class="h-[10px] w-[10px] rtl:scale-[-1]" width="40" height="40" viewBox="0 0 40 40" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M31.56 20L17.96 37L13 37L13 33L16.04 33L26.44 20L16.04 7L13 7L13 3L17.96 3L31.56 20Z" fill="currentColor"></path></svg>
-                    </button>
-                </div>
+<body class="bg-light-cream">
+    <div class="sw-topbar-nav-ctr sticky top-0 z-50">
+        <!-- TOP BAR (Minimaliste) -->
+        <div class="md:flex-between lg:gap-8 md:px-6 lg:px-12 2xl:px-16 sw-home-page-top-bar">
+            <div class="small-regular flex-center gap-2 py-[5px] max-md:px-4 text-dark-text w-full justify-center">
+                <div class="small-regular announcement-text uppercase">LIVRAISON GRATUITE DÈS 100€</div>
             </div>
-            <!-- DROPDOWN BAR -->
-            <div class="dropdown-bar flex-between md:flex-center gap-8 py-[5px] max-md:px-6">
-                <div class="relative">
-                    <button class="small-regular flex-center gap-3 uppercase outline-none text-dark-100" id="headlessui-menu-button-«Repqfb»" type="button" aria-haspopup="menu" aria-expanded="false" data-headlessui-state="">English<svg width="6" height="4" class="w-[6px]" viewBox="0 0 6 4" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M3.18025 3.93753L5.97505 0.258481C6.07001 0.13307 5.88201 0 5.61261 0L0.387387 0C0.117985 0 -0.0700143 0.13307 0.0249546 0.258481L2.81781 3.93753C2.87984 4.02082 3.11823 4.02082 3.18025 3.93753Z" fill="currentColor"></path></svg></button>
-                </div>
-                <div class="relative">
-                    <button class="small-regular flex-center gap-3 uppercase text-dark-100 outline-none" id="headlessui-menu-button-«Rf9qfb»" type="button" aria-haspopup="menu" aria-expanded="false" data-headlessui-state="">United States<svg width="6" height="4" class="w-[6px]" viewBox="0 0 6 4" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M3.18025 3.93753L5.97505 0.258481C6.07001 0.13307 5.88201 0 5.61261 0L0.387387 0C0.117985 0 -0.0700143 0.13307 0.0249546 0.258481L2.81781 3.93753C2.87984 4.02082 3.11823 4.02082 3.18025 3.93753Z" fill="currentColor"></path></svg></button>
-                </div>
+            <!-- Boutons de langue/devise simplifiés pour l'exemple -->
+            <div class="dropdown-bar hidden md:flex-center gap-4 py-[5px] max-md:px-6">
+                 <span class="small-regular uppercase">English | USD</span>
             </div>
         </div>
-        <!-- NAVIGATION BAR -->
-        <nav class="relative z-20 flex items-center justify-between px-6 md:px-12 2xl:px-16 sw-home-page-nav">
-            <div class="flex w-full items-center">
-                <div class="flex w-full md:w-8/12 md:gap-7">
-                    <a class="flex w-full items-center md:w-auto" href="https://squatwolf.com/">
-                        <!-- SQUATWOLF LOGO (SVG) -->
-                        <svg class="h-5 w-8 text-dark-deep" width="32" height="20" viewBox="0 0 32 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_8559_16446)"><path d="M32 -0.00108198C31.5583 0.0939389 31.3769 0.120545 31.2034 0.171856C27.4945 1.2988 23.7974 2.46376 20.0707 3.5318C19.1164 3.80546 18.8305 4.23305 18.7674 5.16426C18.5249 8.79025 18.1719 12.4086 17.8722 16.0289C17.7638 17.325 17.6869 18.623 17.5962 19.921C17.7066 19.9457 17.817 19.9723 17.9294 19.997C18.0773 19.653 18.2626 19.3205 18.3652 18.9651C19.5088 15.054 20.678 11.1506 21.7468 7.22051C22.0011 6.2836 22.4428 6.01564 23.3676 6.11256C24.312 6.21329 25.2703 6.2855 26.2148 6.23609C26.6801 6.21139 27.2736 6.00044 27.5615 5.66977C28.9516 4.07151 30.2589 2.40865 31.5879 0.760986C31.7161 0.601351 31.7871 0.398006 32.002 -0.00488281L32 -0.00108198ZM13.9346 19.9913C14.0785 19.9742 14.2224 19.9571 14.3684 19.94C14.3329 19.3699 14.3092 18.7998 14.2599 18.2315C13.8754 13.6667 13.4732 9.10572 13.1123 4.53902C13.0729 4.03541 12.8659 3.83206 12.4104 3.69523C8.54175 2.53218 4.681 1.35392 0.814345 0.187059C0.601393 0.122445 0.368723 0.118644 0 0.0673331C0.124222 0.354296 0.147883 0.479724 0.220839 0.569044C1.61686 2.28512 2.98922 4.0183 4.44439 5.68687C4.72833 6.01374 5.33169 6.23039 5.79309 6.23799C7.13193 6.2608 8.47076 6.15057 9.85101 6.08976C11.2273 10.7743 12.5819 15.3828 13.9365 19.9913H13.9346Z" fill="currentColor"></path></g><defs><clipPath id="clip0_8559_16446"><rect width="32" height="20" fill="white"></rect></clipPath></defs></svg>
+        <!-- NAVIGATION BAR (Recherche centrée style Amazon) -->
+        <nav class="relative z-40 flex items-center justify-between px-4 md:px-6 lg:px-12 2xl:px-16 py-3">
+            <div class="flex items-center space-x-4 w-full">
+                <!-- Logo -->
+                <a class="flex items-center flex-shrink-0" href="#">
+                    <svg class="h-6 w-10 text-dark-deep" width="32" height="20" viewBox="0 0 32 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_8559_16446)"><path d="M32 -0.00108198C31.5583 0.0939389 31.3769 0.120545 31.2034 0.171856C27.4945 1.2988 23.7974 2.46376 20.0707 3.5318C19.1164 3.80546 18.8305 4.23305 18.7674 5.16426C18.5249 8.79025 18.1719 12.4086 17.8722 16.0289C17.7638 17.325 17.6869 18.623 17.5962 19.921C17.7066 19.9457 17.817 19.9723 17.9294 19.997C18.0773 19.653 18.2626 19.3205 18.3652 18.9651C19.5088 15.054 20.678 11.1506 21.7468 7.22051C22.0011 6.2836 22.4428 6.01564 23.3676 6.11256C24.312 6.21329 25.2703 6.2855 26.2148 6.23609C26.6801 6.21139 27.2736 6.00044 27.5615 5.66977C28.9516 4.07151 30.2589 2.40865 31.5879 0.760986C31.7161 0.601351 31.7871 0.398006 32.002 -0.00488281L32 -0.00108198ZM13.9346 19.9913C14.0785 19.9742 14.2224 19.9571 14.3684 19.94C14.3329 19.3699 14.3092 18.7998 14.2599 18.2315C13.8754 13.6667 13.4732 9.10572 13.1123 4.53902C13.0729 4.03541 12.8659 3.83206 12.4104 3.69523C8.54175 2.53218 4.681 1.35392 0.814345 0.187059C0.601393 0.122445 0.368723 0.118644 0 0.0673331C0.124222 0.354296 0.147883 0.479724 0.220839 0.569044C1.61686 2.28512 2.98922 4.0183 4.44439 5.68687C4.72833 6.01374 5.33169 6.23039 5.79309 6.23799C7.13193 6.2608 8.47076 6.15057 9.85101 6.08976C11.2273 10.7743 12.5819 15.3828 13.9365 19.9913H13.9346Z" fill="currentColor"></path></g><defs><clipPath id="clip0_8559_16446"><rect width="32" height="20" fill="white"></rect></clipPath></defs></svg>
+                </a>
+                
+                <!-- Search Bar (Plein largeur sur mobile, centré sur desktop) -->
+                <div class="flex-1 max-w-xl max-md:hidden">
+                    <div class="relative">
+                        <input type="text" placeholder="Rechercher des produits, collections..." class="w-full px-4 py-2 text-sm border border-gray-300 rounded-lg focus:border-dark-deep focus:ring-dark-deep pr-10">
+                        <button class="absolute right-0 top-0 h-full px-3 text-gray-500 hover:text-dark-deep">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Icons de droite -->
+                <div class="flex items-center space-x-4 flex-shrink-0">
+                    <a class="body-regular uppercase text-dark-deep hidden lg:inline-block hover:text-gray-600" href="#">LOG IN / SIGN UP</a>
+                    <a class="text-dark-deep hover:text-gray-600 hidden md:block" href="#">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="1.5" fill="none" class="w-6 h-6"><path d="M12 21s-6.5-4.3-10-9c-2.5-3.2-1.8-7.9 1.5-10.1 3.3-2.2 7.5-.7 8.5 2.6 1-3.3 5.2-4.8 8.5-2.6 3.3 2.2 4 6.9 1.5 10.1-3.5 4.7-10 9-10 9z"></path></svg>
                     </a>
-                    <ul class="hidden text-sm md:flex md:items-center">
-                        <li class="sw-menu-link pr-6"><a class="body-regular uppercase text-dark-deep" href="https://squatwolf.com/collections/gym-wear-men">MEN</a><div class="sw-menu-overlay absolute bottom-0 left-0 right-0 top-full z-20 h-[100vh] bg-[#121212BF]"></div></li>
-                        <li class="sw-menu-link pr-6"><a class="body-regular uppercase text-dark-deep" href="https://squatwolf.com/collections/workout-clothes-women">WOMEN</a><div class="sw-menu-overlay absolute bottom-0 left-0 right-0 top-full z-20 h-[100vh] bg-[#121212BF]"></div></li>
-                        <li class="sw-menu-link pr-6"><a class="body-regular uppercase text-dark-deep" href="https://squatwolf.com/collections/accessories">ACCESSORIES</a><div class="sw-menu-overlay absolute bottom-0 left-0 right-0 top-full z-20 h-[100vh] bg-[#121212BF]"></div></li>
-                        <li class="sw-menu-link pr-6"><a class="body-regular uppercase text-dark-deep" href="https://squatwolf.com/#">EXPLORE</a><div class="sw-menu-overlay absolute bottom-0 left-0 right-0 top-full z-20 h-[100vh] bg-[#121212BF]"></div></li>
-                    </ul>
-                    <div class="hidden items-center justify-center lg:flex">
-                        <button class="flex-center md:icon-transi h-full w-5 py-[10px] focus:outline-none" type="button" data-headlessui-state="">
-                            <svg class="flex-center svg h-5 w-5 text-dark-deep" width="16" height="16" viewBox="0 0 40 40" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M37 35.6484L28.1549 26.8057L31.5729 23.3886V11.1764L23.3943 3H11.1787L3 11.1859V23.3981L11.1787 31.5745H23.3943L26.8124 28.1573L35.6575 37L37 35.6579V35.6484ZM22.604 29.6613H11.9689L4.91375 22.6081V11.9759L11.9689 4.92273H22.604L29.6592 11.9759V22.6081L22.604 29.6613Z" fill="currentColor"></path></svg>
-                        </button>
-                    </div>
+                    <button class="text-dark-deep hover:text-gray-600">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L6 5M16 16a1 1 0 100 2 1 1 0 000-2zm-6 0a1 1 0 100 2 1 1 0 000-2z"></path></svg>
+                    </button>
+                    <button class="text-dark-deep md:hidden">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                    </button>
                 </div>
-                <div class="flex-end md:w-4/12 lg:gap-12 2xl:gap-16">
-                    <ul class="flex-center gap-6 max-lg:hidden">
-                        <li><a class="body-regular py-[10px] uppercase text-dark-deep md:icon-transi whitespace-nowrap inline-block" href="https://squatwolf.com/pages/overview">HELP</a></li>
-                        <li><a class="body-regular py-[10px] uppercase text-dark-deep md:icon-transi whitespace-nowrap inline-block" href="https://squatwolf.com/pages/packvip">PackVip</a></li>
-                        <li><a class="body-regular link md:icon-transi cursor-pointer py-[10px] uppercase text-dark-deep inline-block text-nowrap" href="https://squatwolf.com/account/login">LOG IN / SIGN UP</a></li>
-                    </ul>
-                    <div class="flex-center gap-6">
-                        <div class="items-center justify-center lg:hidden">
-                            <button class="flex-center md:icon-transi h-full w-5 py-[10px] focus:outline-none" type="button" data-headlessui-state="">
-                                <svg class="flex-center svg h-5 w-5 text-dark-deep" width="16" height="16" viewBox="0 0 40 40" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M37 35.6484L28.1549 26.8057L31.5729 23.3886V11.1764L23.3943 3H11.1787L3 11.1859V23.3981L11.1787 31.5745H23.3943L26.8124 28.1573L35.6575 37L37 35.6579V35.6484ZM22.604 29.6613H11.9689L4.91375 22.6081V11.9759L11.9689 4.92273H22.604L29.6592 11.9759V22.6081L22.604 29.6613Z" fill="currentColor"></path></svg>
-                            </button>
-                        </div>
-                        <div class="md:icon-transi py-[10px] max-lg:hidden">
-                            <a class="flex-center relative" href="https://squatwolf.com/wishlist">
-                                <!-- Wishlist Icon in dark color -->
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" stroke="#121212" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="svg h-5 w-5" fill="transparent"><path d="M12 21s-6.5-4.3-10-9c-2.5-3.2-1.8-7.9 1.5-10.1 3.3-2.2 7.5-.7 8.5 2.6 1-3.3 5.2-4.8 8.5-2.6 3.3 2.2 4 6.9 1.5 10.1-3.5 4.7-10 9-10 9z"></path></svg>
-                            </a>
-                        </div>
-                        <button aria-label="Open cart">
-                            <div class="md:icon-transi py-[10px]">
-                                <div class="relative flex h-5 w-5 items-center justify-center text-dark-deep transition-colors">
-                                    <!-- Cart Icon in dark color -->
-                                    <svg width="20" height="20" viewBox="0 0 40 40" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 svg"><path d="M15.92 5.77778L14.6667 7.03111V12.8889H12.8889V6.30222L15.1911 4H24.8089L27.1111 6.30222V12.8889H25.3333V7.03111L24.08 5.77778H15.92Z" fill="currentColor"></path><path d="M34.2222 31.1911V12.8889H36V31.92L31.92 36H8.08L4 31.92V12.8889H5.77778V31.1911L8.80889 34.2222H31.1911L34.2222 31.1911Z" fill="currentColor"></path></svg>
-                                </div>
-                            </div>
-                        </button>
-                        <div class="block flex-none md:hidden">
-                            <button aria-label="Open mobile menu" class="flex h-[20px] w-[20px] items-center justify-center text-dark-deep transition-colors md:hidden">
-                                <svg class="h-5 w-5" width="20" height="20" viewBox="0 0 40 40" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M33.6978 4H6.30222L4 6.30222V8.44445H5.77778V7.03111L7.03111 5.77778H32.9689L34.2222 7.03111V8.44445H36V6.30222L33.6978 4Z" fill="currentColor"></path><path d="M34.2222 32.9689L32.9689 34.2222H7.03111L5.77778 32.9689V31.5555H4V33.6978L6.30222 36H33.6978L36 33.6978V31.5555H34.2222V32.9689Z" fill="currentColor"></path><path d="M4.88889 19.1111H35.1111V20.8889H4.88889V19.1111Z" fill="currentColor"></path></svg>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </nav>
+            </div>
+        </nav>
+         <!-- Search Bar mobile (visible only on small screens) -->
+        <div class="md:hidden px-4 pb-3">
+             <div class="relative">
+                <input type="text" placeholder="Rechercher des produits..." class="w-full px-4 py-2 text-sm border border-gray-300 rounded-lg focus:border-dark-deep focus:ring-dark-deep pr-10">
+                <button class="absolute right-0 top-0 h-full px-3 text-gray-500 hover:text-dark-deep">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                </button>
+            </div>
         </div>
+    </div>
+    
     <main>
-        <!-- HERO SLIDER: Boutons en Rouge Énergétique -->
-        <div>
-            <div class="sw-home-slider relative">
-                <div class="embla">
-                    <div class="embla__viewport is-loop is-draggable">
-                        <div class="embla__container" style="transform: translate3d(0px, 0px, 0px);">
-                            <!-- Slide 1: ACTDRY -->
-                            <div class="embla__slide is-snapped is-in-view" style="transform: translate3d(0px, 0px, 0px);">
-                                <div class="relative">
-                                    <video autoplay="autoplay" muted="muted" loop="" playsinline="" preload="none" poster="https://cdn.shopify.com/s/files/1/0618/9462/3460/files/banner_2880x1620_1_copy.jpg?v=1759216615" class="h-[calc(100svh-58px)] w-full object-cover md:h-[calc(100vh-24px)]">
-                                        <source data-src="https://cdn.shopify.com/videos/c/o/v/a4e473a8bb4b454ab6648ad330271c2c.mp4" type="video/mp4" src="pp_fichiers/a4e473a8bb4b454ab6648ad330271c2c.mp4">Your browser does not support the video tag.
-                                    </video>
-                                    <div class="absolute bottom-10 left-6 z-10 uppercase md:left-10 lg:left-12 2xl:left-16 rtl:right-6 rtl:md:right-10 rtl:lg:right-12 rtl:2xl:right-16">
-                                        <p class="small-semibold mb-3 text-light-cream">‎3X FAST DRYING TECHNOLOGY</p>
-                                        <h2 class="h1-medium mb-4 text-light-cream">ACTDRY®</h2>
-                                        <div class="flex-start flex-wrap gap-2">
-                                            <div>
-                                                <!-- Bouton en Rouge Énergétique -->
-                                                <a class="body-regular flex-center btn-transi btn-modern-cta gap-2 px-6 py-3 font-azaretmono uppercase rtl:font-notokufiarabic" href="https://squatwolf.com/collections/actdry-men">
-                                                    <span class="btn-txt">SHOP MEN</span>
-                                                    <svg class="svg h-3 w-3 rtl:scale-x-[-1]" width="40" height="40" viewBox="0 0 40 40" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M31.56 20L17.96 37L13 37L13 33L16.04 33L26.44 20L16.04 7L13 7L13 3L17.96 3L31.56 20Z" fill="currentColor"></path></svg>
-                                                </a>
-                                            </div>
-                                            <div>
-                                                <!-- Bouton en Noir Profond -->
-                                                <a class="body-regular flex-center btn-transi gap-2 px-6 py-3 font-azaretmono uppercase rtl:font-notokufiarabic" style="background-color:var(--color-dark-deep);color:var(--color-light-cream)" href="https://squatwolf.com/collections/actdry-women">
-                                                    <span class="btn-txt">SHOP WOMEN</span>
-                                                    <svg class="svg h-3 w-3 rtl:scale-x-[-1]" width="40" height="40" viewBox="0 0 40 40" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M31.56 20L17.96 37L13 37L13 33L16.04 33L26.44 20L16.04 7L13 7L13 3L17.96 3L31.56 20Z" fill="currentColor"></path></svg>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Slide 2: HIJAB -->
-                            <div class="embla__slide is-in-view">
-                                <div class="relative">
-                                    <video autoplay="autoplay" muted="muted" loop="" playsinline="" preload="none" poster="https://cdn.shopify.com/s/files/1/0618/9462/3460/files/WEBSITE_BANNER_STILL.jpg?v=1756983732" class="h-[calc(100svh-58px)] w-full object-cover md:h-[calc(100vh-24px)]">
-                                        <source data-src="https://cdn.shopify.com/videos/c/o/v/99890723935a4c5d8941c09c88364e04.mp4" type="video/mp4" src="pp_fichiers/99890723935a4c5d8941c09c88364e04.mp4">Your browser does not support the video tag.
-                                    </video>
-                                    <div class="absolute bottom-10 left-6 z-10 uppercase md:left-10 lg:left-12 2xl:left-16 rtl:right-6 rtl:md:right-10 rtl:lg:right-12 rtl:2xl:right-16">
-                                        <p class="small-semibold mb-3 text-light-cream">LOCKED IN</p>
-                                        <h2 class="h1-medium mb-4 text-light-cream">THE ULTIMATE ATHLETIC HIJAB THAT NEVER MOVES</h2>
-                                        <div class="flex-start flex-wrap gap-2">
-                                            <div>
-                                                <!-- Bouton en Rouge Énergétique -->
-                                                <a class="body-regular flex-center btn-transi btn-modern-cta gap-2 px-6 py-3 font-azaretmono uppercase rtl:font-notokufiarabic" href="https://squatwolf.com/products/ultimate-sports-hijab-black">
-                                                    <span class="btn-txt">SHOP NOW</span>
-                                                    <svg class="svg h-3 w-3 rtl:scale-x-[-1]" width="40" height="40" viewBox="0 0 40 40" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M31.56 20L17.96 37L13 37L13 33L16.04 33L26.44 20L16.04 7L13 7L13 3L17.96 3L31.56 20Z" fill="currentColor"></path></svg>
-                                                </a>
-                                            </div>
-                                            <div>
-                                                <!-- Bouton en Noir Profond -->
-                                                <a class="body-regular flex-center btn-transi gap-2 px-6 py-3 font-azaretmono uppercase rtl:font-notokufiarabic" style="background-color:var(--color-dark-deep);color:var(--color-light-cream)" href="https://squatwolf.com/pages/hijab-modest-edit-lookbook">
-                                                    <span class="btn-txt">EXPLORE MORE</span>
-                                                    <svg class="svg h-3 w-3 rtl:scale-x-[-1]" width="40" height="40" viewBox="0 0 40 40" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M31.56 20L17.96 37L13 37L13 33L16.04 33L26.44 20L16.04 7L13 7L13 3L17.96 3L31.56 20Z" fill="currentColor"></path></svg>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+        <div class="container mx-auto px-4 md:px-6 lg:px-12 2xl:px-16 pt-8 pb-16">
+
+            <!-- HERO SECTION (Une seule zone d'image large) -->
+            <section class="mb-12">
+                <div class="relative aspect-[16/6] w-full bg-gray-900 rounded-lg overflow-hidden">
+                    <div class="img-placeholder text-light-cream text-3xl h-full" style="background-color: var(--color-dark-deep);">
+                        PIC HERE - BANNER VIDÉO
                     </div>
-                    <!-- Contrôles du slider (conservés) -->
-                    <div class="embla__controls">
-                        <div class="embla__buttons">
-                            <button class="embla__button embla__button--prev" type="button"><svg class="embla__button__svg" width="40" height="40" viewBox="0 0 40 40" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M8.71997 20L22.32 3L27.28 3L27.28 7L24.24 7L13.84 20L24.24 33L27.28 33L27.28 37L22.32 37L8.71997 20Z" fill="currentColor"></path></svg></button>
-                            <button class="embla__button embla__button--next" type="button"><svg class="embla__button__svg" width="40" height="40" viewBox="0 0 40 40" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M31.56 20L17.96 37L13 37L13 33L16.04 33L26.44 20L16.04 7L13 7L13 3L17.96 3L31.56 20Z" fill="currentColor"></path></svg></button>
-                        </div>
-                        <div class="embla__dots">
-                            <button type="button" class="embla__dot embla__dot--selected"></button>
-                            <button type="button" class="embla__dot"></button>
-                        </div>
+                    <div class="absolute bottom-6 left-6 z-10 uppercase text-light-cream">
+                        <p class="text-sm font-semibold mb-2">NOUVELLE TECHNOLOGIE</p>
+                        <h2 class="text-4xl font-bold mb-4">ACTDRY® COLLECTION</h2>
+                        <a href="#" class="inline-flex items-center justify-center btn-cta px-6 py-3 font-semibold hover:bg-blue-600 transition">
+                            <span class="btn-txt uppercase">Acheter maintenant</span>
+                            <svg class="h-4 w-4 ml-2" width="40" height="40" viewBox="0 0 40 40" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M31.56 20L17.96 37L13 37L13 33L16.04 33L26.44 20L16.04 7L13 7L13 3L17.96 3L31.56 20Z" fill="currentColor"></path></svg>
+                        </a>
                     </div>
                 </div>
-            </div>
-        </div>
+            </section>
 
-        <!-- POPULAR CATEGORIES (Couleurs de fond des images et texte) -->
-        <div style="padding-top:80px;padding-bottom:80px">
-            <div class="container px-6 lg:px-12 2xl:px-16">
-                <h2 class="h2-medium mb-6 uppercase text-dark-deep lg:mb-8 2xl:mb-10">POPULAR CATEGORIES</h2>
-            </div>
-            <div class="sw-category-slider container relative px-6 max-lg:pr-0 lg:px-12 2xl:px-16 rtl:max-lg:pl-0 rtl:max-lg:pr-6">
-                <div class="embla">
-                    <div class="embla__viewport is-loop is-draggable">
-                        <div class="embla__container" style="transform: translate3d(0px, 0px, 0px);">
-                            <!-- Les cartes conservent leur structure mais utilisent la nouvelle couleur de fond light-cream -->
-                            <div class="embla__slide is-snapped is-in-view" style="transform: translate3d(0px, 0px, 0px);">
-                                <a class="mb-4 flex 2xl:mb-6" href="https://squatwolf.com/collections/mens-new-arrivals">
-                                    <img src="pp_fichiers/IMG-001_0007_1.webp" alt="[object Object]" width="220" height="302" class="h-auto w-full" style="background-color: var(--color-light-cream);" loading="lazy">
-                                </a>
-                                <h3 class="paragraph-regular text-center font-azaretmono uppercase text-dark-deep rtl:font-notokufiarabic" style="font-size:14px;color:var(--color-dark-deep)">NEW ARRIVALS / MEN</h3>
-                            </div>
-                            <div class="embla__slide is-in-view" style="transform: translate3d(0px, 0px, 0px);">
-                                <a class="mb-4 flex 2xl:mb-6" href="https://squatwolf.com/collections/womens-new-arrivals">
-                                    <img src="pp_fichiers/IMG-001_0006_2.webp" alt="[object Object]" width="220" height="302" class="h-auto w-full" style="background-color: var(--color-light-cream);" loading="lazy">
-                                </a>
-                                <h3 class="paragraph-regular text-center font-azaretmono uppercase text-dark-deep rtl:font-notokufiarabic" style="font-size:14px;color:var(--color-dark-deep)">NEW ARRIVALS / WOMEN</h3>
-                            </div>
-                            <!-- Reste des slides de catégories conservées avec le nouveau style de fond -->
-                            <div class="embla__slide is-in-view" style="transform: translate3d(0px, 0px, 0px);">
-                                <a class="mb-4 flex 2xl:mb-6" href="https://squatwolf.com/collections/gym-tshirts-men">
-                                    <img src="pp_fichiers/IMG-001_0005_3.webp" alt="[object Object]" width="220" height="302" class="h-auto w-full" style="background-color: var(--color-light-cream);" loading="lazy">
-                                </a>
-                                <h3 class="paragraph-regular text-center font-azaretmono uppercase text-dark-deep rtl:font-notokufiarabic" style="font-size:14px;color:var(--color-dark-deep)">T-SHIRTS</h3>
-                            </div>
-                            <div class="embla__slide is-in-view" style="transform: translate3d(0px, 0px, 0px);">
-                                <a class="mb-4 flex 2xl:mb-6" href="https://squatwolf.com/collections/gym-shorts-men">
-                                    <img src="pp_fichiers/IMG-001_0004_4.webp" alt="[object Object]" width="220" height="302" class="h-auto w-full" style="background-color: var(--color-light-cream);" loading="lazy">
-                                </a>
-                                <h3 class="paragraph-regular text-center font-azaretmono uppercase text-dark-deep rtl:font-notokufiarabic" style="font-size:14px;color:var(--color-dark-deep)">SHORTS</h3>
-                            </div>
-                            <div class="embla__slide is-in-view" style="transform: translate3d(0px, 0px, 0px);">
-                                <a class="mb-4 flex 2xl:mb-6" href="https://squatwolf.com/collections/gym-pants-men">
-                                    <img src="pp_fichiers/IMG-001_0000_9.webp" alt="[object Object]" width="220" height="302" class="h-auto w-full" style="background-color: var(--color-light-cream);" loading="lazy">
-                                </a>
-                                <h3 class="paragraph-regular text-center font-azaretmono uppercase text-dark-deep rtl:font-notokufiarabic" style="font-size:14px">JOGGERS &amp; PANTS</h3>
-                            </div>
-                            <div class="embla__slide is-in-view" style="transform: translate3d(0px, 0px, 0px);">
-                                <a class="mb-4 flex 2xl:mb-6" href="https://squatwolf.com/collections/gym-hoodies-men">
-                                    <img src="pp_fichiers/IMG-001_0003_5.webp" alt="[object Object]" width="220" height="302" class="h-auto w-full" style="background-color: var(--color-light-cream);" loading="lazy">
-                                </a>
-                                <h3 class="paragraph-regular text-center font-azaretmono uppercase text-dark-deep rtl:font-notokufiarabic" style="font-size:14px">HOODIES &amp; JACKETS</h3>
-                            </div>
-                            <div class="embla__slide is-in-view">
-                                <a class="mb-4 flex 2xl:mb-6" href="https://squatwolf.com/collections/workout-tshirts-women">
-                                    <img src="pp_fichiers/IMG-001_0002_6.webp" alt="[object Object]" width="220" height="302" class="h-auto w-full" style="background-color: var(--color-light-cream);" loading="lazy">
-                                </a>
-                                <h3 class="paragraph-regular text-center font-azaretmono uppercase text-dark-deep rtl:font-notokufiarabic" style="font-size:14px">T-SHIRTS</h3>
-                            </div>
-                            <div class="embla__slide">
-                                <a class="mb-4 flex 2xl:mb-6" href="https://squatwolf.com/collections/workout-leggings-women">
-                                    <img src="pp_fichiers/IMG-001_0001_7.webp" alt="[object Object]" width="220" height="302" class="h-auto w-full" style="background-color: var(--color-light-cream);" loading="lazy">
-                                </a>
-                                <h3 class="paragraph-regular text-center font-azaretmono uppercase text-dark-deep rtl:font-notokufiarabic" style="font-size:14px">LEGGINGS</h3>
-                            </div>
-                            <div class="embla__slide">
-                                <a class="mb-4 flex 2xl:mb-6" href="https://squatwolf.com/collections/sports-bra-women">
-                                    <img src="pp_fichiers/IMG-001_0000_8.webp" alt="[object Object]" width="220" height="302" class="h-auto w-full" style="background-color: var(--color-light-cream);" loading="lazy">
-                                </a>
-                                <h3 class="paragraph-regular text-center font-azaretmono uppercase text-dark-deep rtl:font-notokufiarabic" style="font-size:14px">SPORTS BRAS</h3>
-                            </div>
-                            <div class="embla__slide">
-                                <a class="mb-4 flex 2xl:mb-6" href="https://squatwolf.com/collections/workout-pants-women">
-                                    <img src="pp_fichiers/IMG-001.webp" alt="[object Object]" width="220" height="302" class="h-auto w-full" style="background-color: var(--color-light-cream);" loading="lazy">
-                                </a>
-                                <h3 class="paragraph-regular text-center font-azaretmono uppercase text-dark-deep rtl:font-notokufiarabic" style="font-size:14px">JOGGERS &amp; PANTS</h3>
-                            </div>
-                        </div>
+            <!-- POPULAR CATEGORIES (Passage à une grille 2x2 ou 4x1 responsive) -->
+            <section class="mb-16">
+                <h2 class="text-2xl font-bold uppercase mb-6">CATÉGORIES POPULAIRES</h2>
+                
+                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+                    <!-- Utilisation d'une boucle pour les catégories - seulement une image d'exemple -->
+                    <div class="product-card hover:shadow-lg">
+                        <a class="block" href="#">
+                            <div class="aspect-[2/3] w-full img-placeholder">PIC HERE</div>
+                            <h3 class="text-sm font-medium text-center uppercase py-3">T-SHIRTS HOMME</h3>
+                        </a>
                     </div>
-                    <!-- Contrôles du slider (conservés) -->
-                    <div class="embla__controls">
-                        <div class="embla__buttons">
-                            <button class="embla__button embla__button--prev" type="button"><svg class="embla__button__svg" width="40" height="40" viewBox="0 0 40 40" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M8.71997 20L22.32 3L27.28 3L27.28 7L24.24 7L13.84 20L24.24 33L27.28 33L27.28 37L22.32 37L8.71997 20Z" fill="currentColor"></path></svg></button>
-                            <button class="embla__button embla__button--next" type="button"><svg class="embla__button__svg" width="40" height="40" viewBox="0 0 40 40" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M31.56 20L17.96 37L13 37L13 33L16.04 33L26.44 20L16.04 7L13 7L13 3L17.96 3L31.56 20Z" fill="currentColor"></path></svg></button>
-                        </div>
-                        <div class="embla__dots">
-                            <button type="button" class="embla__dot embla__dot--selected"></button><button type="button" class="embla__dot"></button><button type="button" class="embla__dot"></button><button type="button" class="embla__dot"></button><button type="button" class="embla__dot"></button><button type="button" class="embla__dot"></button><button type="button" class="embla__dot"></button><button type="button" class="embla__dot"></button><button type="button" class="embla__dot"></button><button type="button" class="embla__dot"></button>
-                        </div>
+                    <div class="product-card hover:shadow-lg">
+                        <a class="block" href="#">
+                            <div class="aspect-[2/3] w-full img-placeholder">PIC HERE</div>
+                            <h3 class="text-sm font-medium text-center uppercase py-3">LEGGINGS FEMME</h3>
+                        </a>
+                    </div>
+                     <div class="product-card hover:shadow-lg">
+                        <a class="block" href="#">
+                            <div class="aspect-[2/3] w-full img-placeholder">PIC HERE</div>
+                            <h3 class="text-sm font-medium text-center uppercase py-3">SHORTS HOMME</h3>
+                        </a>
+                    </div>
+                    <div class="product-card hover:shadow-lg">
+                        <a class="block" href="#">
+                            <div class="aspect-[2/3] w-full img-placeholder">PIC HERE</h3>
+                            <h3 class="text-sm font-medium text-center uppercase py-3">BRASSIÈRES SPORT</h3>
+                        </a>
+                    </div>
+                    <div class="product-card hover:shadow-lg hidden lg:block">
+                        <a class="block" href="#">
+                            <div class="aspect-[2/3] w-full img-placeholder">PIC HERE</div>
+                            <h3 class="text-sm font-medium text-center uppercase py-3">NOUVEAUTÉS HOMME</h3>
+                        </a>
+                    </div>
+                    <div class="product-card hover:shadow-lg hidden lg:block">
+                        <a class="block" href="#">
+                            <div class="aspect-[2/3] w-full img-placeholder">PIC HERE</div>
+                            <h3 class="text-sm font-medium text-center uppercase py-3">HOODIES</h3>
+                        </a>
+                    </div>
+                    <!-- Cacher les deux dernières sur les écrans plus petits pour maintenir l'esthétique -->
+                </div>
+            </section>
+            
+            <!-- SECTION PRODUITS EN VEDETTE (Style carrousel simple horizontal) -->
+            <section class="mb-16">
+                <h2 class="text-2xl font-bold uppercase mb-6">NOS MEILLEURES VENTES</h2>
+                
+                 <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6 overflow-x-auto pb-4">
+                    <!-- Remplacement de la structure de slider complexe par une grille simple défilable -->
+                    
+                    <!-- Carte Produit 1 -->
+                    <div class="product-card w-full flex-shrink-0" style="min-width: 150px;">
+                        <a class="block" href="#">
+                            <div class="aspect-[2/3] w-full img-placeholder">PIC HERE</div>
+                            <div class="p-2">
+                                <p class="text-xs text-gray-500 uppercase mb-1">ACTDRY®</p>
+                                <h4 class="text-sm font-medium mb-1 truncate">Hybrid Jacket - Stormy Weather</h4>
+                                <p class="font-bold text-base">$168.00</p>
+                            </div>
+                        </a>
+                        <button class="w-full btn-cta py-2 text-xs font-semibold uppercase">Ajouter au panier</button>
+                    </div>
+                    
+                    <!-- Carte Produit 2 -->
+                     <div class="product-card w-full flex-shrink-0" style="min-width: 150px;">
+                        <a class="block" href="#">
+                            <div class="aspect-[2/3] w-full img-placeholder">PIC HERE</div>
+                            <div class="p-2">
+                                <p class="text-xs text-gray-500 uppercase mb-1">ACTDRY®</p>
+                                <h4 class="text-sm font-medium mb-1 truncate">Pro 2-In-1 7" Shorts - Black</h4>
+                                <p class="font-bold text-base">$100.00</p>
+                            </div>
+                        </a>
+                        <button class="w-full btn-cta py-2 text-xs font-semibold uppercase">Ajouter au panier</button>
+                    </div>
+                    
+                    <!-- Carte Produit 3 -->
+                     <div class="product-card w-full flex-shrink-0" style="min-width: 150px;">
+                        <a class="block" href="#">
+                            <div class="aspect-[2/3] w-full img-placeholder">PIC HERE</div>
+                            <div class="p-2">
+                                <p class="text-xs text-gray-500 uppercase mb-1">ACTDRY®</p>
+                                <h4 class="text-sm font-medium mb-1 truncate">Quarter Zip Top - Pearl White</h4>
+                                <p class="font-bold text-base">$100.00</p>
+                            </div>
+                        </a>
+                        <button class="w-full btn-cta py-2 text-xs font-semibold uppercase">Ajouter au panier</button>
+                    </div>
+                    
+                    <!-- Carte Produit 4 -->
+                    <div class="product-card w-full flex-shrink-0" style="min-width: 150px;">
+                        <a class="block" href="#">
+                            <div class="aspect-[2/3] w-full img-placeholder">PIC HERE</div>
+                            <div class="p-2">
+                                <p class="text-xs text-gray-500 uppercase mb-1">ACTDRY®</p>
+                                <h4 class="text-sm font-medium mb-1 truncate">Pro Tee - SW Coral</h4>
+                                <p class="font-bold text-base">$72.00</p>
+                            </div>
+                        </a>
+                        <button class="w-full btn-cta py-2 text-xs font-semibold uppercase">Ajouter au panier</button>
+                    </div>
+
+                    <!-- Carte Produit 5 -->
+                    <div class="product-card w-full flex-shrink-0 max-md:hidden" style="min-width: 150px;">
+                        <a class="block" href="#">
+                            <div class="aspect-[2/3] w-full img-placeholder">PIC HERE</div>
+                            <div class="p-2">
+                                <p class="text-xs text-gray-500 uppercase mb-1">ESSENTIAL</p>
+                                <h4 class="text-sm font-medium mb-1 truncate">Joggers - Charcoal</h4>
+                                <p class="font-bold text-base">$112.00</p>
+                            </div>
+                        </a>
+                        <button class="w-full btn-cta py-2 text-xs font-semibold uppercase">Ajouter au panier</button>
+                    </div>
+                    
+                </div>
+            </section>
+            
+            <!-- PROMOTION IMAGE / LIEN VERS L'HISTOIRE (Large bande) -->
+            <section class="mb-16">
+                <div class="relative aspect-[16/4] w-full bg-gray-900 rounded-lg overflow-hidden">
+                    <div class="img-placeholder text-light-cream text-3xl h-full" style="background-color: var(--color-dark-deep);">
+                        PIC HERE - NOTRE HISTOIRE
+                    </div>
+                    <div class="absolute inset-0 bg-black/40 flex flex-col justify-center items-center p-6 rounded-lg">
+                        <h2 class="text-3xl md:text-5xl font-bold uppercase text-light-cream mb-4 text-center">FROM DUBAI TO THE WORLD</h2>
+                        <a href="https://squatwolf.com/pages/our-story" class="btn-cta px-8 py-3 text-sm font-semibold uppercase">
+                            Découvrir l'histoire
+                        </a>
                     </div>
                 </div>
+            </section>
+
+
+        </div>
+    </main>
+
+    <!-- FOOTER (Simplifié et révisé pour la clarté) -->
+    <footer class="bg-dark-deep text-light-cream">
+        <div class="container mx-auto px-4 md:px-6 lg:px-12 2xl:px-16 py-8 md:py-12">
+            
+            <!-- NEWSLETTER SECTION (Simplifiée) -->
+            <div class="border-b border-light-cream/30 pb-6 mb-6">
+                 <h3 class="text-2xl font-bold uppercase mb-4">REJOIGNEZ LE PACK</h3>
+                 <div class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4">
+                     <input type="email" placeholder="Votre adresse e-mail" class="flex-1 px-4 py-3 rounded-md text-dark-deep focus:outline-none" style="background-color: white;">
+                     <button class="btn-cta px-6 py-3 font-semibold uppercase whitespace-nowrap">
+                         S'inscrire
+                     </button>
+                 </div>
             </div>
-        </div>
 
-        <!-- Section de Séparation -->
-        <div class="flex-center w-full gap-6 rtl:flex-row-reverse container px-6 lg:px-12 2xl:px-16" style="padding-bottom:80px">
-            <div class="basis-[8px] relative h-4"><span class="h-full w-[1px] border-l border-dark-deep/10 absolute top-0 bottom-0 left-0"></span><span class="h-[1px] w-full border-b border-dark-deep/10 absolute top-0 bottom-0 left-0 right-0 m-auto"></span></div>
-            <div class="flex-1 border-b border-dark-deep/10"></div>
-            <div class="basis-[8px] relative h-4"><span class="h-full w-[1px] border-r border-dark-deep/10 absolute top-0 bottom-0 right-0"></span><span class="h-[1px] w-full border-b border-dark-deep/10 absolute top-0 bottom-0 left-0 right-0 m-auto"></span></div>
-        </div>
-
-        <!-- MEN'S PICKS / WOMEN'S PICKS: Mise à jour des couleurs et des styles -->
-        <section style="padding-top:0;padding-bottom:80px">
-            <div class="container px-6 max-lg:p-0 lg:px-12 2xl:px-16">
+            <!-- LIENS ET PAIEMENT -->
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-6 mb-8">
                 <div>
-                    <div class="flex-start gap-3 pb-6 max-lg:px-6 lg:pb-[39px] 2xl:pb-[42px]">
-                        <div class="flex bg-dark-deep p-2 font-azaretmono uppercase text-light-cream max-md:w-full" role="tablist" aria-orientation="horizontal">
-                            <!-- Onglets de sélection (maintenus) -->
-                            <button class="body-regular px-4 py-1 font-azaretmono uppercase text-light-cream focus:outline-none data-[selected]:bg-light-cream data-[selected]:text-dark-deep max-md:flex-1" id="headlessui-tabs-tab-«R6cgusfb»" role="tab" type="button" aria-selected="true" tabindex="0" data-headlessui-state="selected" data-selected="" aria-controls="headlessui-tabs-panel-«R1kgusfb»">MEN'S PICKS</button>
-                            <button class="body-regular px-4 py-1 font-azaretmono uppercase text-light-cream focus:outline-none data-[selected]:bg-light-cream data-[selected]:text-dark-deep max-md:flex-1" id="headlessui-tabs-tab-«Racgusfb»" role="tab" type="button" aria-selected="false" tabindex="-1" data-headlessui-state="" aria-controls="headlessui-tabs-panel-«R2kgusfb»">WOMEN'S PICKS</button>
-                        </div>
-                    </div>
-                    <div>
-                        <div id="headlessui-tabs-panel-«R1kgusfb»" role="tabpanel" tabindex="0" data-headlessui-state="selected" data-selected="" aria-labelledby="headlessui-tabs-tab-«R6cgusfb»">
-                            <div>
-                                <div class="flex flex-col-reverse lg:flex-row lg:align-top">
-                                    <div class="lg:w-1/2">
-                                        <h2 class="h2-medium mb-6 hidden text-dark-deep max-lg:px-6">MEN'S PICKS</h2>
-                                        <div class="max-lg:no-scrollbar flex max-lg:overflow-x-scroll max-lg:px-6 lg:flex-wrap">
-                                            <!-- Product Card 1 -->
-                                            <div class="w-8/12 flex-none pb-4 lg:w-1/2 lg:pb-16 lg:last:pb-0 lg:[&amp;:nth-last-child(2)]:pb-0">
-                                                <a class="relative block h-full w-full" href="https://squatwolf.com/products/actdry-hybrid-jacket-stormy-weather">
-                                                    <div>
-                                                        <div class="sw-plp-img group relative overflow-hidden outline outline-1 outline-dark-deep/10">
-                                                            <div class="tile-slider" style="background-color: var(--color-light-cream);">
-                                                                <img class="h-auto w-full flex-[0_0_100%]" src="pp_fichiers/ACTDRY_Hybrid_Jacket_-_Stormy_Weather.webp" alt="ACTDRY® Hybrid Jacket - Stormy Weather - ACTDRY_Hybrid_Jacket_-_Stormy_Weather" width="650" height="900">
-                                                            </div>
-                                                            <!-- Badge en Rouge Énergétique -->
-                                                            <div class="flex-center p-1.5 border-transparent bg-secondary text-secondary-foreground sw-plp-badge subtle-semibold lg:small-semibold absolute bottom-1 left-1 px-3 py-1 uppercase lg:bottom-[unset] lg:left-2 lg:top-2">NEW DROP</div>
-                                                            <!-- Wishlist Icon (couleur Dark Deep) -->
-                                                            <button aria-label="Wish List" class="sw-plp-wishlist-btn bg-light-cream/30 p-1 absolute right-2 top-2 rounded-full backdrop-blur-sm"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" stroke="#121212" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="svg h-4 w-4 cursor-pointer fill-dark-deep/50"><path d="M12 21s-6.5-4.3-10-9c-2.5-3.2-1.8-7.9 1.5-10.1 3.3-2.2 7.5-.7 8.5 2.6 1-3.3 5.2-4.8 8.5-2.6 3.3 2.2 4 6.9 1.5 10.1-3.5 4.7-10 9-10 9z"></path></svg></button>
-                                                            <!-- Bouton QUICK ADD en Noir Profond -->
-                                                            <div class="sw-plp-qck-btn absolute bottom-[-30%] left-2 right-2 transition-all delay-75 duration-300 ease-in-out group-hover:bottom-2 max-lg:hidden">
-                                                                <button class="px-6 btn-transi bg-dark-deep text-light-cream body-regular 2xl:small-regular w-full py-2 uppercase tracking-[0.14px] 2xl:tracking-[0.24px] rounded-md">QUICK ADD</button>
-                                                            </div>
-                                                        </div>
-                                                        <div class="sw-plp-flx-6_content px-2 lg:px-4">
-                                                            <div class="small-medium lg:body-medium sw-plp-flx-4-lable mb-2 mt-3 flex items-center text-dark-deep max-lg:leading-[18px] lg:mt-4">ACTDRY® Hybrid Jacket - Stormy Weather</div>
-                                                            <div class="flex-start flex-wrap gap-2 md:gap-4"><p class="small-semibold max-lg:subtle-medium text-dark-deep">$168.00</p></div>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <!-- Product Card 2 -->
-                                            <div class="w-8/12 flex-none pb-4 lg:w-1/2 lg:pb-16 lg:last:pb-0 lg:[&amp;:nth-last-child(2)]:pb-0">
-                                                <a class="relative block h-full w-full" href="https://squatwolf.com/products/actdry-pro-2-in1-7-shorts-stormy-weather">
-                                                    <div>
-                                                        <div class="sw-plp-img group relative overflow-hidden outline outline-1 outline-dark-deep/10">
-                                                            <div class="tile-slider" style="background-color: var(--color-light-cream);">
-                                                                <img class="h-auto w-full flex-[0_0_100%]" src="pp_fichiers/ACTDRY_Pro_2-In-1_7_Shorts_-_Stormy_Weather.webp" alt="ACTDRY® Pro 2-In-1 7&quot; Shorts - Stormy Weather - ACTDRY_Pro_2-In-1_7_Shorts_-_Stormy_Weather" width="650" height="900">
-                                                            </div>
-                                                            <div class="flex-center p-1.5 border-transparent bg-secondary text-secondary-foreground sw-plp-badge subtle-semibold lg:small-semibold absolute bottom-1 left-1 px-3 py-1 uppercase lg:bottom-[unset] lg:left-2 lg:top-2">NEW DROP</div>
-                                                            <button aria-label="Wish List" class="sw-plp-wishlist-btn bg-light-cream/30 p-1 absolute right-2 top-2 rounded-full backdrop-blur-sm"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" stroke="#121212" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="svg h-4 w-4 cursor-pointer fill-dark-deep/50"><path d="M12 21s-6.5-4.3-10-9c-2.5-3.2-1.8-7.9 1.5-10.1 3.3-2.2 7.5-.7 8.5 2.6 1-3.3 5.2-4.8 8.5-2.6 3.3 2.2 4 6.9 1.5 10.1-3.5 4.7-10 9-10 9z"></path></svg></button>
-                                                            <div class="sw-plp-bag-icon absolute left-2 top-2 bg-light-cream/30 p-1 lg:hidden">
-                                                                <svg width="20" height="20" viewBox="0 0 40 40" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="svg h-4 w-4 text-dark-deep"><path d="M15.92 5.77778L14.6667 7.03111V12.8889H12.8889V6.30222L15.1911 4H24.8089L27.1111 6.30222V12.8889H25.3333V7.03111L24.08 5.77778H15.92Z" fill="currentColor"></path><path d="M34.2222 31.1911V12.8889H36V31.92L31.92 36H8.08L4 31.92V12.8889H5.77778V31.1911L8.80889 34.2222H31.1911L34.2222 31.1911Z" fill="currentColor"></path></svg>
-                                                            </div>
-                                                            <div class="sw-plp-qck-btn absolute bottom-[-30%] left-2 right-2 transition-all delay-75 duration-300 ease-in-out group-hover:bottom-2 max-lg:hidden">
-                                                                <button class="px-6 btn-transi bg-dark-deep text-light-cream body-regular 2xl:small-regular w-full py-2 uppercase tracking-[0.14px] 2xl:tracking-[0.24px] rounded-md">QUICK ADD</button>
-                                                            </div>
-                                                        </div>
-                                                        <div class="sw-plp-flx-6_content px-2 lg:px-4">
-                                                            <div class="small-medium lg:body-medium sw-plp-flx-4-lable mb-2 mt-3 flex items-center text-dark-deep max-lg:leading-[18px] lg:mt-4">ACTDRY® Pro 2-In-1 7" Shorts - Stormy Weather</div>
-                                                            <div class="flex-start flex-wrap gap-2 md:gap-4"><p class="small-semibold max-lg:subtle-medium text-dark-deep">$100.00</p></div>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <!-- Reste des cartes produits adaptées avec le nouveau style de bouton QUICK ADD et les couleurs du texte -->
-                                            <div class="w-8/12 flex-none pb-4 lg:w-1/2 lg:pb-16 lg:last:pb-0 lg:[&amp;:nth-last-child(2)]:pb-0">
-                                                <a class="relative block h-full w-full" href="https://squatwolf.com/products/actdry-quarter-zip-long-sleeves-top-pearl-white">
-                                                    <div>
-                                                        <div class="sw-plp-img group relative overflow-hidden outline outline-1 outline-dark-deep/10">
-                                                            <div class="tile-slider" style="background-color: var(--color-light-cream);">
-                                                                <img class="h-auto w-full flex-[0_0_100%]" src="pp_fichiers/ACTDRY_Quarter_Zip_Long_Sleeves_Top_-_Pearl_White.webp" alt="ACTDRY® Quarter Zip Long Sleeves Top - Pearl White - ACTDRY_Quarter_Zip_Long_Sleeves_Top_-_Pearl_White" width="650" height="900">
-                                                            </div>
-                                                            <div class="flex-center p-1.5 border-transparent bg-secondary text-secondary-foreground sw-plp-badge subtle-semibold lg:small-semibold absolute bottom-1 left-1 px-3 py-1 uppercase lg:bottom-[unset] lg:left-2 lg:top-2">NEW DROP</div>
-                                                            <button aria-label="Wish List" class="sw-plp-wishlist-btn bg-light-cream/30 p-1 absolute right-2 top-2 rounded-full backdrop-blur-sm"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" stroke="#121212" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="svg h-4 w-4 cursor-pointer fill-dark-deep/50"><path d="M12 21s-6.5-4.3-10-9c-2.5-3.2-1.8-7.9 1.5-10.1 3.3-2.2 7.5-.7 8.5 2.6 1-3.3 5.2-4.8 8.5-2.6 3.3 2.2 4 6.9 1.5 10.1-3.5 4.7-10 9-10 9z"></path></svg></button>
-                                                            <div class="sw-plp-bag-icon absolute left-2 top-2 bg-light-cream/30 p-1 lg:hidden">
-                                                                <svg width="20" height="20" viewBox="0 0 40 40" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="svg h-4 w-4 text-dark-deep"><path d="M15.92 5.77778L14.6667 7.03111V12.8889H12.8889V6.30222L15.1911 4H24.8089L27.1111 6.30222V12.8889H25.3333V7.03111L24.08 5.77778H15.92Z" fill="currentColor"></path><path d="M34.2222 31.1911V12.8889H36V31.92L31.92 36H8.08L4 31.92V12.8889H5.77778V31.1911L8.80889 34.2222H31.1911L34.2222 31.1911Z" fill="currentColor"></path></svg>
-                                                            </div>
-                                                            <div class="sw-plp-qck-btn absolute bottom-[-30%] left-2 right-2 transition-all delay-75 duration-300 ease-in-out group-hover:bottom-2 max-lg:hidden">
-                                                                <button class="px-6 btn-transi bg-dark-deep text-light-cream body-regular 2xl:small-regular w-full py-2 uppercase tracking-[0.14px] 2xl:tracking-[0.24px] rounded-md">QUICK ADD</button>
-                                                            </div>
-                                                        </div>
-                                                        <div class="sw-plp-flx-6_content px-2 lg:px-4">
-                                                            <div class="small-medium lg:body-medium sw-plp-flx-4-lable mb-2 mt-3 flex items-center text-dark-deep max-lg:leading-[18px] lg:mt-4">ACTDRY® Quarter Zip Long Sleeves Top - Pearl White</div>
-                                                            <div class="flex-start flex-wrap gap-2 md:gap-4"><p class="small-semibold max-lg:subtle-medium text-dark-deep">$100.00</p></div>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <div class="w-8/12 flex-none pb-4 lg:w-1/2 lg:pb-16 lg:last:pb-0 lg:[&amp;:nth-last-child(2)]:pb-0">
-                                                <a class="relative block h-full w-full" href="https://squatwolf.com/products/actdry-pro-joggers-pearl-white">
-                                                    <div>
-                                                        <div class="sw-plp-img group relative overflow-hidden outline outline-1 outline-dark-deep/10">
-                                                            <div class="tile-slider" style="background-color: var(--color-light-cream);">
-                                                                <img class="h-auto w-full flex-[0_0_100%]" src="pp_fichiers/f1_c9cd7d50-f462-4c49-9d7b-d694e7b832b5.webp" alt="ACTDRY® Pro Joggers - Pearl White - f1_c9cd7d50-f462-4c49-9d7b-d694e7b832b5" width="650" height="900">
-                                                            </div>
-                                                            <div class="flex-center p-1.5 border-transparent bg-secondary text-secondary-foreground sw-plp-badge subtle-semibold lg:small-semibold absolute bottom-1 left-1 px-3 py-1 uppercase lg:bottom-[unset] lg:left-2 lg:top-2">NEW DROP</div>
-                                                            <button aria-label="Wish List" class="sw-plp-wishlist-btn bg-light-cream/30 p-1 absolute right-2 top-2 rounded-full backdrop-blur-sm"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" stroke="#121212" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="svg h-4 w-4 cursor-pointer fill-dark-deep/50"><path d="M12 21s-6.5-4.3-10-9c-2.5-3.2-1.8-7.9 1.5-10.1 3.3-2.2 7.5-.7 8.5 2.6 1-3.3 5.2-4.8 8.5-2.6 3.3 2.2 4 6.9 1.5 10.1-3.5 4.7-10 9-10 9z"></path></svg></button>
-                                                            <div class="sw-plp-bag-icon absolute left-2 top-2 bg-light-cream/30 p-1 lg:hidden">
-                                                                <svg width="20" height="20" viewBox="0 0 40 40" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="svg h-4 w-4 text-dark-deep"><path d="M15.92 5.77778L14.6667 7.03111V12.8889H12.8889V6.30222L15.1911 4H24.8089L27.1111 6.30222V12.8889H25.3333V7.03111L24.08 5.77778H15.92Z" fill="currentColor"></path><path d="M34.2222 31.1911V12.8889H36V31.92L31.92 36H8.08L4 31.92V12.8889H5.77778V31.1911L8.80889 34.2222H31.1911L34.2222 31.1911Z" fill="currentColor"></path></svg>
-                                                            </div>
-                                                            <div class="sw-plp-qck-btn absolute bottom-[-30%] left-2 right-2 transition-all delay-75 duration-300 ease-in-out group-hover:bottom-2 max-lg:hidden">
-                                                                <button class="px-6 btn-transi bg-dark-deep text-light-cream body-regular 2xl:small-regular w-full py-2 uppercase tracking-[0.14px] 2xl:tracking-[0.24px] rounded-md">QUICK ADD</button>
-                                                            </div>
-                                                        </div>
-                                                        <div class="sw-plp-flx-6_content px-2 lg:px-4">
-                                                            <div class="small-medium lg:body-medium sw-plp-flx-4-lable mb-2 mt-3 flex items-center text-dark-deep max-lg:leading-[18px] lg:mt-4">ACTDRY® Pro Joggers - Pearl White</div>
-                                                            <div class="flex-start flex-wrap gap-2 md:gap-4"><p class="small-semibold max-lg:subtle-medium text-dark-deep">$112.00</p></div>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <div class="w-8/12 flex-none pb-4 lg:w-1/2 lg:pb-16 lg:last:pb-0 lg:[&amp;:nth-last-child(2)]:pb-0">
-                                                <a class="relative block h-full w-full" href="https://squatwolf.com/products/actdry-pro-tee-sw-coral">
-                                                    <div>
-                                                        <div class="sw-plp-img group relative overflow-hidden outline outline-1 outline-dark-deep/10">
-                                                            <div class="tile-slider" style="background-color: var(--color-light-cream);">
-                                                                <img class="h-auto w-full flex-[0_0_100%]" src="pp_fichiers/ACTDRY_Pro_Tee_-_SW_Coral.webp" alt="ACTDRY® Pro Tee - SW Coral - ACTDRY_Pro_Tee_-_SW_Coral" width="650" height="900">
-                                                            </div>
-                                                            <div class="flex-center p-1.5 border-transparent bg-secondary text-secondary-foreground sw-plp-badge subtle-semibold lg:small-semibold absolute bottom-1 left-1 px-3 py-1 uppercase lg:bottom-[unset] lg:left-2 lg:top-2">NEW DROP</div>
-                                                            <button aria-label="Wish List" class="sw-plp-wishlist-btn bg-light-cream/30 p-1 absolute right-2 top-2 rounded-full backdrop-blur-sm"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" stroke="#121212" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="svg h-4 w-4 cursor-pointer fill-dark-deep/50"><path d="M12 21s-6.5-4.3-10-9c-2.5-3.2-1.8-7.9 1.5-10.1 3.3-2.2 7.5-.7 8.5 2.6 1-3.3 5.2-4.8 8.5-2.6 3.3 2.2 4 6.9 1.5 10.1-3.5 4.7-10 9-10 9z"></path></svg></button>
-                                                            <div class="sw-plp-bag-icon absolute left-2 top-2 bg-light-cream/30 p-1 lg:hidden">
-                                                                <svg width="20" height="20" viewBox="0 0 40 40" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="svg h-4 w-4 text-dark-deep"><path d="M15.92 5.77778L14.6667 7.03111V12.8889H12.8889V6.30222L15.1911 4H24.8089L27.1111 6.30222V12.8889H25.3333V7.03111L24.08 5.77778H15.92Z" fill="currentColor"></path><path d="M34.2222 31.1911V12.8889H36V31.92L31.92 36H8.08L4 31.92V12.8889H5.77778V31.1911L8.80889 34.2222H31.1911L34.2222 31.1911Z" fill="currentColor"></path></svg>
-                                                            </div>
-                                                            <div class="sw-plp-qck-btn absolute bottom-[-30%] left-2 right-2 transition-all delay-75 duration-300 ease-in-out group-hover:bottom-2 max-lg:hidden">
-                                                                <button class="px-6 btn-transi bg-dark-deep text-light-cream body-regular 2xl:small-regular w-full py-2 uppercase tracking-[0.14px] 2xl:tracking-[0.24px] rounded-md">QUICK ADD</button>
-                                                            </div>
-                                                        </div>
-                                                        <div class="sw-plp-flx-6_content px-2 lg:px-4">
-                                                            <div class="small-medium lg:body-medium sw-plp-flx-4-lable mb-2 mt-3 flex items-center text-dark-deep max-lg:leading-[18px] lg:mt-4">ACTDRY® Pro Tee - SW Coral</div>
-                                                            <div class="flex-start flex-wrap gap-2 md:gap-4"><p class="small-semibold max-lg:subtle-medium text-dark-deep">$72.00</p></div>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <div class="w-8/12 flex-none pb-4 lg:w-1/2 lg:pb-16 lg:last:pb-0 lg:[&amp;:nth-last-child(2)]:pb-0">
-                                                <a class="relative block h-full w-full" href="https://squatwolf.com/products/actdry-pro-2-in1-7-shorts-black">
-                                                    <div>
-                                                        <div class="sw-plp-img group relative overflow-hidden outline outline-1 outline-dark-deep/10">
-                                                            <div class="tile-slider" style="background-color: var(--color-light-cream);">
-                                                                <img class="h-auto w-full flex-[0_0_100%]" src="pp_fichiers/f1_f86d001c-4f90-4fac-8ba8-1a4572434ca5.webp" alt="ACTDRY® Pro 2-In-1 7&quot; Shorts - Black - f1_f86d001c-4f90-4fac-8ba8-1a4572434ca5" width="650" height="900">
-                                                            </div>
-                                                            <div class="flex-center p-1.5 border-transparent bg-secondary text-secondary-foreground sw-plp-badge subtle-semibold lg:small-semibold absolute bottom-1 left-1 px-3 py-1 uppercase lg:bottom-[unset] lg:left-2 lg:top-2">NEW DROP</div>
-                                                            <button aria-label="Wish List" class="sw-plp-wishlist-btn bg-light-cream/30 p-1 absolute right-2 top-2 rounded-full backdrop-blur-sm"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" stroke="#121212" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="svg h-4 w-4 cursor-pointer fill-dark-deep/50"><path d="M12 21s-6.5-4.3-10-9c-2.5-3.2-1.8-7.9 1.5-10.1 3.3-2.2 7.5-.7 8.5 2.6 1-3.3 5.2-4.8 8.5-2.6 3.3 2.2 4 6.9 1.5 10.1-3.5 4.7-10 9-10 9z"></path></svg></button>
-                                                            <div class="sw-plp-bag-icon absolute left-2 top-2 bg-light-cream/30 p-1 lg:hidden">
-                                                                <svg width="20" height="20" viewBox="0 0 40 40" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="svg h-4 w-4 text-dark-deep"><path d="M15.92 5.77778L14.6667 7.03111V12.8889H12.8889V6.30222L15.1911 4H24.8089L27.1111 6.30222V12.8889H25.3333V7.03111L24.08 5.77778H15.92Z" fill="currentColor"></path><path d="M34.2222 31.1911V12.8889H36V31.92L31.92 36H8.08L4 31.92V12.8889H5.77778V31.1911L8.80889 34.2222H31.1911L34.2222 31.1911Z" fill="currentColor"></path></svg>
-                                                            </div>
-                                                            <div class="sw-plp-qck-btn absolute bottom-[-30%] left-2 right-2 transition-all delay-75 duration-300 ease-in-out group-hover:bottom-2 max-lg:hidden">
-                                                                <button class="px-6 btn-transi bg-dark-deep text-light-cream body-regular 2xl:small-regular w-full py-2 uppercase tracking-[0.14px] 2xl:tracking-[0.24px] rounded-md">QUICK ADD</button>
-                                                            </div>
-                                                        </div>
-                                                        <div class="sw-plp-flx-6_content px-2 lg:px-4">
-                                                            <div class="small-medium lg:body-medium sw-plp-flx-4-lable mb-2 mt-3 flex items-center text-dark-deep max-lg:leading-[18px] lg:mt-4">ACTDRY® Pro 2-In-1 7" Shorts - Black</div>
-                                                            <div class="flex-start flex-wrap gap-2 md:gap-4"><p class="small-semibold max-lg:subtle-medium text-dark-deep">$100.00</p></div>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <div class="w-8/12 flex-none pb-4 lg:w-1/2 lg:pb-16 lg:last:pb-0 lg:[&amp;:nth-last-child(2)]:pb-0">
-                                                <a class="relative block h-full w-full" href="https://squatwolf.com/products/actdry-hybrid-jacket-black">
-                                                    <div>
-                                                        <div class="sw-plp-img group relative overflow-hidden outline outline-1 outline-dark-deep/10">
-                                                            <div class="tile-slider" style="background-color: var(--color-light-cream);">
-                                                                <img class="h-auto w-full flex-[0_0_100%]" src="pp_fichiers/f1_32c779c9-a2c4-4cb9-b2f0-95d64bee9e8e.webp" alt="ACTDRY® Hybrid Jacket - Black - f1_32c779c9-a2c4-4cb9-b2f0-95d64bee9e8e" width="650" height="900">
-                                                            </div>
-                                                            <div class="flex-center p-1.5 border-transparent bg-secondary text-secondary-foreground sw-plp-badge subtle-semibold lg:small-semibold absolute bottom-1 left-1 px-3 py-1 uppercase lg:bottom-[unset] lg:left-2 lg:top-2">NEW DROP</div>
-                                                            <button aria-label="Wish List" class="sw-plp-wishlist-btn bg-light-cream/30 p-1 absolute right-2 top-2 rounded-full backdrop-blur-sm"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" stroke="#121212" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="svg h-4 w-4 cursor-pointer fill-dark-deep/50"><path d="M12 21s-6.5-4.3-10-9c-2.5-3.2-1.8-7.9 1.5-10.1 3.3-2.2 7.5-.7 8.5 2.6 1-3.3 5.2-4.8 8.5-2.6 3.3 2.2 4 6.9 1.5 10.1-3.5 4.7-10 9-10 9z"></path></svg></button>
-                                                            <div class="sw-plp-bag-icon absolute left-2 top-2 bg-light-cream/30 p-1 lg:hidden">
-                                                                <svg width="20" height="20" viewBox="0 0 40 40" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="svg h-4 w-4 text-dark-deep"><path d="M15.92 5.77778L14.6667 7.03111V12.8889H12.8889V6.30222L15.1911 4H24.8089L27.1111 6.30222V12.8889H25.3333V7.03111L24.08 5.77778H15.92Z" fill="currentColor"></path><path d="M34.2222 31.1911V12.8889H36V31.92L31.92 36H8.08L4 31.92V12.8889H5.77778V31.1911L8.80889 34.2222H31.1911L34.2222 31.1911Z" fill="currentColor"></path></svg>
-                                                            </div>
-                                                            <div class="sw-plp-qck-btn absolute bottom-[-30%] left-2 right-2 transition-all delay-75 duration-300 ease-in-out group-hover:bottom-2 max-lg:hidden">
-                                                                <button class="px-6 btn-transi bg-dark-deep text-light-cream body-regular 2xl:small-regular w-full py-2 uppercase tracking-[0.14px] 2xl:tracking-[0.24px] rounded-md">QUICK ADD</button>
-                                                            </div>
-                                                        </div>
-                                                        <div class="sw-plp-flx-6_content px-2 lg:px-4">
-                                                            <div class="small-medium lg:body-medium sw-plp-flx-4-lable mb-2 mt-3 flex items-center text-dark-deep max-lg:leading-[18px] lg:mt-4">ACTDRY® Hybrid Jacket - Black</div>
-                                                            <div class="flex-start flex-wrap gap-2 md:gap-4"><p class="small-semibold max-lg:subtle-medium text-dark-deep">$168.00</p></div>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <div class="w-8/12 flex-none pb-4 lg:w-1/2 lg:pb-16 lg:last:pb-0 lg:[&amp;:nth-last-child(2)]:pb-0">
-                                                <a class="relative block h-full w-full" href="https://squatwolf.com/products/actdry-pro-tee-black">
-                                                    <div>
-                                                        <div class="sw-plp-img group relative overflow-hidden outline outline-1 outline-dark-deep/10">
-                                                            <div class="tile-slider" style="background-color: var(--color-light-cream);">
-                                                                <img class="h-auto w-full flex-[0_0_100%]" src="pp_fichiers/f1_b715f632-9983-47c0-9381-36bf409b9a37.webp" alt="ACTDRY® Pro Tee - Black - f1_b715f632-9983-47c0-9381-36bf409b9a37" width="650" height="900">
-                                                            </div>
-                                                            <div class="flex-center p-1.5 border-transparent bg-secondary text-secondary-foreground sw-plp-badge subtle-semibold lg:small-semibold absolute bottom-1 left-1 px-3 py-1 uppercase lg:bottom-[unset] lg:left-2 lg:top-2">NEW DROP</div>
-                                                            <button aria-label="Wish List" class="sw-plp-wishlist-btn bg-light-cream/30 p-1 absolute right-2 top-2 rounded-full backdrop-blur-sm"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" stroke="#121212" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="svg h-4 w-4 cursor-pointer fill-dark-deep/50"><path d="M12 21s-6.5-4.3-10-9c-2.5-3.2-1.8-7.9 1.5-10.1 3.3-2.2 7.5-.7 8.5 2.6 1-3.3 5.2-4.8 8.5-2.6 3.3 2.2 4 6.9 1.5 10.1-3.5 4.7-10 9-10 9z"></path></svg></button>
-                                                            <div class="sw-plp-bag-icon absolute left-2 top-2 bg-light-cream/30 p-1 lg:hidden">
-                                                                <svg width="20" height="20" viewBox="0 0 40 40" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="svg h-4 w-4 text-dark-deep"><path d="M15.92 5.77778L14.6667 7.03111V12.8889H12.8889V6.30222L15.1911 4H24.8089L27.1111 6.30222V12.8889H25.3333V7.03111L24.08 5.77778H15.92Z" fill="currentColor"></path><path d="M34.2222 31.1911V12.8889H36V31.92L31.92 36H8.08L4 31.92V12.8889H5.77778V31.1911L8.80889 34.2222H31.1911L34.2222 31.1911Z" fill="currentColor"></path></svg>
-                                                            </div>
-                                                            <div class="sw-plp-qck-btn absolute bottom-[-30%] left-2 right-2 transition-all delay-75 duration-300 ease-in-out group-hover:bottom-2 max-lg:hidden">
-                                                                <button class="px-6 btn-transi bg-dark-deep text-light-cream body-regular 2xl:small-regular w-full py-2 uppercase tracking-[0.14px] 2xl:tracking-[0.24px] rounded-md">QUICK ADD</button>
-                                                            </div>
-                                                        </div>
-                                                        <div class="sw-plp-flx-6_content px-2 lg:px-4">
-                                                            <div class="small-medium lg:body-medium sw-plp-flx-4-lable mb-2 mt-3 flex items-center text-dark-deep max-lg:leading-[18px] lg:mt-4">ACTDRY® Pro Tee - Black</div>
-                                                            <div class="flex-start flex-wrap gap-2 md:gap-4"><p class="small-semibold max-lg:subtle-medium text-dark-deep">$72.00</p></div>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Vidéo de fond de la section (arrière-plan noir conservé pour le contraste) -->
-                                    <div class="flex w-full bg-dark-deep outline outline-1 outline-dark-deep/10 max-lg:mb-10 md:h-[100vh] lg:sticky lg:top-0 lg:w-1/2">
-                                        <video autoplay="autoplay" muted="muted" loop="" playsinline="" preload="none" poster="https://cdn.shopify.com/s/files/1/0618/9462/3460/files/Mix_2.jpg?v=1759227197" class="h-auto w-full object-cover">
-                                            <source data-src="pp_fichiers/20c74020044e4a5fb4ef6ef21cd47872.mp4" type="video/mp4" src="pp_fichiers/20c74020044e4a5fb4ef6ef21cd47872.mp4">Your browser does not support the video tag.
-                                        </video>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <span aria-hidden="true" id="headlessui-tabs-panel-«R2kgusfb»" role="tabpanel" tabindex="-1" style="position:fixed;top:1px;left:1px;width:1px;height:0;padding:0;margin:-1px;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border-width:0" aria-labelledby="headlessui-tabs-tab-«Racgusfb»"></span>
+                    <h4 class="text-sm font-bold uppercase mb-3">BOUTIQUE</h4>
+                    <ul class="text-xs space-y-2 text-light-cream/80">
+                        <li><a href="#">Hommes</a></li>
+                        <li><a href="#">Femmes</a></li>
+                        <li><a href="#">Accessoires</a></li>
+                        <li><a href="#">Nouveautés</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-sm font-bold uppercase mb-3">AIDE & SUPPORT</h4>
+                    <ul class="text-xs space-y-2 text-light-cream/80">
+                        <li><a href="#">Centre d'aide</a></li>
+                        <li><a href="#">Suivi de commande</a></li>
+                        <li><a href="#">Retours & Échanges</a></li>
+                        <li><a href="#">Contactez-nous</a></li>
+                    </ul>
+                </div>
+                <!-- Icons de paiement (sans logo complexe) -->
+                <div class="col-span-2 md:col-span-1">
+                    <h4 class="text-sm font-bold uppercase mb-3">PAIEMENT SÉCURISÉ</h4>
+                    <div class="flex flex-wrap gap-2 text-light-cream">
+                        <svg class="h-6 w-8 fill-current" viewBox="0 0 24 24"><path d="M21 4H3C1.89 4 1 4.89 1 6v12c0 1.11.89 2 2 2h18c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H3V8h18v10zm-11-2H6v-2h4v2zm7 0h-5v-2h5v2z"/></svg>
+                        <svg class="h-6 w-8 fill-current" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                        <svg class="h-6 w-8 fill-current" viewBox="0 0 24 24"><path d="M20 4H4C2.89 4 2 4.89 2 6v12c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4V8h16v10zM12 9c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0 8c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3z"/></svg>
                     </div>
                 </div>
             </div>
-        </section>
 
-        <!-- IN THE WILD -->
-        <div>
-            <section style="padding-top:0;padding-bottom:80px">
-                <div class="container px-6 lg:px-12 2xl:px-16">
-                    <h2 class="mb-6 text-2xl font-medium uppercase 2xl:mb-10 text-dark-deep">IN THE WILD</h2>
-                </div>
-                <div class="sw-shop-look-slider container relative px-6 max-lg:pr-0 lg:px-12 2xl:px-16 rtl:max-lg:pl-0 rtl:max-lg:pr-6">
-                    <div class="embla">
-                        <div class="embla__viewport is-loop is-draggable">
-                            <div class="embla__container" style="transform: translate3d(0px, 0px, 0px);">
-                                <!-- Les slides utilisent les nouvelles couleurs d'accentuation pour les boutons -->
-                                <div class="embla__slide is-snapped is-in-view" style="transform: translate3d(0px, 0px, 0px);">
-                                    <div class="relative">
-                                        <img src="pp_fichiers/IN_THE_WILD_0000_Generative_Fill_2.webp" alt="slide" class="h-auto w-full" style="background-color: var(--color-light-cream);" loading="lazy">
-                                        <button class="btn-transi flex-between small-regular absolute bottom-0 left-0 right-0 gap-2 btn-modern-cta px-4 py-2">
-                                            <span class="btn-txt text-nowrap uppercase">SHOP THE LOOK</span>
-                                            <svg class="btn-txt h-3 w-3 invert" width="40" height="40" viewBox="0 0 40 40" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M18 4H22V18H36V22H22V36H18V22H4V18H18V4Z" fill="currentColor"></path></svg>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="embla__slide is-in-view" style="transform: translate3d(0px, 0px, 0px);">
-                                    <div class="relative">
-                                        <img src="pp_fichiers/IN_THE_WILD_0005_0H6A1794.webp" alt="slide" class="h-auto w-full" style="background-color: var(--color-light-cream);" loading="lazy">
-                                        <button class="btn-transi flex-between small-regular absolute bottom-0 left-0 right-0 gap-2 btn-modern-cta px-4 py-2">
-                                            <span class="btn-txt text-nowrap uppercase">SHOP THE LOOK</span>
-                                            <svg class="btn-txt h-3 w-3 invert" width="40" height="40" viewBox="0 0 40 40" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M18 4H22V18H36V22H22V36H18V22H4V18H18V4Z" fill="currentColor"></path></svg>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="embla__slide is-in-view" style="transform: translate3d(0px, 0px, 0px);">
-                                    <div class="relative">
-                                        <img src="pp_fichiers/IN_THE_WILD_0001_0H6A1686.webp" alt="slide" class="h-auto w-full" style="background-color: var(--color-light-cream);" loading="lazy">
-                                        <button class="btn-transi flex-between small-regular absolute bottom-0 left-0 right-0 gap-2 btn-modern-cta px-4 py-2">
-                                            <span class="btn-txt text-nowrap uppercase">SHOP THE LOOK</span>
-                                            <svg class="btn-txt h-3 w-3 invert" width="40" height="40" viewBox="0 0 40 40" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M18 4H22V18H36V22H22V36H18V22H4V18H18V4Z" fill="currentColor"></path></svg>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="embla__slide is-in-view" style="transform: translate3d(0px, 0px, 0px);">
-                                    <div class="relative">
-                                        <img src="pp_fichiers/IN_THE_WILD_0006_625a6e05-ea7f-49af-9f6e-040b5ce651fa.webp" alt="slide" class="h-auto w-full" style="background-color: var(--color-light-cream);" loading="lazy">
-                                        <button class="btn-transi flex-between small-regular absolute bottom-0 left-0 right-0 gap-2 btn-modern-cta px-4 py-2">
-                                            <span class="btn-txt text-nowrap uppercase">SHOP THE LOOK</span>
-                                            <svg class="btn-txt h-3 w-3 invert" width="40" height="40" viewBox="0 0 40 40" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M18 4H22V18H36V22H22V36H18V22H4V18H18V4Z" fill="currentColor"></path></svg>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="embla__slide is-in-view">
-                                    <div class="relative">
-                                        <img src="pp_fichiers/IN_THE_WILD_0003_0H6A0726.webp" alt="slide" class="h-auto w-full" style="background-color: var(--color-light-cream);" loading="lazy">
-                                        <button class="btn-transi flex-between small-regular absolute bottom-0 left-0 right-0 gap-2 btn-modern-cta px-4 py-2">
-                                            <span class="btn-txt text-nowrap uppercase">SHOP THE LOOK</span>
-                                            <svg class="btn-txt h-3 w-3 invert" width="40" height="40" viewBox="0 0 40 40" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M18 4H22V18H36V22H22V36H18V22H4V18H18V4Z" fill="currentColor"></path></svg>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="embla__slide">
-                                    <div class="relative">
-                                        <img src="pp_fichiers/IN_THE_WILD_0004_Generative_Fill.webp" alt="slide" class="h-auto w-full" style="background-color: var(--color-light-cream);" loading="lazy">
-                                        <button class="btn-transi flex-between small-regular absolute bottom-0 left-0 right-0 gap-2 btn-modern-cta px-4 py-2">
-                                            <span class="btn-txt text-nowrap uppercase">SHOP THE LOOK</span>
-                                            <svg class="btn-txt h-3 w-3 invert" width="40" height="40" viewBox="0 0 40 40" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M18 4H22V18H36V22H22V36H18V22H4V18H18V4Z" fill="currentColor"></path></svg>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="embla__slide">
-                                    <div class="relative">
-                                        <img src="pp_fichiers/IN_THE_WILD_0002_0H6A9096.webp" alt="slide" class="h-auto w-full" style="background-color: var(--color-light-cream);" loading="lazy">
-                                        <button class="btn-transi flex-between small-regular absolute bottom-0 left-0 right-0 gap-2 btn-modern-cta px-4 py-2">
-                                            <span class="btn-txt text-nowrap uppercase">SHOP THE LOOK</span>
-                                            <svg class="btn-txt h-3 w-3 invert" width="40" height="40" viewBox="0 0 40 40" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M18 4H22V18H36V22H22V36H18V22H4V18H18V4Z" fill="currentColor"></path></svg>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Contrôles du slider (conservés) -->
-                        <div class="embla__controls">
-                            <div class="embla__buttons">
-                                <button class="embla__button embla__button--prev" type="button"><svg class="embla__button__svg" width="40" height="40" viewBox="0 0 40 40" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M8.71997 20L22.32 3L27.28 3L27.28 7L24.24 7L13.84 20L24.24 33L27.28 33L27.28 37L22.32 37L8.71997 20Z" fill="currentColor"></path></svg></button>
-                                <button class="embla__button embla__button--next" type="button"><svg class="embla__button__svg" width="40" height="40" viewBox="0 0 40 40" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M31.56 20L17.96 37L13 37L13 33L16.04 33L26.44 20L16.04 7L13 7L13 3L17.96 3L31.56 20Z" fill="currentColor"></path></svg></button>
-                            </div>
-                            <div class="embla__dots">
-                                <button type="button" class="embla__dot embla__dot--selected"></button><button type="button" class="embla__dot"></button><button type="button" class="embla__dot"></button><button type="button" class="embla__dot"></button><button type="button" class="embla__dot"></button><button type="button" class="embla__dot"></button><button type="button" class="embla__dot"></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-        <!-- POPULAR COLLECTIONS -->
-        <div>
-            <section class="popular-collections-sec" style="padding-bottom:80px">
-                <div class="container px-6 lg:px-12 2xl:px-16">
-                    <h2 class="h2-medium md:h1-medium mb-6 uppercase text-dark-deep lg:mb-8 2xl:mb-10">POPULAR COLLECTIONS</h2>
-                    <div class="flex gap-1 max-md:flex-wrap">
-                        <!-- Collection Card 1 -->
-                        <div class="basis-full md:basis-6/12 max-md:mb-5">
-                            <div class="relative aspect-[1/1] w-full group overflow-hidden rounded-lg">
-                                <img src="pp_fichiers/Medium.webp" alt="NEOTECH Collection" class="object-cover transition-transform duration-500 group-hover:scale-110 h-full w-full" style="background-color: var(--color-light-cream);">
-                                <div class="absolute inset-0 bg-gradient-to-b from-transparent to-dark-deep/50 rounded-lg"></div>
-                                <div class="absolute bottom-6 left-6 right-6 text-light-cream">
-                                    <p class="small-semibold uppercase text-light-cream"> // <!-- -->PERFORMANCE IS IN OUR NATURE</p>
-                                    <h3 class="h1-medium mb-2 uppercase">NEOTECH</h3>
-                                    <div class="flex flex-wrap gap-4">
-                                        <!-- Bouton en Noir Profond -->
-                                        <a class="btn-transi flex-center small-regular gap-2 bg-dark-deep p-3 uppercase text-light-cream rounded-md" href="https://squatwolf.com/collections/neotech-men">
-                                            <span class="btn-txt">SHOP MEN</span>
-                                            <svg class="h-3 w-3 rtl:scale-[-1]" width="40" height="40" viewBox="0 0 40 40" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="color:var(--color-light-cream)"><path d="M31.56 20L17.96 37L13 37L13 33L16.04 33L26.44 20L16.04 7L13 7L13 3L17.96 3L31.56 20Z" fill="currentColor"></path></svg>
-                                        </a>
-                                        <!-- Bouton en Blanc Cassé -->
-                                        <a class="btn-transi flex-center small-regular gap-2 bg-light-cream p-3 uppercase text-dark-deep rounded-md" href="https://squatwolf.com/collections/neotech-women">
-                                            <span class="btn-txt">SHOP WOMEN</span>
-                                            <svg class="h-3 w-3 rtl:scale-[-1]" width="40" height="40" viewBox="0 0 40 40" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="color:var(--color-dark-deep)"><path d="M31.56 20L17.96 37L13 37L13 33L16.04 33L26.44 20L16.04 7L13 7L13 3L17.96 3L31.56 20Z" fill="currentColor"></path></svg>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Collection Slider -->
-                        <div class="basis-full md:basis-6/12">
-                            <div class="relative h-full">
-                                <div class="embla">
-                                    <div class="embla__viewport is-loop is-draggable">
-                                        <div class="embla__container" style="transform: translate3d(0px, 0px, 0px);">
-                                            <!-- Slide 1: CORE -->
-                                            <div class="embla__slide is-snapped is-in-view" style="transform: translate3d(0px, 0px, 0px);">
-                                                <div class="relative aspect-[1/1] w-full group overflow-hidden rounded-lg">
-                                                    <img loading="lazy" src="pp_fichiers/1500x1500_b2276977-378f-42e8-8153-5c35b83afb48.webp" alt="CORE" class="object-cover transition-transform duration-500 group-hover:scale-110 h-full w-full" style="background-color: var(--color-light-cream);">
-                                                    <div class="absolute inset-0 bg-gradient-to-b from-transparent to-dark-deep/50 rounded-lg"></div>
-                                                    <div class="absolute bottom-6 left-6 right-6 text-light-cream">
-                                                        <p class="small-semibold uppercase text-light-cream"> // <!-- -->MADE TO BE SEEN</p>
-                                                        <h3 class="h1-medium mb-2 uppercase">CORE</h3>
-                                                        <div class="flex flex-wrap gap-4">
-                                                            <!-- Bouton en Noir Profond -->
-                                                            <a class="btn-transi flex-center small-regular gap-2 bg-dark-deep p-3 uppercase text-light-cream rounded-md" href="https://squatwolf.com/collections/core-men">
-                                                                <span class="btn-txt">SHOP MEN</span>
-                                                                <svg class="h-3 w-3 rtl:scale-[-1]" width="40" height="40" viewBox="0 0 40 40" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="color:var(--color-light-cream)"><path d="M31.56 20L17.96 37L13 37L13 33L16.04 33L26.44 20L16.04 7L13 7L13 3L17.96 3L31.56 20Z" fill="currentColor"></path></svg>
-                                                            </a>
-                                                            <!-- Bouton en Blanc Cassé -->
-                                                            <a class="btn-transi flex-center small-regular gap-2 bg-light-cream p-3 uppercase text-dark-deep rounded-md" href="https://squatwolf.com/collections/core-women">
-                                                                <span class="btn-txt">SHOP WOMEN</span>
-                                                                <svg class="h-3 w-3 rtl:scale-[-1]" width="40" height="40" viewBox="0 0 40 40" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="color:var(--color-dark-deep)"><path d="M31.56 20L17.96 37L13 37L13 33L16.04 33L26.44 20L16.04 7L13 7L13 3L17.96 3L31.56 20Z" fill="currentColor"></path></svg>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- Slide 2: LAB360° -->
-                                            <div class="embla__slide is-in-view" style="transform: translate3d(0px, 0px, 0px);">
-                                                <div class="relative aspect-[1/1] w-full group overflow-hidden rounded-lg">
-                                                    <img loading="lazy" src="pp_fichiers/7_1c1f71c7-bb51-43b0-a60a-25aa78ba7e51.webp" alt="LAB360°" class="object-cover transition-transform duration-500 group-hover:scale-110 h-full w-full" style="background-color: var(--color-light-cream);">
-                                                    <div class="absolute inset-0 bg-gradient-to-b from-transparent to-dark-deep/50 rounded-lg"></div>
-                                                    <div class="absolute bottom-6 left-6 right-6 text-light-cream">
-                                                        <p class="small-semibold uppercase text-light-cream"> // <!-- -->DRIES 3X FASTER</p>
-                                                        <h3 class="h1-medium mb-2 uppercase">LAB360°</h3>
-                                                        <div class="flex flex-wrap gap-4">
-                                                            <a class="btn-transi flex-center small-regular gap-2 bg-dark-deep p-3 uppercase text-light-cream rounded-md" href="https://squatwolf.com/collections/lab360-men">
-                                                                <span class="btn-txt">SHOP MEN</span>
-                                                                <svg class="h-3 w-3 rtl:scale-[-1]" width="40" height="40" viewBox="0 0 40 40" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="color:var(--color-light-cream)"><path d="M31.56 20L17.96 37L13 37L13 33L16.04 33L26.44 20L16.04 7L13 7L13 3L17.96 3L31.56 20Z" fill="currentColor"></path></svg>
-                                                            </a>
-                                                            <a class="btn-transi flex-center small-regular gap-2 bg-light-cream p-3 uppercase text-dark-deep rounded-md" href="https://squatwolf.com/collections/lab360-women">
-                                                                <span class="btn-txt">SHOP WOMEN</span>
-                                                                <svg class="h-3 w-3 rtl:scale-[-1]" width="40" height="40" viewBox="0 0 40 40" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="color:var(--color-dark-deep)"><path d="M31.56 20L17.96 37L13 37L13 33L16.04 33L26.44 20L16.04 7L13 7L13 3L17.96 3L31.56 20Z" fill="currentColor"></path></svg>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- Slide 3: AUTHENTIC -->
-                                            <div class="embla__slide is-in-view">
-                                                <div class="relative aspect-[1/1] w-full group overflow-hidden rounded-lg">
-                                                    <img loading="lazy" src="pp_fichiers/Mix.webp" alt="AUTHENTIC" class="object-cover transition-transform duration-500 group-hover:scale-110 h-full w-full" style="background-color: var(--color-light-cream);">
-                                                    <div class="absolute inset-0 bg-gradient-to-b from-transparent to-dark-deep/50 rounded-lg"></div>
-                                                    <div class="absolute bottom-6 left-6 right-6 text-light-cream">
-                                                        <p class="small-semibold uppercase text-light-cream"> // <!-- -->NEW COLLECTION DROP '25</p>
-                                                        <h3 class="h1-medium mb-2 uppercase">AUTHENTIC</h3>
-                                                        <div class="flex flex-wrap gap-4">
-                                                            <a class="btn-transi flex-center small-regular gap-2 bg-dark-deep p-3 uppercase text-light-cream rounded-md" href="https://squatwolf.com/collections/authentic-men">
-                                                                <span class="btn-txt">SHOP MEN</span>
-                                                                <svg class="h-3 w-3 rtl:scale-[-1]" width="40" height="40" viewBox="0 0 40 40" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="color:var(--color-light-cream)"><path d="M31.56 20L17.96 37L13 37L13 33L16.04 33L26.44 20L16.04 7L13 7L13 3L17.96 3L31.56 20Z" fill="currentColor"></path></svg>
-                                                            </a>
-                                                            <a class="btn-transi flex-center small-regular gap-2 bg-light-cream p-3 uppercase text-dark-deep rounded-md" href="https://squatwolf.com/collections/authentic-women">
-                                                                <span class="btn-txt">SHOP WOMEN</span>
-                                                                <svg class="h-3 w-3 rtl:scale-[-1]" width="40" height="40" viewBox="0 0 40 40" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="color:var(--color-dark-deep)"><path d="M31.56 20L17.96 37L13 37L13 33L16.04 33L26.44 20L16.04 7L13 7L13 3L17.96 3L31.56 20Z" fill="currentColor"></path></svg>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- Reste des slides conservées -->
-                                            <div class="embla__slide">
-                                                <div class="relative aspect-[1/1] w-full group overflow-hidden rounded-lg">
-                                                    <img loading="lazy" src="pp_fichiers/Mobile_WebApp_692x692_026c6988-63b6-48c7-96f6-5dc48898b1f1.webp" alt="BOXER TRUNKS" class="object-cover transition-transform duration-500 group-hover:scale-110 h-full w-full" style="background-color: var(--color-light-cream);">
-                                                    <div class="absolute inset-0 bg-gradient-to-b from-transparent to-dark-deep/50 rounded-lg"></div>
-                                                    <div class="absolute bottom-6 left-6 right-6 text-light-cream">
-                                                        <p class="small-semibold uppercase text-light-cream"> // <!-- -->INTRODUCING THE ALL NEW</p>
-                                                        <h3 class="h1-medium mb-2 uppercase">BOXER TRUNKS</h3>
-                                                        <div class="flex flex-wrap gap-4">
-                                                            <a class="btn-transi flex-center small-regular gap-2 bg-dark-deep p-3 uppercase text-light-cream rounded-md" href="https://squatwolf.com/collections/boxers">
-                                                                <span class="btn-txt">SHOP NOW</span>
-                                                                <svg class="h-3 w-3 rtl:scale-[-1]" width="40" height="40" viewBox="0 0 40 40" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="color:var(--color-light-cream)"><path d="M31.56 20L17.96 37L13 37L13 33L16.04 33L26.44 20L16.04 7L13 7L13 3L17.96 3L31.56 20Z" fill="currentColor"></path></svg>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="embla__slide">
-                                                <div class="relative aspect-[1/1] w-full group overflow-hidden rounded-lg">
-                                                    <img loading="lazy" src="pp_fichiers/Essential-AW25-Lookbook-Tile-Banner-Mobile.webp" alt="ESSENTIAL" class="object-cover transition-transform duration-500 group-hover:scale-110 h-full w-full" style="background-color: var(--color-light-cream);">
-                                                    <div class="absolute inset-0 bg-gradient-to-b from-transparent to-dark-deep/50 rounded-lg"></div>
-                                                    <div class="absolute bottom-6 left-6 right-6 text-light-cream">
-                                                        <p class="small-semibold uppercase text-light-cream"> // <!-- -->WHEREVER THE HUNT TAKES YOU</p>
-                                                        <h3 class="h1-medium mb-2 uppercase">ESSENTIAL</h3>
-                                                        <div class="flex flex-wrap gap-4">
-                                                            <a class="btn-transi flex-center small-regular gap-2 bg-dark-deep p-3 uppercase text-light-cream rounded-md" href="https://squatwolf.com/collections/essential-men">
-                                                                <span class="btn-txt">SHOP MEN</span>
-                                                                <svg class="h-3 w-3 rtl:scale-[-1]" width="40" height="40" viewBox="0 0 40 40" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="color:var(--color-light-cream)"><path d="M31.56 20L17.96 37L13 37L13 33L16.04 33L26.44 20L16.04 7L13 7L13 3L17.96 3L31.56 20Z" fill="currentColor"></path></svg>
-                                                            </a>
-                                                            <a class="btn-transi flex-center small-regular gap-2 bg-light-cream p-3 uppercase text-dark-deep rounded-md" href="https://squatwolf.com/collections/essential-women">
-                                                                <span class="btn-txt">SHOP WOMEN</span>
-                                                                <svg class="h-3 w-3 rtl:scale-[-1]" width="40" height="40" viewBox="0 0 40 40" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="color:var(--color-dark-deep)"><path d="M31.56 20L17.96 37L13 37L13 33L16.04 33L26.44 20L16.04 7L13 7L13 3L17.96 3L31.56 20Z" fill="currentColor"></path></svg>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Contrôles du slider (conservés) -->
-                                    <div class="embla__controls">
-                                        <div class="embla__buttons">
-                                            <button class="embla__button embla__button--prev" type="button"><svg class="embla__button__svg" width="40" height="40" viewBox="0 0 40 40" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M8.71997 20L22.32 3L27.28 3L27.28 7L24.24 7L13.84 20L24.24 33L27.28 33L27.28 37L22.32 37L8.71997 20Z" fill="currentColor"></path></svg></button>
-                                            <button class="embla__button embla__button--next" type="button"><svg class="embla__button__svg" width="40" height="40" viewBox="0 0 40 40" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M31.56 20L17.96 37L13 37L13 33L16.04 33L26.44 20L16.04 7L13 7L13 3L17.96 3L31.56 20Z" fill="currentColor"></path></svg></button>
-                                        </div>
-                                        <div class="embla__dots">
-                                            <button type="button" class="embla__dot embla__dot--selected"></button><button type="button" class="embla__dot"></button><button type="button" class="embla__dot"></button><button type="button" class="embla__dot"></button><button type="button" class="embla__dot"></button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-        <!-- FROM DUBAI TO THE WORLD SECTION (Couleur d'arrière-plan du texte adaptées) -->
-        <div>
-            <div class="relative">
-                <!-- Marquee (conservé) -->
-                <div class="marquee-section absolute top-4 z-10 w-full cursor-grab overflow-hidden whitespace-nowrap">
-                    <div class="embla">
-                        <div class="embla__viewport is-loop is-draggable">
-                            <div class="embla__container" style="transform: translate3d(323.37px, 0px, 0px);">
-                                <div class="embla__slide is-in-view" style="transform: translate3d(0px, 0px, 0px);"><div class="body-medium relative text-center uppercase tracking-[4px] text-light-cream rtl:tracking-[unset] rtl:max-md:text-wrap">ELEVATE THE HUMAN EXPERIENCE</div></div>
-                                <div class="embla__slide is-snapped is-in-view" style="transform: translate3d(0px, 0px, 0px);"><div class="body-medium relative text-center uppercase tracking-[4px] text-light-cream rtl:tracking-[unset] rtl:max-md:text-wrap"> UNLEASH COLLECTIVE GENIUS</div></div>
-                                <div class="embla__slide is-in-view" style="transform: translate3d(0px, 0px, 0px);"><div class="body-medium relative text-center uppercase tracking-[4px] text-light-cream rtl:tracking-[unset] rtl:max-md:text-wrap"> SIMPLIFY TO AMPLIFY</div></div>
-                                <div class="embla__slide is-in-view"><div class="body-medium relative text-center uppercase tracking-[4px] text-light-cream rtl:tracking-[unset] rtl:max-md:text-wrap"> ACT WITHOUT FEAR</div></div>
-                                <div class="embla__slide"><div class="body-medium relative text-center uppercase tracking-[4px] text-light-cream rtl:tracking-[unset] rtl:max-md:text-wrap"> LEAD THE PACK</div></div>
-                                <div class="embla__slide"><div class="body-medium relative text-center uppercase tracking-[4px] text-light-cream rtl:tracking-[unset] rtl:max-md:text-wrap">ELEVATE THE HUMAN EXPERIENCE</div></div>
-                                <div class="embla__slide"><div class="body-medium relative text-center uppercase tracking-[4px] text-light-cream rtl:tracking-[unset] rtl:max-md:text-wrap"> UNLEASH COLLECTIVE GENIUS</div></div>
-                                <div class="embla__slide"><div class="body-medium relative text-center uppercase tracking-[4px] text-light-cream rtl:tracking-[unset] rtl:max-md:text-wrap"> SIMPLIFY TO AMPLIFY</div></div>
-                                <div class="embla__slide"><div class="body-medium relative text-center uppercase tracking-[4px] text-light-cream rtl:tracking-[unset] rtl:max-md:text-wrap"> ACT WITHOUT FEAR</div></div>
-                                <div class="embla__slide"><div class="body-medium relative text-center uppercase tracking-[4px] text-light-cream rtl:tracking-[unset] rtl:max-md:text-wrap"> LEAD THE PACK</div></div>
-                                <div class="embla__slide"><div class="body-medium relative text-center uppercase tracking-[4px] text-light-cream rtl:tracking-[unset] rtl:max-md:text-wrap">ELEVATE THE HUMAN EXPERIENCE</div></div>
-                                <div class="embla__slide"><div class="body-medium relative text-center uppercase tracking-[4px] text-light-cream rtl:tracking-[unset] rtl:max-md:text-wrap"> UNLEASH COLLECTIVE GENIUS</div></div>
-                                <div class="embla__slide"><div class="body-medium relative text-center uppercase tracking-[4px] text-light-cream rtl:tracking-[unset] rtl:max-md:text-wrap"> SIMPLIFY TO AMPLIFY</div></div>
-                                <div class="embla__slide" style="transform: translate3d(0px, 0px, 0px);"><div class="body-medium relative text-center uppercase tracking-[4px] text-light-cream rtl:tracking-[unset] rtl:max-md:text-wrap"> ACT WITHOUT FEAR</div></div>
-                                <div class="embla__slide is-in-view" style="transform: translate3d(-5583px, 0px, 0px);"><div class="body-medium relative text-center uppercase tracking-[4px] text-light-cream rtl:tracking-[unset] rtl:max-md:text-wrap"> LEAD THE PACK</div></div>
-                            </div>
-                        </div>
-                        <div class="embla__controls">
-                            <div class="embla__buttons">
-                                <button class="embla__button embla__button--prev" type="button"><svg class="embla__button__svg" width="40" height="40" viewBox="0 0 40 40" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M8.71997 20L22.32 3L27.28 3L27.28 7L24.24 7L13.84 20L24.24 33L27.28 33L27.28 37L22.32 37L8.71997 20Z" fill="currentColor"></path></svg></button>
-                                <button class="embla__button embla__button--next" type="button"><svg class="embla__button__svg" width="40" height="40" viewBox="0 0 40 40" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M31.56 20L17.96 37L13 37L13 33L16.04 33L26.44 20L16.04 7L13 7L13 3L17.96 3L31.56 20Z" fill="currentColor"></path></svg></button>
-                            </div>
-                            <div class="embla__dots">
-                                <button type="button" class="embla__dot"></button><button type="button" class="embla__dot embla__dot--selected"></button><button type="button" class="embla__dot"></button><button type="button" class="embla__dot"></button><button type="button" class="embla__dot"></button><button type="button" class="embla__dot"></button><button type="button" class="embla__dot"></button><button type="button" class="embla__dot"></button><button type="button" class="embla__dot"></button><button type="button" class="embla__dot"></button><button type="button" class="embla__dot"></button><button type="button" class="embla__dot"></button><button type="button" class="embla__dot"></button><button type="button" class="embla__dot"></button><button type="button" class="embla__dot"></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Image de fond (conservée) -->
-                <div class="sticky top-10 h-screen w-full">
-                    <img alt="FROM DUBAI TO THE WORLD" loading="lazy" decoding="async" data-nimg="fill" class="h-auto w-full object-cover object-top" style="position:absolute;height:100%;width:100%;left:0;top:0;right:0;bottom:0;color:transparent" src="pp_fichiers/1_75.webp">
-                </div>
-                <!-- Texte d'introduction (couleurs adaptées) -->
-                <div class="container relative w-full bg-gradient-to-b from-[rgba(18,18,18,0)] via-[rgba(18,18,18,0.8)] to-[rgba(18,18,18,0.8)] px-6 text-light-cream lg:px-12 2xl:px-16" style="background-blend-mode:multiply">
-                    <div class="mb-16 flex flex-wrap items-end justify-between gap-6">
-                        <h2 class="max-w-[70%] text-7xl font-medium uppercase md:font-semibold lg:text-[160px] 2xl:text-[200px] rtl:max-w-[900px] rtl:!font-bukraCond">FROM DUBAI TO THE WORLD</h2>
-                    </div>
-                    <div class="flex-center w-full gap-6 rtl:flex-row-reverse opacity-30 max-md:gap-[6px]">
-                        <div class="basis-[8px] relative h-4"><span class="h-full w-[1px] border-l border-dark-deep/50 absolute top-0 bottom-0 left-0"></span><span class="h-[1px] w-full border-b border-dark-deep/50 absolute top-0 bottom-0 left-0 right-0 m-auto"></span></div>
-                        <div class="flex-1 border-b border-dark-deep/50"></div>
-                        <div class="basis-[8px] relative h-4"><span class="h-full w-[1px] border-r border-dark-deep/50 absolute top-0 bottom-0 right-0"></span><span class="h-[1px] w-full border-b border-dark-deep/50 absolute top-0 bottom-0 left-0 right-0 m-auto"></span></div>
-                    </div>
-                    <div class="flex-end py-8 lg:pb-28 lg:pt-16 2xl:pb-40">
-                        <div class="lg:w-1/2">
-                            <div class="pb-12 max-sm:text-[14px] lg:text-base 2xl:text-xl">From
- a small apartment in Dubai to a global stage. This is how SQUATWOLF was
- built.
-What made Anam and Wajdan different wasn’t just their vision of building
- the first global apparel brand from the Middle East — it was their 
-willingness to risk everything to make it real.
-No investors. No industry experience. No playbook.
-Just belief, grit, and an obsession with building something that truly 
-mattered.
-Their apartment became their warehouse. Their dining table, a desk. 
-Their weekends, warehouse runs and customer support.
-They weren’t just building gymwear.
-They were building a brand for people who live with purpose. Who train 
-through the hard days. Who push forward even when it’s easier to quit.
-If you wear SQUATWOLF, you’re part of that story.
-You're not just buying into a brand, you're backing a legacy in the 
-making.
-Watch the Founders' Docu-Series. All 4 episodes now live.</div>
-                            <div class="flex flex-wrap gap-3">
-                                <!-- Bouton en Rouge Énergétique -->
-                                <a href="https://squatwolf.com/pages/our-story">
-                                    <button class="btn-transi flex-center body-regular btn-modern-cta px-6 py-4 uppercase max-md:w-full" style="word-spacing:10px">
-                                        <span class="btn-txt">UNCOVER THE STORY</span>
-                                        <svg class="h-4 w-4 rtl:scale-[-1]" width="40" height="40" viewBox="0 0 40 40" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M31.56 20L17.96 37L13 37L13 33L16.04 33L26.44 20L16.04 7L13 7L13 3L17.96 3L31.56 20Z" fill="currentColor"></path></svg>
-                                    </button>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+            <!-- MENTIONS LÉGALES ET COPYRIGHT -->
+            <div class="text-center pt-8 border-t border-light-cream/30">
+                <p class="text-xs uppercase text-light-cream/80 mb-2">© 2025 SQUATWOLF. | Conditions Générales | Politique de Confidentialité</p>
+                <div class="flex justify-center space-x-4 mt-2">
+                    <a href="#" class="text-light-cream/80 hover:text-light-cream">Instagram</a>
+                    <a href="#" class="text-light-cream/80 hover:text-light-cream">TikTok</a>
+                    <a href="#" class="text-light-cream/80 hover:text-light-cream">YouTube</a>
                 </div>
             </div>
         </div>
-
-        <!-- Section de Séparation -->
-        <div class="flex-center w-full gap-6 rtl:flex-row-reverse container px-6 lg:px-12 2xl:px-16" style="padding-top:80px;padding-bottom:80px">
-            <div class="basis-[8px] relative h-4"><span class="h-full w-[1px] border-l border-dark-deep/10 absolute top-0 bottom-0 left-0"></span><span class="h-[1px] w-full border-b border-dark-deep/10 absolute top-0 bottom-0 left-0 right-0 m-auto"></span></div>
-            <div class="flex-1 border-b border-dark-deep/10"></div>
-            <div class="basis-[8px] relative h-4"><span class="h-full w-[1px] border-r border-dark-deep/10 absolute top-0 bottom-0 right-0"></span><span class="h-[1px] w-full border-b border-dark-deep/10 absolute top-0 bottom-0 left-0 right-0 m-auto"></span></div>
-        </div>
-
-        <!-- STAY UP TO DATE SECTION -->
-        <div>
-            <section style="padding-top:0;padding-bottom:96px">
-                <div class="container px-6 max-lg:px-0 lg:px-12 2xl:px-16">
-                    <h2 class="h2-medium 2xl:h1-medium mb-6 uppercase text-dark-deep max-lg:px-6">STAY UP TO DATE</h2>
-                    <div class="flex max-md:no-scrollbar gap-6 max-lg:px-6 max-md:overflow-x-scroll">
-                        <!-- Card 1: Our App -->
-                        <div class="basis-1/3 max-md:w-9/12 max-md:flex-none">
-                            <a class="relative block w-full group" href="https://squatwolf.com/pages/app-download">
-                                <div class="relative w-full overflow-hidden rounded-lg">
-                                    <div class="absolute left-0 top-0 w-0 h-0 border-t-[5px] border-t-dark-deep border-r-[5px] border-r-transparent"></div>
-                                    <div class="absolute right-0 top-0 h-0 w-0 border-t-[5px] border-t-dark-deep border-l-[5px] border-l-transparent"></div>
-                                    <!-- Contenu avec couleurs inversées et coin plus net -->
-                                    <div class="bg-dark-deep p-6 text-light-cream">
-                                        <p class="h3-semibold 2xl:h3-semibold mb-4 uppercase rtl:font-bukracondSemi">Our App</p>
-                                        <p class="max-w-[95%] text-[12px] text-light-cream/80 md:text-[14px] min-h-40 lg:min-h-32">The
- SQUATWOLF App puts the pack’s best right at your fingertips. Early 
-access to drops? Check. VIP deals? You got it. A seamless, no-fuss 
-experience? Always.</p>
-                                        <!-- Bouton en Rouge Énergétique -->
-                                        <button class="flex btn-modern-cta p-1 mt-4">
-                                            <svg class="h-4 w-4" width="40" height="40" viewBox="0 0 40 40" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M31.56 20L17.96 37L13 37L13 33L16.04 33L26.44 20L16.04 7L13 7L13 3L17.96 3L31.56 20Z" fill="currentColor"></path></svg>
-                                        </button>
-                                    </div>
-                                    <div style="background-color: var(--color-light-cream);">
-                                        <img src="pp_fichiers/Our_App_-_Stay_Up_To_Date_-_2000x2000_3503a777-71a1-474b-a10.jpg" alt="Our App" width="581" height="581" class="h-auto w-full" loading="lazy">
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <!-- Card 2: STORES -->
-                        <div class="basis-1/3 max-md:w-9/12 max-md:flex-none">
-                            <a class="relative block w-full group" href="https://squatwolf.com/pages/retail-store">
-                                <div class="relative w-full overflow-hidden rounded-lg">
-                                    <div class="absolute left-0 top-0 w-0 h-0 border-t-[5px] border-t-dark-deep border-r-[5px] border-r-transparent"></div>
-                                    <div class="absolute right-0 top-0 h-0 w-0 border-t-[5px] border-t-dark-deep border-l-[5px] border-l-transparent"></div>
-                                    <div class="bg-dark-deep p-6 text-light-cream">
-                                        <p class="h3-semibold 2xl:h3-semibold mb-4 uppercase rtl:font-bukracondSemi">STORES</p>
-                                        <p class="max-w-[95%] text-[12px] text-light-cream/80 md:text-[14px] min-h-40 lg:min-h-32">Visit
- a SQUATWOLF store in Dubai or one of our partner stores across the GCC.
- Get hands-on with our premium gym wear, test the fit, and feel the 
-difference in p ...</p>
-                                        <button class="flex btn-modern-cta p-1 mt-4">
-                                            <svg class="h-4 w-4" width="40" height="40" viewBox="0 0 40 40" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M31.56 20L17.96 37L13 37L13 33L16.04 33L26.44 20L16.04 7L13 7L13 3L17.96 3L31.56 20Z" fill="currentColor"></path></svg>
-                                        </button>
-                                    </div>
-                                    <div style="background-color: var(--color-light-cream);">
-                                        <img src="pp_fichiers/Store_Image-1x1.webp" alt="STORES" width="581" height="581" class="h-auto w-full" loading="lazy">
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <!-- Card 3: PACKVIP -->
-                        <div class="basis-1/3 max-md:w-9/12 max-md:flex-none">
-                            <a class="relative block w-full group" href="https://squatwolf.com/pages/packvip">
-                                <div class="relative w-full overflow-hidden rounded-lg">
-                                    <div class="absolute left-0 top-0 w-0 h-0 border-t-[5px] border-t-dark-deep border-r-[5px] border-r-transparent"></div>
-                                    <div class="absolute right-0 top-0 h-0 w-0 border-t-[5px] border-t-dark-deep border-l-[5px] border-l-transparent"></div>
-                                    <div class="bg-dark-deep p-6 text-light-cream">
-                                        <p class="h3-semibold 2xl:h3-semibold mb-4 uppercase rtl:font-bukracondSemi">PACKVIP</p>
-                                        <p class="max-w-[95%] text-[12px] text-light-cream/80 md:text-[14px] min-h-40 lg:min-h-32">Join PACKVIP and get rewarded while you shop. You'll get 150 points for signing up. What are you waiting for?</p>
-                                        <button class="flex btn-modern-cta p-1 mt-4">
-                                            <svg class="h-4 w-4" width="40" height="40" viewBox="0 0 40 40" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M31.56 20L17.96 37L13 37L13 33L16.04 33L26.44 20L16.04 7L13 7L13 3L17.96 3L31.56 20Z" fill="currentColor"></path></svg>
-                                        </button>
-                                    </div>
-                                    <div style="background-color: var(--color-light-cream);">
-                                        <img src="pp_fichiers/PACK_VIP-1x1.webp" alt="PACKVIP" width="581" height="581" class="h-auto w-full" loading="lazy">
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-        <!-- FOOTER: Conserve le fond sombre mais adapte les boutons pour la cohérence -->
-        </main>
-        <footer class="ob-sec-view-2 clear-both bg-dark-deep">
-            <div class="relative z-10 bg-dark-deep">
-                <section class="py-12 2xl:py-16">
-                    <div class="container px-6 lg:px-12 2xl:px-16">
-                        <div class="flex flex-col justify-between gap-10 md:flex-row md:gap-12 2xl:gap-16">
-                            <div class="flex basis-9/12 flex-col justify-between gap-8 md:gap-12 2xl:gap-16">
-                                <h1 class="text-[48px] leading-[48px] text-light-cream md:text-[72px] md:leading-[72px] lg:max-w-[50%] 2xl:text-[96px] 2xl:leading-[96px]">BECOME A PART OF THE PACK</h1>
-                                <div class="flex flex-col gap-4 sm:flex-row">
-                                    <!-- Bouton 1: JOIN PACKVIP (Rouge Énergétique sur Fond Noir Profond) -->
-                                    <a class="btn-transi flex flex-1 items-center justify-between rounded btn-modern-cta px-6 py-4" href="https://squatwolf.com/pages/packvip" style="background-color:var(--color-accent-red); color:var(--color-light-cream)">
-                                        <h3 class="btn-txt body-regular font-azaretmono rtl:font-notokufiarabic">JOIN PACKVIP</h3>
-                                        <svg class="h-4 w-4 rtl:scale-[-1]" width="40" height="40" viewBox="0 0 40 40" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M31.56 20L17.96 37L13 37L13 33L16.04 33L26.44 20L16.04 7L13 7L13 3L17.96 3L31.56 20Z" fill="currentColor"></path></svg>
-                                    </a>
-                                    <!-- Bouton 2: JOIN OUR NEWSLETTER (Noir Profond sur Fond Blanc Cassé) -->
-                                    <button class="btn-transi flex flex-1 items-center justify-between rounded bg-light-cream px-6 py-4 text-dark-deep">
-                                        <h3 class="btn-txt body-regular font-azaretmono rtl:font-notokufiarabic">JOIN OUR NEWSLETTER</h3>
-                                        <svg class="h-4 w-4 rtl:scale-[-1]" width="40" height="40" viewBox="0 0 40 40" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M31.56 20L17.96 37L13 37L13 33L16.04 33L26.44 20L16.04 7L13 7L13 3L17.96 3L31.56 20Z" fill="currentColor"></path></svg>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="basis-3/12">
-                                <img src="pp_fichiers/Footer_Image_1.jpg" alt="Runner in nature" width="430" height="276" class="h-full w-full object-cover rounded-lg">
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <div class="flex-center gap-14 border-y border-dark-deep/30 py-3">
-                    <div class="flex-center gap-2"><span><svg class="h-4 w-4 text-light-cream" width="40" height="40" viewBox="0 0 40 40" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M10.5888 36.9888L9.21943 36.044L9.42484 35.2342L12.5174 25.4717L11.73 23.0648L3 16.564L3.53635 15.0344L4.36942 14.9894H14.2064L16.329 13.4486L19.6384 3H21.3159L21.6241 3.7873L24.6938 13.4486L26.8164 14.9894H37.4636L38 16.519L37.3495 17.0589L29.2814 23.0648L28.494 25.4717L31.8376 36.0215L30.4682 36.9663L29.7607 36.5051L21.8295 30.6004H19.1591L10.566 37L10.5888 36.9888ZM18.4173 28.351H22.6169L28.3913 32.6474L26.1089 25.4717L27.33 21.7152L33.3212 17.2501H26.0518L22.731 14.8432L20.5057 7.82501L18.2804 14.8432L14.9596 17.2501H7.69025L13.6814 21.7152L14.9025 25.4717L12.6201 32.6474L18.3945 28.351H18.4173Z" fill="currentColor"></path></svg></span><span class="small-regular uppercase text-light-cream">5 star service</span></div>
-                    <div class="flex-center gap-2"><span><svg viewBox="0 0 40 40" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-light-cream"><path d="M25.29 5H4V35.93H36V5H25.29ZM23.29 7V17.86H16.72V7H23.29ZM34 33.92H6V7H14.71V19.86H25.28V7H33.99V33.93L34 33.92Z" fill="currentColor"></path></svg></span><span class="small-regular uppercase text-light-cream">fast delivery</span></div>
-                    <div class="flex-center gap-2"><span><svg class="h-4 w-4 text-light-cream" width="40" height="40" viewBox="0 0 40 40" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M9 6.46V3L2 7.67L9 12.34V8.46H33V34.46H7V16.46H5V36.46H35V6.46H9Z" fill="currentColor"></path></svg></span><span class="small-regular uppercase text-light-cream">effortless returns</span></div>
-                </div>
-                <section class="py-12 2xl:py-16">
-                    <div class="container px-6 lg:px-12 2xl:px-16">
-                        <div class="flex flex-col gap-12 md:flex-row">
-                            <div class="basis-9/12">
-                                <div class="flex gap-4 max-md:hidden 2xl:gap-6">
-                                    <div class="basis-[20%]"><p class="font-barlow paragraph-medium mb-4 uppercase text-light-cream 2xl:mb-8 rtl:font-bukracondSemi">SHOP NOW</p><ul class="flex flex-col gap-2"><li><a class="small-medium 2xl:body-medium text-light-cream/80" event_type="dh_footer_interaction" selected_interaction="Men" href="https://squatwolf.com/collections/gym-wear-men">Men</a></li><li><a class="small-medium 2xl:body-medium text-light-cream/80" event_type="dh_footer_interaction" selected_interaction="Women" href="https://squatwolf.com/collections/workout-clothes-women">Women</a></li><li><a class="small-medium 2xl:body-medium text-light-cream/80" event_type="dh_footer_interaction" selected_interaction="Accessories" href="https://squatwolf.com/collections/accessories">Accessories</a></li><li><a class="small-medium 2xl:body-medium text-light-cream/80" event_type="dh_footer_interaction" selected_interaction="T-shirts Men" href="https://squatwolf.com/collections/gym-tshirts-men">T-shirts Men</a></li><li><a class="small-medium 2xl:body-medium text-light-cream/80" event_type="dh_footer_interaction" selected_interaction="Gym Shorts Men" href="https://squatwolf.com/collections/gym-shorts-men">Gym Shorts Men</a></li><li><a class="small-medium 2xl:body-medium text-light-cream/80" event_type="dh_footer_interaction" selected_interaction="Sports Bras" href="https://squatwolf.com/collections/sports-bra-women">Sports Bras</a></li><li><a class="small-medium 2xl:body-medium text-light-cream/80" event_type="dh_footer_interaction" selected_interaction="Leggings" href="https://squatwolf.com/collections/workout-leggings-women">Leggings</a></li><li><a class="small-medium 2xl:body-medium text-light-cream/80" event_type="dh_footer_interaction" selected_interaction="Modest Workout Clothes" href="https://squatwolf.com/collections/modest-workout-clothes">Modest Workout Clothes</a></li></ul></div>
-                                    <div class="basis-[20%]"><p class="font-barlow paragraph-medium mb-4 uppercase text-light-cream 2xl:mb-8 rtl:font-bukracondSemi">SUPPORT</p><ul class="flex flex-col gap-2"><li><a class="small-medium 2xl:body-medium text-light-cream/80" event_type="dh_footer_interaction" selected_interaction="Help Centre" href="https://squatwolf.com/pages/overview">Help Centre</a></li><li><a target="_blank" class="small-medium 2xl:body-medium text-light-cream/80" event_type="dh_footer_interaction" selected_interaction="Track My order" href="https://squatwolf.aftership.com/">Track My order</a></li><li><a class="small-medium 2xl:body-medium text-light-cream/80" event_type="dh_footer_interaction" selected_interaction="Shipping &amp; Delivery" href="https://squatwolf.com/pages/shipping-and-delivery">Shipping &amp; Delivery</a></li><li><a class="small-medium 2xl:body-medium text-light-cream/80" event_type="dh_footer_interaction" selected_interaction="Returns &amp; Exchanges" href="https://squatwolf.com/pages/returns-exchanges">Returns &amp; Exchanges</a></li><li><a class="small-medium 2xl:body-medium text-light-cream/80" event_type="dh_footer_interaction" selected_interaction="FAQs" href="https://squatwolf.com/pages/frequently-asked-questions">FAQs</a></li><li><a class="small-medium 2xl:body-medium text-light-cream/80" event_type="dh_footer_interaction" selected_interaction="Contact Us" href="https://squatwolf.com/pages/contact-us">Contact Us</a></li><li><a class="small-medium 2xl:body-medium text-light-cream/80" event_type="dh_footer_interaction" selected_interaction="Store Locator" href="https://squatwolf.com/pages/retail-store">Store Locator</a></li></ul></div>
-                                    <div class="basis-[20%]"><p class="font-barlow paragraph-medium mb-4 uppercase text-light-cream 2xl:mb-8 rtl:font-bukracondSemi">RESOURCES</p><ul class="flex flex-col gap-2"><li><a class="small-medium 2xl:body-medium text-light-cream/80" event_type="dh_footer_interaction" selected_interaction="Our Story" href="https://squatwolf.com/pages/our-story">Our Story</a></li><li><a class="small-medium 2xl:body-medium text-light-cream/80" event_type="dh_footer_interaction" selected_interaction="Be Our Influencer" href="https://squatwolf.com/pages/be-our-influencer">Be Our Influencer</a></li><li><a class="small-medium 2xl:body-medium text-light-cream/80" event_type="dh_footer_interaction" selected_interaction="PackVIP - Loyalty Program" href="https://squatwolf.com/pages/packvip">PackVIP - Loyalty Program</a></li><li><a class="small-medium 2xl:body-medium text-light-cream/80" event_type="dh_footer_interaction" selected_interaction="Our Blog" href="https://squatwolf.com/pages/blogs">Our Blog</a></li><li><a class="small-medium 2xl:body-medium text-light-cream/80" event_type="dh_footer_interaction" selected_interaction="Brand Partnerships" href="https://squatwolf.com/pages/brand-partnerships">Brand Partnerships</a></li><li><a class="small-medium 2xl:body-medium text-light-cream/80" event_type="dh_footer_interaction" selected_interaction="Wholesale" href="https://squatwolf.com/pages/resellers">Wholesale</a></li><li><a class="small-medium 2xl:body-medium text-light-cream/80" event_type="dh_footer_interaction" selected_interaction="Uniforms" href="https://squatwolf.com/pages/uniforms">Uniforms</a></li></ul></div>
-                                    <div class="basis-[20%]"><p class="font-barlow paragraph-medium mb-4 uppercase text-light-cream 2xl:mb-8 rtl:font-bukracondSemi">SOCIAL</p><ul class="flex flex-col gap-2"><li><a target="_blank" class="small-medium 2xl:body-medium text-light-cream/80" event_type="dh_footer_interaction" selected_interaction="Instagram" href="https://www.instagram.com/squatwolf">Instagram</a></li><li><a target="_blank" class="small-medium 2xl:body-medium text-light-cream/80" event_type="dh_footer_interaction" selected_interaction="TikTok" href="https://www.tiktok.com/@squatwolf">TikTok</a></li><li><a target="_blank" class="small-medium 2xl:body-medium text-light-cream/80" event_type="dh_footer_interaction" selected_interaction="YouTube" href="https://www.youtube.com/squatwolf">YouTube</a></li><li><a target="_blank" class="small-medium 2xl:body-medium text-light-cream/80" event_type="dh_footer_interaction" selected_interaction="LinkedIn" href="https://www.linkedin.com/company/squat-wolf/">LinkedIn</a></li></ul></div>
-                                </div>
-                                <div class="md:hidden">
-                                    <div class="border-b-2 border-dark-deep/30" data-headlessui-state="open" data-open=""><button class="body-regular font-azaretmono group flex w-full items-center justify-between py-4 uppercase text-light-cream" id="headlessui-disclosure-button-«R4qbefb»" type="button" aria-expanded="true" data-headlessui-state="open" data-open="" aria-controls="headlessui-disclosure-panel-«R8qbefb»">SHOP NOW<svg class="h-4 w-4 fill-white/60 group-data-[open]:rotate-180 group-data-[hover]:fill-white/50" width="40" height="40" viewBox="0 0 40 40" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M20 30.56L3 16.96V12H7V15.04L20 25.44L33 15.04V12H37V16.96L20 30.56Z" fill="currentColor"></path></svg></button><div class="mt-2 pb-6 text-sm/5 text-white/50 duration-200 ease-in-out data-[closed]:-translate-y-6 data-[closed]:opacity-0" id="headlessui-disclosure-panel-«R8qbefb»" data-headlessui-state="open" data-open="" style=""><ul class="flex flex-col gap-2"><li><a class="small-medium 2xl:body-medium text-light-cream/80" event_type="dh_footer_interaction" selected_interaction="Men" href="https://squatwolf.com/collections/gym-wear-men">Men</a></li><li><a class="small-medium 2xl:body-medium text-light-cream/80" event_type="dh_footer_interaction" selected_interaction="Women" href="https://squatwolf.com/collections/workout-clothes-women">Women</a></li><li><a class="small-medium 2xl:body-medium text-light-cream/80" event_type="dh_footer_interaction" selected_interaction="Accessories" href="https://squatwolf.com/collections/accessories">Accessories</a></li><li><a class="small-medium 2xl:body-medium text-light-cream/80" event_type="dh_footer_interaction" selected_interaction="T-shirts Men" href="https://squatwolf.com/collections/gym-tshirts-men">T-shirts Men</a></li><li><a class="small-medium 2xl:body-medium text-light-cream/80" event_type="dh_footer_interaction" selected_interaction="Gym Shorts Men" href="https://squatwolf.com/collections/gym-shorts-men">Gym Shorts Men</a></li><li><a class="small-medium 2xl:body-medium text-light-cream/80" event_type="dh_footer_interaction" selected_interaction="Sports Bras" href="https://squatwolf.com/collections/sports-bra-women">Sports Bras</a></li><li><a class="small-medium 2xl:body-medium text-light-cream/80" event_type="dh_footer_interaction" selected_interaction="Leggings" href="https://squatwolf.com/collections/workout-leggings-women">Leggings</a></li><li><a class="small-medium 2xl:body-medium text-light-cream/80" event_type="dh_footer_interaction" selected_interaction="Modest Workout Clothes" href="https://squatwolf.com/collections/modest-workout-clothes">Modest Workout Clothes</a></li></ul></div></div>
-                                    <div class="border-b-2 border-dark-deep/30" data-headlessui-state=""><button class="body-regular font-azaretmono group flex w-full items-center justify-between py-4 uppercase text-light-cream" id="headlessui-disclosure-button-«R5abefb»" type="button" aria-expanded="false" data-headlessui-state="">SUPPORT<svg class="h-4 w-4 fill-white/60 group-data-[open]:rotate-180 group-data-[hover]:fill-white/50" width="40" height="40" viewBox="0 0 40 40" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M20 30.56L3 16.96V12H7V15.04L20 25.44L33 15.04V12H37V16.96L20 30.56Z" fill="currentColor"></path></svg></button></div>
-                                    <div class="border-b-2 border-dark-deep/30" data-headlessui-state=""><button class="body-regular font-azaretmono group flex w-full items-center justify-between py-4 uppercase text-light-cream" id="headlessui-disclosure-button-«R5qbefb»" type="button" aria-expanded="false" data-headlessui-state="">RESOURCES<svg class="h-4 w-4 fill-white/60 group-data-[open]:rotate-180 group-data-[hover]:fill-white/50" width="40" height="40" viewBox="0 0 40 40" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M20 30.56L3 16.96V12H7V15.04L20 25.44L33 15.04V12H37V16.96L20 30.56Z" fill="currentColor"></path></svg></button></div>
-                                    <div class="border-b-2 border-dark-deep/30" data-headlessui-state=""><button class="body-regular font-azaretmono group flex w-full items-center justify-between py-4 uppercase text-light-cream" id="headlessui-disclosure-button-«R6abefb»" type="button" aria-expanded="false" data-headlessui-state="">SOCIAL<svg class="h-4 w-4 fill-white/60 group-data-[open]:rotate-180 group-data-[hover]:fill-white/50" width="40" height="40" viewBox="0 0 40 40" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M20 30.56L3 16.96V12H7V15.04L20 25.44L33 15.04V12H37V16.96L20 30.56Z" fill="currentColor"></path></svg></button></div>
-                                </div>
-                            </div>
-                            <div class="flex basis-3/12 flex-col">
-                                <div class="flex-between mt-auto gap-4 rounded-lg bg-dark-deep/80 p-5 max-lg:flex-col-reverse max-lg:items-start max-md:hidden">
-                                    <div class="basis-[60%] space-y-2">
-                                        <p class="paragraph-semibold 2xl:h3-semibold font-barlow text-light-cream rtl:font-bukracondSemi">DOWNLOAD OUR APP</p>
-                                        <p class="desc-medium text-light-cream/80">Early drops, perks and a smooth, no-fuss shopping experience—all in one place.</p>
-                                    </div>
-                                    <div class="basis-[30%] 2xl:basis-[20%]">
-                                        <img alt="Download app QR code" width="96" height="96" decoding="async" data-nimg="1" class="h-auto w-full object-contain" style="color:transparent" srcset="pp_fichiers/image_002.avif 1x, pp_fichiers/image.avif 2x" src="pp_fichiers/image.avif">
-                                    </div>
-                                </div>
-                                <div class="md:hidden">
-                                    <div class="flex-between gap-4 bg-dark-deep/80 px-6 py-4 rounded-lg">
-                                        <h2 class="body-regular font-azaretmono text-light-cream">DOWNLOAD OUR APP</h2>
-                                        <svg class="h-4 w-4 text-light-cream" width="40" height="40" viewBox="0 0 40 40" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M31.56 20L17.96 37L13 37L13 33L16.04 33L26.44 20L16.04 7L13 7L13 3L17.96 3L31.56 20Z" fill="currentColor"></path></svg>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <!-- Liens de paiement et sélecteurs de devise/langue -->
-                <section class="py-4 md:border-t md:border-dark-deep/30">
-                    <div class="container px-6 lg:px-12 2xl:px-16">
-                        <div class="md:flex-between flex flex-col-reverse gap-4 md:flex-row">
-                            <div>
-                                <ul class="flex-center gap-2">
-                                    <!-- Icônes de cartes de crédit (fill noir pour le contraste) -->
-                                    <li class="inline-flex items-center"><svg class="h-auto inline-flex w-[30px] text-light-cream" width="29" height="20" viewBox="0 0 29 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><rect x="0.5" y="0.5" width="28" height="19" rx="2" fill="white" stroke="#D9D9D9"></rect><path fill-rule="evenodd" clip-rule="evenodd" d="M8.85646 13.5499H7.09963L5.78221 8.49504C5.71968 8.26251 5.58691 8.05694 5.39161 7.96006C4.90422 7.71658 4.36715 7.52281 3.78125 7.42508V7.23047H6.61138C7.00198 7.23047 7.29493 7.52281 7.34375 7.86233L8.0273 11.5086L9.78328 7.23047H11.4913L8.85646 13.5499ZM12.4717 13.5499H10.8125L12.1787 7.23047H13.8379L12.4717 13.5499ZM15.9864 8.98041C16.0352 8.64005 16.3282 8.44544 16.67 8.44544C17.207 8.39657 17.7921 8.4943 18.2803 8.73694L18.5733 7.37633C18.085 7.18171 17.5479 7.08398 17.0606 7.08398C15.4502 7.08398 14.2784 7.95932 14.2784 9.17418C14.2784 10.0984 15.1084 10.5837 15.6943 10.876C16.3282 11.1675 16.5723 11.3621 16.5235 11.6536C16.5235 12.0909 16.0352 12.2855 15.5478 12.2855C14.9619 12.2855 14.376 12.1397 13.8398 11.8962L13.5469 13.2577C14.1328 13.5003 14.7666 13.5981 15.3525 13.5981C17.1582 13.6461 18.2803 12.7716 18.2803 11.459C18.2803 9.80605 15.9864 9.70916 15.9864 8.98041ZM24.0821 13.5499L22.7647 7.23047H21.3496C21.0567 7.23047 20.7637 7.42508 20.6661 7.71658L18.2266 13.5499H19.9346L20.2755 12.6266H22.3741L22.5694 13.5499H24.0821ZM21.5976 8.93164L22.085 11.3133H20.7188L21.5976 8.93164Z" fill="var(--color-dark-deep)"></path></svg></li>
-                                    <li class="inline-flex items-center"><svg class="h-auto inline-flex w-[30px] text-light-cream" width="29" height="20" viewBox="0 0 29 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><rect x="0.5" y="0.5" width="28" height="19" rx="2" fill="#1F72CD" stroke="#D9D9D9"></rect><path fill-rule="evenodd" clip-rule="evenodd" d="M5.22713 7.02539L2.52344 13.2199H5.76013L6.16139 12.2323H7.07857L7.47982 13.2199H11.0425V12.4661L11.36 13.2199H13.2029L13.5203 12.4502V13.2199H20.9298L21.8307 12.2579L22.6743 13.2199L26.48 13.2279L23.7677 10.14L26.48 7.02539H22.7333L21.8563 7.96963L21.0393 7.02539H12.9788L12.2866 8.62426L11.5782 7.02539H8.3483V7.75356L7.98899 7.02539H5.22713ZM16.2969 7.9043H20.5517L21.8531 9.35967L23.1964 7.9043H24.4977L22.5205 10.1384L24.4977 12.3467H23.1374L21.836 10.8744L20.4858 12.3467H16.2969V7.9043ZM17.3438 9.63643V8.825V8.82422H19.9986L21.1571 10.1219L19.9473 11.4267H17.3438V10.5408H19.665V9.63643H17.3438ZM5.84914 7.9043H7.42685L9.22021 12.1049V7.9043H10.9485L12.3337 10.9161L13.6103 7.9043H15.33V12.3493H14.2836L14.275 8.86622L12.7495 12.3493H11.8134L10.2794 8.86622V12.3493H8.12671L7.7186 11.3528H5.51376L5.1065 12.3484H3.95312L5.84914 7.9043ZM5.89062 10.4314L6.61703 8.65625L7.3426 10.4314H5.89062Z" fill="white"></path></svg></li>
-                                    <li class="inline-flex items-center"><svg class="h-auto inline-flex w-[30px] text-light-cream" width="29" height="20" viewBox="0 0 29 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><rect x="0.5" y="0.5" width="28" height="19" rx="2" fill="white" stroke="#D9D9D9"></rect><path fill-rule="evenodd" clip-rule="evenodd" d="M14.7743 14.6222C13.6679 15.5421 12.2329 16.0974 10.6649 16.0974C7.16521 16.0974 4.32812 13.3312 4.32812 9.91881C4.32812 6.50648 7.16521 3.74023 10.6649 3.74023C12.2329 3.74023 13.6679 4.29551 14.7743 5.21539C15.8807 4.29551 17.3157 3.74023 18.8837 3.74023C22.3834 3.74023 25.2205 6.50648 25.2205 9.91881C25.2205 13.3312 22.3834 16.0974 18.8837 16.0974C17.3157 16.0974 15.8807 15.5421 14.7743 14.6222Z" fill="#ED0006"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M14.7734 14.6222C16.1365 13.489 17.0009 11.8023 17.0009 9.91881C17.0009 8.03532 16.1365 6.34866 14.7734 5.21539C15.8798 4.29551 17.3148 3.74023 18.8828 3.74023C22.3825 3.74023 25.2196 6.50648 25.2196 9.91881C25.2196 13.3312 22.3825 16.0974 18.8828 16.0974C17.3148 16.0974 15.8798 15.5421 14.7734 14.6222Z" fill="#F9A000"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M14.7743 14.6227C16.1374 13.4894 17.0017 11.8027 17.0017 9.91924C17.0017 8.03575 16.1374 6.34909 14.7743 5.21582C13.4112 6.34909 12.5469 8.03575 12.5469 9.91924C12.5469 11.8027 13.4112 13.4894 14.7743 14.6227Z" fill="#FF5E00"></path></svg></li>
-                                    <li class="inline-flex items-center"><svg class="h-auto inline-flex w-[30px] text-light-cream" width="29" height="20" viewBox="0 0 29 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><rect x="0.5" y="0.5" width="28" height="19" rx="2" fill="white" stroke="#D9D9D9"></rect><path fill-rule="evenodd" clip-rule="evenodd" d="M13.696 13.1327V10.6152H14.9879C15.5173 10.6152 15.9641 10.4368 16.3283 10.085L16.4158 9.99578C17.0811 9.2673 17.0374 8.13246 16.3283 7.4585C15.9738 7.10169 15.4881 6.90842 14.9879 6.91833H12.9141V13.1327H13.696ZM13.6953 9.85221V7.68164H15.0068C15.2886 7.68164 15.5557 7.79066 15.7549 7.98889C16.1775 8.40516 16.1872 9.09895 15.7792 9.53009C15.58 9.74318 15.2983 9.86212 15.0068 9.85221H13.6953ZM20.0614 9.21297C19.7263 8.90077 19.2698 8.74219 18.6918 8.74219C17.9487 8.74219 17.3902 9.0197 17.0211 9.56978L17.7108 10.0108C17.9633 9.6342 18.3081 9.44589 18.7452 9.44589C19.0221 9.44589 19.2892 9.54996 19.498 9.73827C19.702 9.91667 19.8186 10.1744 19.8186 10.4469V10.6303C19.5175 10.4618 19.1386 10.3726 18.6724 10.3726C18.1284 10.3726 17.6913 10.5014 17.3659 10.7641C17.0405 11.0267 16.8754 11.3736 16.8754 11.8147C16.8657 12.2161 17.0357 12.5977 17.3368 12.8554C17.6428 13.1329 18.0313 13.2716 18.4878 13.2716C19.0269 13.2716 19.4543 13.0288 19.7797 12.5432H19.8137V13.1329H20.5616V10.5113C20.5616 9.96127 20.3965 9.52518 20.0614 9.21297ZM17.9449 12.3489C17.7846 12.2299 17.6875 12.0367 17.6875 11.8285C17.6875 11.5956 17.7944 11.4023 18.0032 11.2487C18.217 11.0951 18.4841 11.0158 18.7999 11.0158C19.237 11.0108 19.5771 11.11 19.8199 11.3082C19.8199 11.6452 19.6888 11.9375 19.4313 12.1853C19.1982 12.4232 18.8824 12.557 18.5521 12.557C18.3335 12.562 18.1198 12.4876 17.9449 12.3489ZM22.2446 15.0011L24.8575 8.88086H24.0076L22.7983 11.9335H22.7837L21.5452 8.88086H20.6953L22.4097 12.8602L21.4384 15.0011H22.2446Z" fill="var(--color-dark-deep)"></path><path d="M10.9966 10.0692C10.9966 9.8264 10.9772 9.58357 10.9383 9.3457H7.64062V10.7184H9.52989C9.45218 11.1595 9.19963 11.5559 8.83052 11.8037V12.6957H9.95728C10.6178 12.0763 10.9966 11.1595 10.9966 10.0692Z" fill="#4285F4"></path><path d="M7.6385 13.558C8.5807 13.558 9.3772 13.2408 9.95515 12.6957L8.82839 11.8037C8.51271 12.0218 8.1096 12.1457 7.6385 12.1457C6.72543 12.1457 5.95321 11.5163 5.67638 10.6738H4.51562V11.5956C5.10814 12.7998 6.31747 13.558 7.6385 13.558Z" fill="#34A853"></path><path d="M5.67681 10.6732C5.53108 10.2322 5.53108 9.75147 5.67681 9.30546V8.38867H4.51587C4.01554 9.39467 4.01554 10.584 4.51587 11.59L5.67681 10.6732Z" fill="#FBBC04"></path><path d="M7.6385 7.83445C8.13874 7.82454 8.61955 8.01781 8.97895 8.36966L9.97944 7.34879C9.34321 6.74421 8.50785 6.41218 7.6385 6.42209C6.31747 6.42209 5.10814 7.18526 4.51562 8.38948L5.67638 9.31123C5.95321 8.46381 6.72543 7.83445 7.6385 7.83445Z" fill="#EA4335"></path></svg></li>
-                                    <li class="inline-flex items-center"><svg class="h-auto inline-flex w-[30px] text-light-cream" width="29" height="20" viewBox="0 0 29 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><rect x="0.5" y="0.5" width="28" height="19" rx="2" fill="white" stroke="#D9D9D9"></rect><path fill-rule="evenodd" clip-rule="evenodd" d="M6.91391 7.44478C7.30337 7.47783 7.69283 7.24653 7.93625 6.95328C8.17561 6.65177 8.33383 6.24701 8.29326 5.83398C7.94842 5.85051 7.52244 6.06528 7.27903 6.36679C7.0559 6.62699 6.86523 7.04828 6.91391 7.44478ZM11.5469 12.7652V6.32617H13.9202C15.1453 6.32617 16.0014 7.18526 16.0014 8.44086C16.0014 9.69645 15.1291 10.5638 13.8877 10.5638H12.5286V12.7652H11.5469ZM8.28846 7.52363C7.94535 7.50353 7.63227 7.62868 7.3794 7.72978L7.37939 7.72978C7.21666 7.79483 7.07886 7.84992 6.97402 7.84992C6.85637 7.84992 6.71287 7.79189 6.55176 7.72672C6.34066 7.64134 6.0993 7.54373 5.8462 7.54841C5.26606 7.55667 4.7265 7.89122 4.43034 8.42403C3.82181 9.48963 4.27212 11.0674 4.86037 11.9347C5.14841 12.3643 5.49325 12.8351 5.94762 12.8186C6.14752 12.8109 6.29131 12.7488 6.44013 12.6845C6.61145 12.6105 6.78943 12.5336 7.06733 12.5336C7.33559 12.5336 7.50579 12.6085 7.66916 12.6804C7.82451 12.7487 7.97369 12.8144 8.19515 12.8103C8.66575 12.8021 8.9619 12.3808 9.24994 11.9513C9.56079 11.4902 9.69739 11.0403 9.71811 10.972L9.72054 10.9641C9.72005 10.9636 9.7162 10.9618 9.70943 10.9587C9.60552 10.9102 8.8113 10.5401 8.80368 9.54745C8.79603 8.71429 9.43364 8.29216 9.53401 8.22571C9.54011 8.22166 9.54423 8.21893 9.5461 8.21751C9.14041 7.60624 8.50753 7.54015 8.28846 7.52363ZM17.7919 12.8141C18.4086 12.8141 18.9806 12.496 19.2402 11.9922H19.2605V12.7645H20.1693V9.55944C20.1693 8.63014 19.439 8.03125 18.3153 8.03125C17.2726 8.03125 16.5018 8.6384 16.4734 9.47271H17.3578C17.4309 9.0762 17.7919 8.816 18.2869 8.816C18.8873 8.816 19.224 9.10098 19.224 9.62553V9.98073L17.9988 10.0551C16.8588 10.1253 16.2422 10.6003 16.2422 11.4263C16.2422 12.2606 16.8791 12.8141 17.7919 12.8141ZM18.0591 12.0503C17.5358 12.0503 17.2031 11.7942 17.2031 11.4019C17.2031 10.9971 17.5236 10.7617 18.1362 10.7245L19.2275 10.6543V11.0178C19.2275 11.6208 18.7245 12.0503 18.0591 12.0503ZM23.1798 13.017C22.7863 14.1446 22.336 14.5163 21.3785 14.5163C21.3055 14.5163 21.0621 14.508 21.0053 14.4915V13.7191C21.0662 13.7274 21.2163 13.7357 21.2933 13.7357C21.7274 13.7357 21.9708 13.5498 22.121 13.0666L22.2102 12.7816L20.5469 8.09375H21.5733L22.7295 11.8977H22.7498L23.906 8.09375H24.904L23.1798 13.017ZM12.5312 7.16797H13.6631C14.5151 7.16797 15.0019 7.63056 15.0019 8.44422C15.0019 9.25787 14.5151 9.72459 13.6591 9.72459H12.5312V7.16797Z" fill="var(--color-dark-deep)"></path></svg></li>
-                                </ul>
-                            </div>
-                            <div class="flex-between md:flex-center gap-6 max-md:border-b max-md:border-dark-deep/30 max-md:pb-4">
-                                <div class="relative"><button class="small-regular flex-center gap-3 uppercase outline-none text-light-cream" id="headlessui-menu-button-«Rtkefb»" type="button" aria-haspopup="menu" aria-expanded="false" data-headlessui-state="">English<svg width="6" height="4" class="w-[6px] text-light-cream" viewBox="0 0 6 4" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M3.18025 3.93753L5.97505 0.258481C6.07001 0.13307 5.88201 0 5.61261 0L0.387387 0C0.117985 0 -0.0700143 0.13307 0.0249546 0.258481L2.81781 3.93753C2.87984 4.02082 3.11823 4.02082 3.18025 3.93753Z" fill="currentColor"></path></svg></button></div>
-                                <div class="relative"><button class="small-regular flex-center gap-3 uppercase outline-none text-light-cream" id="headlessui-menu-button-«Rukefb»" type="button" aria-haspopup="menu" aria-expanded="false" data-headlessui-state="">United States<svg width="6" height="4" class="w-[6px] text-light-cream" viewBox="0 0 6 4" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M3.18025 3.93753L5.97505 0.258481C6.07001 0.13307 5.88201 0 5.61261 0L0.387387 0C0.117985 0 -0.0700143 0.13307 0.0249546 0.258481L2.81781 3.93753C2.87984 4.02082 3.11823 4.02082 3.18025 3.93753Z" fill="currentColor"></path></svg></button></div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <section class="border-y border-dark-deep/30 py-2 max-md:py-8">
-                    <div class="container px-6 lg:px-12 2xl:px-16">
-                        <div class="md:flex-between flex flex-col items-start max-md:gap-12 md:flex-row">
-                            <div>
-                                <ul class="flex flex-col gap-4 md:flex-row md:gap-6">
-                                    <li><a class="small-regular font-azaretmono uppercase text-light-cream/80 rtl:font-notokufiarabic" href="https://squatwolf.com/pages/terms">Terms &amp; Conditions</a></li>
-                                    <li><a class="small-regular font-azaretmono uppercase text-light-cream/80 rtl:font-notokufiarabic" href="https://squatwolf.com/pages/privacy-policy">Privacy Policy</a></li>
-                                    <li><a class="small-regular font-azaretmono uppercase text-light-cream/80 rtl:font-notokufiarabic" href="https://squatwolf.com/pages/cookie-policy">cookies policy</a></li>
-                                </ul>
-                            </div>
-                            <div>
-                                <p class="small-medium text-light-cream/80">© <!-- -->2025<!-- --> <!-- -->SQUATWOLF<!-- -->.</p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </div>
-            <!-- SVG du bas de page (conservé avec les couleurs adaptées) -->
-            <div class="sticky bottom-0">
-                <svg xmlns="http://www.w3.org/2000/svg" width="1920" height="307" viewBox="0 0 1920 307" fill="none" class="h-auto w-full max-md:hidden">
-                    <g clip-path="url(#clip0_18121_17336)">
-                        <rect width="1920" height="307" fill="var(--color-dark-deep)"></rect>
-                        <g clip-path="url(#clip1_18121_17336)">
-                            <path d="M36.6868 204.192L31.7179 226.356C31.458 227.363 31.3281 228.63 31.3281 230.158C31.3281 232.205 31.9127 233.667 33.0494 234.545C34.1861 235.455 36.1672 235.877 38.9602 235.877H77.1532C80.6932 235.877 83.3888 235.195 85.175 233.765C86.9613 232.368 88.2279 229.898 89.0074 226.323L95.5028 196.523C95.7626 195.743 95.8925 194.606 95.8925 193.078C95.8925 189.016 93.7165 186.579 89.3971 185.799L26.3916 170.883C3.2355 165.293 -8.35884 151.644 -8.35884 130.001C-8.35884 125.939 -7.74174 120.707 -6.44266 114.337L2.71584 73.4555C6.77547 54.867 14.0503 41.2831 24.4754 32.7688C34.9006 24.2545 49.4178 19.9648 67.9947 19.9648H144.348C157.859 19.9648 168.219 23.1496 175.461 29.5191C182.704 35.8885 186.341 44.9228 186.341 56.6544C186.341 60.749 185.692 65.6886 184.425 71.5706L177.182 103.646H114.177L118.367 84.9271C118.626 83.9196 118.756 82.6522 118.756 81.0924C118.756 79.0775 118.172 77.5827 117.035 76.7052C115.898 75.8278 113.917 75.3728 111.124 75.3728H74.8474C71.2749 75.3728 68.6118 76.0878 66.8255 77.4852C65.0393 78.8826 63.7727 81.3849 62.9932 84.9271L57.6345 109.365C57.3747 110.145 57.2448 111.282 57.2448 112.81C57.2448 116.872 59.3883 119.309 63.7402 120.057L126.746 134.973C149.902 140.595 161.496 154.211 161.496 175.855C161.496 179.949 160.847 185.149 159.58 191.518L149.252 237.762C145.193 256.351 137.918 269.935 127.493 278.449C117.068 286.996 102.55 291.253 83.9734 291.253H5.70372C-7.80672 291.253 -18.1669 288.068 -25.4093 281.699C-32.6841 275.329 -36.2891 266.295 -36.2891 254.563C-36.2891 250.501 -35.672 245.529 -34.3729 239.647L-26.3511 204.095H36.6543L36.6868 204.192Z" fill="var(--color-text-dark)"></path>
-                            <path d="M393.164 29.5874C400.407 35.9569 404.044 44.9912 404.044 56.7227C404.044 60.7849 403.395 65.757 402.128 71.639L365.072 237.863C362.019 251.382 357.375 262.171 351.139 270.328C344.904 278.485 336.687 284.204 326.489 287.519L336.037 318.099H273.032L264.653 291.354H223.407C209.929 291.354 199.536 288.169 192.294 281.799C185.019 275.43 181.414 266.396 181.414 254.664C181.414 250.602 182.031 245.63 183.33 239.748L220.354 73.5238C224.674 54.9354 232.013 41.3515 242.309 32.8372C252.636 24.3228 267.089 20.0332 285.665 20.0332H362.019C375.497 20.0332 385.889 23.2179 393.132 29.5874M336.46 81.1607C336.46 79.1134 335.875 77.651 334.738 76.7736C333.602 75.8962 331.62 75.4412 328.827 75.4412H292.55C288.978 75.4412 286.315 76.1561 284.529 77.5535C282.742 78.9509 281.476 81.4532 280.696 84.9954L249.389 226.359C249.129 227.366 248.999 228.634 248.999 230.161C248.999 232.208 249.583 233.671 250.72 234.548C251.857 235.458 253.838 235.881 256.631 235.881H292.908C296.48 235.881 299.143 235.198 300.93 233.768C302.716 232.371 303.982 229.901 304.762 226.326L336.07 84.9629C336.33 83.9555 336.46 82.6881 336.46 81.1282" fill="var(--color-text-dark)"></path>
-                            <path d="M635.454 21.9185L575.891 289.372H446.047C432.569 289.372 422.177 286.187 414.934 279.818C407.66 273.448 404.055 264.414 404.055 252.682C404.055 248.62 404.704 243.648 405.971 237.766L447.964 49.7687L440.721 21.886H517.107L472.029 224.377C471.769 225.384 471.639 226.554 471.639 227.822C471.639 231.884 474.303 233.931 479.661 233.931H525.486L572.448 21.8535H635.454V21.9185Z" fill="var(--color-text-dark)"></path>
-                            <path d="M819.532 289.396H753.863L755.39 233.988H693.521L669.845 289.396H605.703L716.807 50.5728L709.565 21.9102H814.206L819.532 289.363V289.396ZM717.197 178.58H757.273L759.937 83.0702H757.663L717.197 178.58Z" fill="var(--color-text-dark)"></path>
-                            <path d="M867.609 21.9102H1048.99L1036.39 77.3182H977.219L930.225 289.396H867.219L914.213 77.3182H855.008L867.609 21.9102Z" fill="var(--color-text-dark)"></path>
-                            <path d="M1131.83 21.9102L1126.47 188.914L1196.72 21.9102H1252.09L1248.65 188.914L1317.4 21.9102H1386.9L1265.47 289.396H1200.55V137.308L1132.96 289.396H1068.04L1066.12 21.9102H1131.83Z" fill="var(--color-text-dark)"></path>
-                            <path d="M1420.4 32.7981C1430.73 24.2838 1445.15 19.9941 1463.76 19.9941H1540.11C1553.62 19.9941 1563.98 23.1789 1571.23 29.5484C1578.47 35.9178 1582.11 44.9521 1582.11 56.6836C1582.11 60.7458 1581.46 65.7179 1580.19 71.5999L1543.13 237.791C1538.81 256.38 1531.47 269.964 1521.18 278.478C1510.88 287.025 1496.4 291.282 1477.86 291.282H1401.47C1387.96 291.282 1377.6 288.097 1370.36 281.728C1363.08 275.358 1359.48 266.324 1359.48 254.593C1359.48 250.53 1360.09 245.558 1361.39 239.676L1398.42 73.4523C1402.74 54.8638 1410.04 41.2799 1420.37 32.7656M1427.09 230.155C1427.09 232.202 1427.68 233.664 1428.81 234.542C1429.95 235.452 1431.93 235.874 1434.73 235.874H1471C1474.58 235.874 1477.24 235.192 1479.02 233.762C1480.81 232.364 1482.08 229.895 1482.86 226.32L1514.16 84.9563C1514.42 83.9489 1514.55 82.6815 1514.55 81.1217C1514.55 79.0743 1513.97 77.6119 1512.83 76.7345C1511.66 75.8571 1509.72 75.4021 1506.92 75.4021H1470.65C1467.07 75.4021 1464.41 76.1171 1462.62 77.5144C1460.84 78.9118 1459.57 81.4141 1458.79 84.9563L1427.48 226.32C1427.22 227.327 1427.09 228.595 1427.09 230.122" fill="var(--color-text-dark)"></path>
-                            <path d="M1737.41 233.988L1699.22 289.396H1572.07L1631.63 21.9102H1694.64L1647.68 233.988H1737.41Z" fill="var(--color-text-dark)"></path>
-                            <path d="M1793.96 21.9102L1801.23 49.8254L1747.77 289.396H1810.78L1835.2 180.497H1897.07L1935.26 125.089H1847.41L1857.74 77.3182H1939.06L1977.26 21.9102H1793.96Z" fill="var(--color-text-dark)"></path>
-                        </g>
-                    </g>
-                    <defs>
-                        <clipPath id="clip0_18121_17336"><rect width="1920" height="307" fill="white"></rect></clipPath>
-                        <clipPath id="clip1_18121_17336"><rect width="2723.46" height="460.585" fill="white" transform="translate(-746.172 -105.379)"></rect></clipPath>
-                    </defs>
-                </svg>
-                <svg xmlns="http://www.w3.org/2000/svg" width="394" height="265" viewBox="0 0 394 265" fill="none" class="h-auto w-full md:hidden">
-                    <rect width="394" height="265" fill="var(--color-dark-deep)"></rect>
-                    <path d="M94.4648 94.5939L137.814 93.1391L176.548 230.727C177.325 233.679 181.715 232.931 181.461 229.88L168.587 71.3023L46.2733 32.5302C43.916 31.7816 42.0245 34.5359 43.549 36.4709L86.2776 90.7661C88.2397 93.2662 91.2887 94.6787 94.4648 94.5798V94.5939Z" fill="var(--color-text-dark)"></path>
-                    <path d="M299.53 94.5939L256.18 93.1391L217.446 230.727C216.67 233.679 212.28 232.931 212.534 229.88L225.408 71.3023L347.735 32.5302C350.093 31.7816 351.984 34.5359 350.46 36.4709L307.731 90.7661C305.769 93.2662 302.72 94.6787 299.544 94.5798L299.53 94.5939Z" fill="var(--color-text-dark)"></path>
-                </svg>
-            </div>
-        </footer>
-    </body>
+    </footer>
+</body>
 </html>
-
